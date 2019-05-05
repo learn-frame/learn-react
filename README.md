@@ -6,7 +6,7 @@
 
 ## Introduction
 
-这是一个用于日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5。下面罗列出该仓库中的一些成品，持续更新中，欢迎拿去玩～
+这是一个个人用于日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5。下面罗列出该仓库中的一些成品，持续更新中，欢迎拿去玩～
 
 - 汇率计算器 by React Hooks
 
@@ -43,4 +43,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 ## License
 
-BLOG FE is [MIT licensed](https://opensource.org/licenses/MIT).
+Learn React is [MIT licensed](https://opensource.org/licenses/MIT).
