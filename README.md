@@ -1,12 +1,12 @@
 # 瞎折腾的 React
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
-[![Node](https://img.shields.io/badge/node-%3E%3D8.0.0-green.svg)](https://github.com/YanceyOfficial/learn-react)
+[![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
+[![Node](https://img.shields.io/badge/node-%3E%3D8.0.0-blue.svg)](https://github.com/YanceyOfficial/learn-react)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/YanceyOfficial/learn-react/pulls)
 
 ## Introduction
 
-这是一个个人用于日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5。下面罗列出该仓库中的一些成品，持续更新中，欢迎拿去玩～
+这是一个个人日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5，基本每隔一段时间会将依赖更到最新。下面罗列出该仓库中的一些成品，持续更新中，欢迎拿去玩～
 
 - 汇率计算器 by React Hooks
 
