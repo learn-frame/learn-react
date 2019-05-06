@@ -1,4 +1,4 @@
-# 瞎折腾的 React
+# 练手用的 React 仓库
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/badge/node-%3E%3D8.0.0-blue.svg)](https://github.com/YanceyOfficial/learn-react)
@@ -6,13 +6,15 @@
 
 ## Introduction
 
-这是一个个人日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5，基本每隔一段时间会将依赖更到最新。下面罗列出该仓库中的一些成品，持续更新中，欢迎拿去玩～
+这是个人日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5。项目中会包含一些成品，也会包含一些学习 API 写下的 demo。下面把这些罗列出来，持续更新中，欢迎拿去玩～
 
-- 汇率计算器 by React Hooks
+- Hooks 练手 —— 汇率计算器 **[@component/Exchange]**
 
-- Toast 轻提示组件
+- Toast 轻提示组件 **[@component/Toast]**
 
-- 手写一个 Button 组件
+- 手写一个 Button 组件 **[@component/Button]**
+
+- 学习 Fragment **[@component/Fragment]**
 
 ## Available Scripts
 

@@ -7,11 +7,13 @@ import {
   faCheckCircle,
   faExclamationCircle,
   faTimesCircle,
-  faInfoCircle
+  faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from './components/Button/Button';
 import Exchange from './components/Exchange/Exchange';
-import Toast from './components/Toast/Toast';
+// import Toast from './components/Toast/Toast';
+import LearnRef from './components/LearnRef/LearnRefs';
+import Fragment from './components/Fragment/Fragment';
 import './App.css';
 
 library.add(
@@ -21,7 +23,7 @@ library.add(
   faCheckCircle,
   faExclamationCircle,
   faTimesCircle,
-  faInfoCircle
+  faInfoCircle,
 );
 
 class App extends React.Component<{}, {}> {
@@ -31,35 +33,35 @@ class App extends React.Component<{}, {}> {
   }
 
   public componentDidMount() {
-    Toast.loading('hello', 300000);
-    Toast.success('hello', 300000);
-    Toast.warning('hello', 300000);
-    Toast.error('hello', 300000);
-    Toast.info('hello', 300000);
+    // Toast.loading('hello', 300000);
+    // Toast.success('hello', 300000);
+    // Toast.warning('hello', 300000);
+    // Toast.error('hello', 300000);
+    // Toast.info('hello', 300000);
   }
 
   public render() {
     return (
-      <div className="App">
+      <div className='App'>
         {/* 类型为 default */}
-        <Button type="default">default</Button>
+        <Button type='default'>default</Button>
 
         {/* 类型为 primary */}
-        <Button type="primary">primary</Button>
+        <Button type='primary'>primary</Button>
 
         {/* 类型为 danger */}
-        <Button type="danger">danger</Button>
+        <Button type='danger'>danger</Button>
 
         {/* 内容为两字中文，中间用空格隔开 */}
-        <Button type="default">流氓</Button>
+        <Button type='default'>流氓</Button>
 
         {/* 附加保存按钮 */}
-        <Button type="primary" icon="save">
+        <Button type='primary' icon='save'>
           save
         </Button>
 
         {/* 删除 */}
-        <Button type="danger" icon="trash-alt">
+        <Button type='danger' icon='trash-alt'>
           delete
         </Button>
 
@@ -70,12 +72,18 @@ class App extends React.Component<{}, {}> {
         <Button>no any props</Button>
 
         {/* loading 状态 */}
-        <Button icon="save" loading>
+        <Button icon='save' loading>
           loading
         </Button>
 
         {/* Hooks 小实验 */}
         <Exchange />
+
+        {/* 学习 Ref */}
+        <LearnRef />
+
+        {/* 学习 Fragment */}
+        <Fragment />
       </div>
     );
   }
