@@ -1,0 +1,58 @@
+.modal_container {
+  width: 540px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  border-radius: 4px;
+  background: #fafafa;
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+
+  .title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.6;
+    letter-spacing: 0.0075em;
+  }
+
+  .content {
+    color: rgba(0, 0, 0, 0.54);
+    margin: 24px 0;
+    font-size: 16px;
+    font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: 0.00938em;
+  }
+
+  .btn {
+    float: right;
+  }
+
+  .cancel_btn {
+    margin-right: 18px;
+  }
+}
+
+.modal_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 1300;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
+  left: 0px;
+}
+
+.mask {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  position: fixed;
+  touch-action: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}

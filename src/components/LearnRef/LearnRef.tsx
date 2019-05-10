@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 
 // 妈的
-// 用 TS 搞 Ref 简直浪费生命
+// 用 TS 搞 Ref 简直蛋疼
 
 interface ILearnRefStates {
   value: string;
@@ -36,9 +36,7 @@ class LearnRef extends React.Component<{}, ILearnRefStates> {
         showInput: !this.state.showInput,
       },
       () => {
-        if (this.state.showInput) {
-          this.inputRef.current!.focus();
-        }
+        this.inputRef.current!.focus();
       },
     );
   }

@@ -14,6 +14,8 @@ import Exchange from './components/Exchange/Exchange';
 // import Toast from './components/Toast/Toast';
 import LearnRef from './components/LearnRef/LearnRefs';
 import Fragment from './components/Fragment/Fragment';
+import MyPortal from './components/Portal/MyPortal';
+import PropsAndStates from './components/PropsAndStates/PropsAndStates';
 import './App.css';
 
 library.add(
@@ -38,6 +40,12 @@ class App extends React.Component<{}, {}> {
     // Toast.warning('hello', 300000);
     // Toast.error('hello', 300000);
     // Toast.info('hello', 300000);
+  }
+
+  public openModal() {
+    this.setState({
+      showModal: true,
+    });
   }
 
   public render() {
@@ -84,9 +92,18 @@ class App extends React.Component<{}, {}> {
 
         {/* 学习 Fragment */}
         <Fragment />
+
+        <MyPortal />
+
+        <PropsAndStates counterName='唱' initValue={0} />
+        <PropsAndStates counterName='跳' initValue={10} />
+        <PropsAndStates counterName='rap' initValue={4} />
+        <PropsAndStates initValue={4} />
       </div>
     );
   }
 }
+
+
 
 export default App;
