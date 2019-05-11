@@ -53,7 +53,7 @@ class Button extends React.Component<IButtonProps, any> {
     const kids = React.Children.map(children, child => needSpace(child));
     return (
       <button
-        className={loading || disabled ? 'disabled' : type}
+        className={`${loading || disabled ? 'disabled' : type} button`}
         disabled={loading || disabled}
         onClick={this.handleClick}
       >

@@ -17,3 +17,9 @@ code {
   margin: 0;
   padding: 0;
 }
+
+a {
+  font-size: 14px;
+  color: #fafafa;
+  text-decoration: none;
+}

@@ -1,4 +1,16 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+  Redirect,
+} from 'react-router-dom';
+import { Prompt } from 'react-router';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faSpinner,
@@ -9,13 +21,15 @@ import {
   faTimesCircle,
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
-import Button from './components/Button/Button';
-import Exchange from './components/Exchange/Exchange';
 // import Toast from './components/Toast/Toast';
-import LearnRef from './components/LearnRef/LearnRefs';
 import Fragment from './components/Fragment/Fragment';
 import MyPortal from './components/Portal/MyPortal';
-import PropsAndStates from './components/PropsAndStates/PropsAndStates';
+import PropsState from './containers/PropsState';
+import Ex from './containers/Ex';
+import ButtonPage from './containers/ButtonPage';
+import DynimaicRoute from './containers/DynimicRoute';
+import NotFound from './containers/NotFound';
+import Login from './containers/Login';
 import './App.css';
 
 library.add(
@@ -28,10 +42,16 @@ library.add(
   faInfoCircle,
 );
 
-class App extends React.Component<{}, {}> {
+interface IAppState {
+  isLogin: boolean;
+}
+
+class App extends React.Component<{}, IAppState> {
   constructor(props: {}) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLogin: true,
+    };
   }
 
   public componentDidMount() {
@@ -42,68 +62,104 @@ class App extends React.Component<{}, {}> {
     // Toast.info('hello', 300000);
   }
 
-  public openModal() {
+  public logout = () => {
     this.setState({
-      showModal: true,
+      isLogin: false,
     });
-  }
+  };
 
   public render() {
+    const { isLogin } = this.state;
     return (
-      <div className='App'>
-        {/* 类型为 default */}
-        <Button type='default'>default</Button>
+      <Router>
+        <div className='App'>
+          <div className='route-list'>
+            {/*  使用 getUserConfirmation 必须配合使用 Prompt 组件*/}
+            {/* <Prompt message='在跳转到下一个路由前执行的回调' /> */}
+            <Link to='/'>
+              <Button variant='contained' color='primary'>
+                首页
+              </Button>
+            </Link>
+            <Link to='/portal'>
+              <Button variant='contained' color='primary'>
+                React.createPortal
+              </Button>
+            </Link>
+            <Link to='/exchange'>
+              <Button variant='contained' color='primary'>
+                汇率计算器页面
+              </Button>
+            </Link>
+            <Link to='/fragment'>
+              <Button variant='contained' color='primary'>
+                React.Fragment
+              </Button>
+            </Link>
+            <Link to='/button-list'>
+              <Button variant='contained' color='primary'>
+                button list
+              </Button>
+            </Link>
+            {/* NavLink 是 Link 的一个特殊变种 */}
+            {/* 它会给激活的 a 标签添加如下属性和属性值 */}
+            {/* aria-current="page" class="active" */}
+            <NavLink to='/props-state'>
+              <Button variant='contained' color='primary'>
+                props state
+              </Button>
+            </NavLink>
+            <Link to='/p/5ca5c61ad397224556c4893f'>
+              <Button variant='outlined' color='secondary'>
+                动态路由 - 文章1
+              </Button>
+            </Link>
+            <Link to='/p/5ca4670bd397224556c4893d'>
+              <Button variant='outlined' color='secondary'>
+                动态路由 - 文章2
+              </Button>
+            </Link>
+            <Link to='/fuck'>
+              <Button variant='contained' color='secondary'>
+                我是一个不存在的路由
+              </Button>
+            </Link>
 
-        {/* 类型为 primary */}
-        <Button type='primary'>primary</Button>
+            <Fab color='primary' aria-label='logout' onClick={this.logout}>
+              <PowerSettingsNewIcon />
+            </Fab>
 
-        {/* 类型为 danger */}
-        <Button type='danger'>danger</Button>
+            <Route
+              exact
+              path='/'
+              render={() => (isLogin ? <Ex /> : <Redirect to='/login' />)}
+            />
+          </div>
 
-        {/* 内容为两字中文，中间用空格隔开 */}
-        <Button type='default'>流氓</Button>
+          {/* Route 组件通过下面两个来匹配路由 */}
+          {/* window.location.pathname */}
+          {/* this.props.location.pathname */}
+          {/* 因为 404 页面没有匹配路径，所以它总会被渲染 */}
+          {/* 所以一组 Route 组件外必须套一层 Switch */}
 
-        {/* 附加保存按钮 */}
-        <Button type='primary' icon='save'>
-          save
-        </Button>
+          <Switch>
+            <Route path='/' exact />
 
-        {/* 删除 */}
-        <Button type='danger' icon='trash-alt'>
-          delete
-        </Button>
+            <Route path='/exchange' component={Ex} />
+            <Route path='/portal' component={MyPortal} />
+            <Route path='/fragment' component={Fragment} />
+            <Route path='/button-list' component={ButtonPage} />
+            <Route path='/props-state' component={PropsState} />
+            <Route path='/p/:id' component={DynimaicRoute} />
+            <Route path='/login' component={Login} />
 
-        {/* 按钮不可用 */}
-        <Button disabled>disabled</Button>
-
-        {/* 当不传入属性时使用默认属性 */}
-        <Button>no any props</Button>
-
-        {/* loading 状态 */}
-        <Button icon='save' loading>
-          loading
-        </Button>
-
-        {/* Hooks 小实验 */}
-        <Exchange />
-
-        {/* 学习 Ref */}
-        <LearnRef />
-
-        {/* 学习 Fragment */}
-        <Fragment />
-
-        <MyPortal />
-
-        <PropsAndStates counterName='唱' initValue={0} />
-        <PropsAndStates counterName='跳' initValue={10} />
-        <PropsAndStates counterName='rap' initValue={4} />
-        <PropsAndStates initValue={4} />
-      </div>
+            <Route component={NotFound} />
+            {/* <Redirect to='/login' /> */}
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
-
-
 
 export default App;
