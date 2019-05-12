@@ -7,8 +7,13 @@ export interface IPortalsState {
   showModal: boolean;
 }
 
-class MyPortal extends React.Component<{}, IPortalsState> {
-  constructor(props: {}) {
+export interface IPortalsProps {
+  location: any;
+  history: any;
+}
+
+class MyPortal extends React.Component<IPortalsProps, IPortalsState> {
+  constructor(props: IPortalsProps) {
     super(props);
     this.state = {
       showModal: false,
@@ -31,6 +36,9 @@ class MyPortal extends React.Component<{}, IPortalsState> {
 
   public render() {
     const { showModal } = this.state;
+    const {  location, history } = this.props;
+    console.log(location)
+    console.log(history)
     return (
       <div>
         <Button type='danger' onClick={this.openModal}>

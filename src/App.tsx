@@ -21,6 +21,7 @@ import {
   faTimesCircle,
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
+
 // import Toast from './components/Toast/Toast';
 import Fragment from './components/Fragment/Fragment';
 import MyPortal from './components/Portal/MyPortal';
@@ -30,6 +31,7 @@ import ButtonPage from './containers/ButtonPage';
 import DynimaicRoute from './containers/DynimicRoute';
 import NotFound from './containers/NotFound';
 import Login from './containers/Login';
+import Bubble from './components/Bubble/Bubble';
 import './App.css';
 
 library.add(
@@ -81,7 +83,14 @@ class App extends React.Component<{}, IAppState> {
                 首页
               </Button>
             </Link>
-            <Link to='/portal'>
+            <Link
+              to={{
+                pathname: '/portal',
+                search: '?sort=name',
+                hash: '#the-hash',
+                state: { showModal: true },
+              }}
+            >
               <Button variant='contained' color='primary'>
                 React.createPortal
               </Button>
@@ -135,6 +144,11 @@ class App extends React.Component<{}, IAppState> {
               render={() => (isLogin ? <Ex /> : <Redirect to='/login' />)}
             />
           </div>
+
+          <Bubble />
+
+          
+          <div className='arrow_bottom' />
 
           {/* Route 组件通过下面两个来匹配路由 */}
           {/* window.location.pathname */}
