@@ -1,7 +1,5 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Fab from '@material-ui/core/Fab';
-import PowerSettingsNewIcon from '@material-ui/icons/PowerSettingsNew';
 import {
   BrowserRouter as Router,
   Switch,
@@ -31,7 +29,6 @@ import ButtonPage from './containers/ButtonPage';
 import DynimaicRoute from './containers/DynimicRoute';
 import NotFound from './containers/NotFound';
 import Login from './containers/Login';
-import Bubble from './components/Bubble/Bubble';
 import './App.css';
 
 library.add(
@@ -128,27 +125,12 @@ class App extends React.Component<{}, IAppState> {
                 动态路由 - 文章2
               </Button>
             </Link>
-            <Link to='/fuck'>
+            <Link to='/not-found-path'>
               <Button variant='contained' color='secondary'>
                 我是一个不存在的路由
               </Button>
             </Link>
-
-            <Fab color='primary' aria-label='logout' onClick={this.logout}>
-              <PowerSettingsNewIcon />
-            </Fab>
-
-            <Route
-              exact
-              path='/'
-              render={() => (isLogin ? <Ex /> : <Redirect to='/login' />)}
-            />
           </div>
-
-          <Bubble />
-
-          
-          <div className='arrow_bottom' />
 
           {/* Route 组件通过下面两个来匹配路由 */}
           {/* window.location.pathname */}
@@ -165,10 +147,8 @@ class App extends React.Component<{}, IAppState> {
             <Route path='/button-list' component={ButtonPage} />
             <Route path='/props-state' component={PropsState} />
             <Route path='/p/:id' component={DynimaicRoute} />
-            <Route path='/login' component={Login} />
 
             <Route component={NotFound} />
-            {/* <Redirect to='/login' /> */}
           </Switch>
         </div>
       </Router>

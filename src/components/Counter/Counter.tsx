@@ -1,28 +1,32 @@
 import React from 'react';
 import Button from '../Button/Button';
 
-interface IPropsAndStatesProps {
+interface ICounterProps {
   counterName?: string;
   initValue: number;
 }
 
-interface IPropsAndStatesStates {
+interface ICounterState {
   value: number;
 }
 
-class PropsAndStates extends React.Component<
-  IPropsAndStatesProps,
-  IPropsAndStatesStates
-> {
+class PropsAndStates extends React.Component<ICounterProps, ICounterState> {
   static defaultProps: {};
-  constructor(props: IPropsAndStatesProps) {
+  constructor(props: ICounterProps) {
     super(props);
     this.state = {
       value: this.props.initValue,
     };
   }
 
-  // 使用 class fileds 的方式可以防止 this 绑定丢失的问题
+  // 当值不发生变化时阻止更新组件
+  public shouldComponentUpdate(
+    nextProps: ICounterProps,
+    nextState: ICounterState,
+  ) {
+    return nextState.value !== this.state.value;
+  }
+
   public handleIncreaseChange = () => {
     this.setState({
       value: this.state.value + 1,

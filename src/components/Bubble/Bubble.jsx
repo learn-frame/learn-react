@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
 
 class Circle {
   constructor(radius, color, clearOffset, width, height, ctx, randomColor) {
@@ -49,6 +48,8 @@ class Bubble extends Component {
     this.speed = 0;
     this.circles = [];
 
+    this.animateHeader = true;
+
     this.canvasRef = React.createRef();
     this.ctx = null;
   }
@@ -56,6 +57,10 @@ class Bubble extends Component {
   componentDidMount() {
     this.initCanvas();
     this.addListeners();
+  }
+
+  componentWillUnmount() {
+    window.cancelAnimationFrame(this.animate);
   }
 
   initCanvas = () => {
@@ -96,39 +101,37 @@ class Bubble extends Component {
   };
 
   animate = () => {
-    if (this.state.animateHeader) {
+    if (this.animateHeader) {
       this.ctx.clearRect(0, 0, this.width, this.height);
       for (var i in this.circles) {
         this.circles[i].draw();
       }
     }
-    requestAnimationFrame(this.animate);
+    window.requestAnimationFrame(this.animate);
   };
 
   addListeners = () => {
     window.addEventListener(
       'scroll',
-      _.throttle(() => {
+      () => {
         if (document.body.scrollTop > this.height) {
-          this.setState({
-            animateHeader: false,
-          });
+          this.animateHeader = false;
         } else {
-          this.setState({
-            animateHeader: true,
-          });
+          this.animateHeader = true;
         }
-      }, 150),
+      },
       false,
     );
     window.addEventListener(
       'resize',
-      _.throttle(() => {
+      () => {
         this.width = window.innerWidth;
         this.height = window.innerHeight;
-        this.canvasRef.current.width = this.width;
-        this.canvasRef.current.height = this.height;
-      }, 150),
+        if (this.canvasRef.current) {
+          this.canvasRef.current.width = this.width;
+          this.canvasRef.current.height = this.height;
+        }
+      },
       false,
     );
   };
