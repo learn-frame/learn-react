@@ -1,4 +1,4 @@
-const CouterType = {
+export const CouterType = {
   INCREMENT: 'increment',
   DECREMENT: 'decrement',
 };
