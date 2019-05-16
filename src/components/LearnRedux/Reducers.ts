@@ -27,7 +27,7 @@ const { SHOW_ALL } = VisibilityFilters;
 const initState: TASKState = {
   tasks: [
     {
-      id: +new Date(),
+      id: 1557994074783,
       text: 'The first TASK of you!',
       completed: false,
     },
@@ -76,7 +76,7 @@ const visibilityFilterReducer = (
 //   tasks: tasks(state.tasks, action),
 // });
 
-// combineReducers 和上面注释掉的代码等价
+// combineReducers 和上面注释掉的代码等价a，用于将多个子 reducer 输出合并成一个单一的 state 树
 const taskApp = combineReducers({
   tasksReducer,
   visibilityFilterReducer,
