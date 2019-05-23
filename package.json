@@ -153,6 +153,7 @@
     "@types/classnames": "^2.2.7",
     "@types/history": "^4.7.2",
     "@types/lodash": "^4.14.126",
+    "@types/react-redux": "^7.0.9",
     "@types/react-router-dom": "^4.3.3",
     "redux-devtools": "^3.5.0",
     "redux-logger": "^3.0.6"

@@ -68,7 +68,7 @@ Button.defaultProps = {
   type: 'default',
   disabled: false,
   loading: false,
-  icon: null
+  icon: null,
 };
 
 export default Button;
