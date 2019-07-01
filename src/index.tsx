@@ -6,7 +6,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 // Both of these will create a specialized history object for you.
-// 这两个路由组建都用于创建一个序列化的历史对象
+// 这两个路由组件都用于创建一个序列化的历史对象
 
 // 对于动态网站应当使用 BrowserRouter
 // BrowserRouter 实际是 HTML5 history API 的封装
