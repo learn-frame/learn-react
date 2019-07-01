@@ -22,8 +22,6 @@ import DemoEntrance from './containers/DemoEntrance';
 
 import NotFound from './containers/NotFound';
 
-import './App.css';
-
 library.add(
   faSpinner,
   faTrashAlt,

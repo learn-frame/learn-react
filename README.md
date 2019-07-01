@@ -1,4 +1,4 @@
-# 练手用的 React 仓库
+# 练手用的 React Repo
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 [![Node](https://img.shields.io/badge/node-%3E%3D8.0.0-blue.svg)](https://github.com/YanceyOfficial/learn-react)
