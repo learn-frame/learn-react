@@ -70,6 +70,8 @@
     "sass-loader": "7.1.0",
     "semver": "6.0.0",
     "style-loader": "0.23.1",
+    "styled-components": "^4.3.2",
+    "stylelint": "^10.1.0",
     "terser-webpack-plugin": "1.2.3",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5",
@@ -155,6 +157,7 @@
     "@types/lodash": "^4.14.126",
     "@types/react-redux": "^7.0.9",
     "@types/react-router-dom": "^4.3.3",
+    "@types/styled-components": "^4.1.16",
     "redux-devtools": "^3.5.0",
     "redux-logger": "^3.0.6"
   }

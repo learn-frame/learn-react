@@ -19,6 +19,7 @@ import Ex from './containers/Ex';
 import ButtonPage from './containers/ButtonPage';
 import DynimaicRoute from './containers/DynimicRoute';
 import DemoEntrance from './containers/DemoEntrance';
+import CSSInJS from './containers/CSSInJS';
 
 import NotFound from './containers/NotFound';
 
@@ -73,6 +74,7 @@ class App extends React.Component<{}, {}> {
             <Route path='/props-state' component={PropsState} />
             <Route path='/p/:id' component={DynimaicRoute} />
             <Route path='/demo' component={DemoEntrance} />
+            <Route path='/css-in-js' component={CSSInJS} />
             <Route component={NotFound} />
           </Switch>
         </div>

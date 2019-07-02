@@ -56,6 +56,11 @@ class DemoEntrance extends React.Component<{}, {}> {
             动态路由 - 文章2
           </Button>
         </Link>
+        <Link to='/css-in-js'>
+          <Button variant='outlined' color='secondary'>
+            CSS IN JS
+          </Button>
+        </Link>
         <Link to='/not-found-path'>
           <Button variant='contained' color='secondary'>
             我是一个不存在的路由
