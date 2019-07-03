@@ -10,7 +10,9 @@ import reducer from './stores/reducer';
 
 const store = createStore(
   reducer,
-  (window as any).__REDUX_DEVTOOLS_EXTENSION__ && (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
+  // 连接浏览器的 Redux 时光机调试工具
+  (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
 );
 
 // Both of these will create a specialized history object for you.

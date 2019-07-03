@@ -20,6 +20,10 @@ class LearnRedux extends Component {
   }
 }
 
+// connect 接收四个参数，分别是
+// mapStateToProps | mapDispatchToProps | mergeProps | options
+// 第一个将 store 中的数据挂载到 props 上
+// 第二个是将 action 对象挂载到 props 上
 export default connect(
   state => state,
   actions,
