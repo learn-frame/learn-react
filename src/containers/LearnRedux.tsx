@@ -22,10 +22,10 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
         <h1>Learn Redux</h1>
         <p>{this.props.count}</p>
         <Button type='primary' onClick={() => this.props.increase()}>
-          increase
+          Increase
         </Button>
         <Button type='danger' onClick={() => this.props.decrease()}>
-          decrease
+          Decrease
         </Button>
       </div>
     );
