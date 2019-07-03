@@ -1,7 +1,7 @@
 import React from 'react';
-import { createBrowserHistory } from 'history';
+// import { createBrowserHistory } from 'history';
 
-const historys = createBrowserHistory();
+// const historys = createBrowserHistory();
 
 interface IDynimaicRouteProps {
   match: any;
@@ -17,6 +17,7 @@ class DynimaicRoute extends React.Component<IDynimaicRouteProps, {}> {
 
   public render() {
     const { match, location, history } = this.props;
+    console.log(location);
     console.log(history);
     // this.props.history = createBrowserHistory()
     return <h2 className='dynimaic_route'>当前页面 id: {match.params.id}</h2>;

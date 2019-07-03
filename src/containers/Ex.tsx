@@ -1,5 +1,5 @@
 import React from 'react';
-import Exchange from '../components/Exchange/Exchange';
+// import Exchange from '../components/Exchange/Exchange';
 
 class Ex extends React.Component<{}, {}> {
   constructor(props: {}) {
@@ -8,7 +8,12 @@ class Ex extends React.Component<{}, {}> {
   }
 
   public render() {
-    return <Exchange />;
+    return (
+      <>
+        <h1>Exchange</h1>
+        {/* <Exchange /> */}
+      </>
+    );
   }
 }
 

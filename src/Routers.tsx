@@ -21,6 +21,7 @@ import DynimaicRoute from './containers/DynimicRoute';
 import DemoEntrance from './containers/DemoEntrance';
 import CSSInJS from './containers/CSSInJS';
 import LearnRedux from './containers/LearnRedux';
+import Redux2 from './containers/Redux2';
 
 import NotFound from './containers/NotFound';
 
@@ -77,6 +78,7 @@ class App extends React.Component<{}, {}> {
             <Route path='/demo' component={DemoEntrance} />
             <Route path='/css-in-js' component={CSSInJS} />
             <Route path='/learn-redux' component={LearnRedux} />
+            <Route path='/learn-redux-2' component={Redux2} />
             <Route component={NotFound} />
           </Switch>
         </div>

@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import actions from '../stores/action';
+import Button from '../components/Button/Button';
 
-class LearnRedux extends Component {
-  constructor(props) {
+interface ILearnReduxProps {
+  count: number;
+  increase: Function;
+  decrease: Function;
+}
+
+class LearnRedux extends Component<ILearnReduxProps, {}> {
+  constructor(props: ILearnReduxProps) {
     super(props);
+    this.state = {};
   }
 
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <div className='learn_redux'>
         <h1>Learn Redux</h1>
         <p>{this.props.count}</p>
-        <button onClick={()=>this.props.increase()}>increase</button>
-        <button onClick={()=>this.props.decrease()}>decrease</button>
+        <Button type='primary' onClick={() => this.props.increase()}>
+          increase
+        </Button>
+        <Button type='danger' onClick={() => this.props.decrease()}>
+          decrease
+        </Button>
       </div>
     );
   }

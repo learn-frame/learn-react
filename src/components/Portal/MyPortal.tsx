@@ -37,6 +37,7 @@ class MyPortal extends React.Component<IPortalsProps, IPortalsState> {
   public render() {
     const { showModal } = this.state;
     const {  location, history } = this.props;
+    console.log(location)
     console.log(history)
     return (
       <div>

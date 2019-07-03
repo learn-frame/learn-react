@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactComponentElement } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 interface ICSSInJSProps {
