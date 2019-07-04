@@ -5,24 +5,7 @@ import './index.css';
 import Routers from './Routers';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import reducers from './stores/reducer';
-import createSagaMiddleware from 'redux-saga';
-import { helloSaga } from './stores/sagas';
-
-const sagaMiddleware = createSagaMiddleware();
-
-const store = createStore(
-  reducers,
-  {},
-  compose(
-    applyMiddleware(sagaMiddleware),
-    (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-      (window as any).__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
-);
-
-sagaMiddleware.run(helloSaga);
+import store from './stores/store';
 
 // Both of these will create a specialized history object for you.
 // 这两个路由组件都用于创建一个序列化的历史对象
