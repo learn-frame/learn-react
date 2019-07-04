@@ -2,19 +2,18 @@
 // reducer 必须是一个 pure function
 
 const initialState = {
-  count: 0,
+  count_add: 0,
 };
 
-const reducers = (state = initialState, action) => {
-  console.log(state, action)
+const AddAndSubtract = (state = initialState, action: any) => {
   switch (action.type) {
     case 'INCREASE':
-      return { count: state.count + 1 };
+      return { count_add: state.count_add + 1 };
     case 'DECREASE':
-      return { count: state.count - 1 };
+      return { count_add: state.count_add - 1 };
     default:
       return state;
   }
 };
 
-export default reducers;
+export default AddAndSubtract;

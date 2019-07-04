@@ -26,23 +26,30 @@ function getConfirmation(message: string, cb: Function) {
 
 const supportsHistory = 'pushState' in window.history;
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter
-      basename='/'
-      // 跳转前的回调
-      getUserConfirmation={getConfirmation}
-      // 作为降级处理，当你的浏览器不支持 h5 的 history api 时可以使用 forceRefresh
-      forceRefresh={!supportsHistory}
-      // this.props.location.key 会给每个路由生成独一无二的 key (即使多次点击同一个路由，key 也会发生变化)
-      // 默认是 6 位，如 tr0i54 这个属性可以让你修改 key 的长度
-      // 随机算法的实现很有趣 Math.random().toString(36)
-      keyLength={12}
-    >
-      <Routers />
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root'),
-);
+const renderApp = () =>
+  ReactDOM.render(
+    <Provider store={store}>
+      <BrowserRouter
+        basename='/'
+        // 跳转前的回调
+        getUserConfirmation={getConfirmation}
+        // 作为降级处理，当你的浏览器不支持 h5 的 history api 时可以使用 forceRefresh
+        forceRefresh={!supportsHistory}
+        // this.props.location.key 会给每个路由生成独一无二的 key (即使多次点击同一个路由，key 也会发生变化)
+        // 默认是 6 位，如 tr0i54 这个属性可以让你修改 key 的长度
+        // 随机算法的实现很有趣 Math.random().toString(36)
+        keyLength={12}
+      >
+        <Routers />
+      </BrowserRouter>
+    </Provider>,
+    document.getElementById('root'),
+  );
+
+if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
+  (module as any).hot.accept('./Routers', renderApp);
+}
+
+renderApp();
 
 serviceWorker.unregister();

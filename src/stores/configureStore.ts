@@ -1,17 +1,15 @@
-import { applyMiddleware, compose, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers';
+import rootReducer from './rootReducer';
 import { helloSaga } from './sagas';
 
-  // 初始化 redux-saga
-  const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState?: {}) {
-
-
   // 收集中间件
-  const middlewares = [sagaMiddleware];
+  const middlewares = [sagaMiddleware, logger];
 
   // 应用中间件
   const middlewareEnhancer = applyMiddleware(...middlewares);
@@ -23,7 +21,14 @@ export default function configureStore(initialState?: {}) {
   const composedEnhancers = composeWithDevTools(...enhancers);
 
   const store = createStore(rootReducer, initialState, composedEnhancers);
+
   sagaMiddleware.run(helloSaga);
+
+  if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
+    (module as any).hot.accept('./rootReducer', () =>
+      store.replaceReducer(rootReducer),
+    );
+  }
 
   return store;
 }

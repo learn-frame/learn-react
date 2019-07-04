@@ -157,6 +157,7 @@
     "@types/lodash": "^4.14.126",
     "@types/react-redux": "^7.0.9",
     "@types/react-router-dom": "^4.3.3",
+    "@types/redux-logger": "^3.0.7",
     "@types/styled-components": "^4.1.16",
     "redux-devtools": "^3.5.0",
     "redux-devtools-extension": "^2.13.8",

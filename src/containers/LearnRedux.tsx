@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import actions from '../stores/actions';
+import AddAndSubtractAction from '../stores/AddAndSubtract/actions';
+import MultiplicationAndDivisionAction from '../stores/MultiplicationAndDivision/actions';
 import Button from '../components/Button/Button';
 
 interface ILearnReduxProps {
-  count: number;
+  count_add: number;
+  count_multi: number;
   increase: Function;
   decrease: Function;
+  multiplicate: Function;
+  divide: Function;
 }
 
 class LearnRedux extends Component<ILearnReduxProps, {}> {
@@ -17,15 +21,31 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
 
   render() {
     console.log(this.props);
-    const { count, increase, decrease } = this.props;
+    const {
+      count_add,
+      count_multi,
+      increase,
+      decrease,
+      multiplicate,
+      divide,
+    } = this.props;
     return (
       <div className='learn_redux'>
         <h1>Learn Redux</h1>
-        <p>{count}</p>
+        <h2>加减</h2>
+        <p>{count_add}</p>
         <Button type='primary' onClick={() => increase()}>
           Increase
         </Button>
         <Button type='danger' onClick={() => decrease()}>
+          Decrease
+        </Button>
+        <h2>乘除</h2>
+        <p>{count_multi}</p>
+        <Button type='primary' onClick={() => multiplicate()}>
+          Increase
+        </Button>
+        <Button type='danger' onClick={() => divide()}>
           Decrease
         </Button>
       </div>
@@ -35,7 +55,8 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
 
 function mapStateToProps(state: any) {
   return {
-    count: state.count
+    count_add: state.count_add,
+    count_multi: state.count_multi,
   };
 }
 
@@ -45,5 +66,5 @@ function mapStateToProps(state: any) {
 // 第二个是将 action 对象挂载到 props 上
 export default connect(
   mapStateToProps,
-  actions,
+  AddAndSubtractAction,
 )(LearnRedux);
