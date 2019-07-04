@@ -1,4 +1,11 @@
-const reducer = (state = { count: 0 }, action) => {
+// 数据初始化放在 reducer 里
+// reducer 必须是一个 pure function
+
+const initState = {
+  count: 0,
+};
+
+const reducers = (state = initState, action) => {
   switch (action.type) {
     case 'INCREASE':
       return { count: state.count + 1 };
@@ -9,4 +16,4 @@ const reducer = (state = { count: 0 }, action) => {
   }
 };
 
-export default reducer;
+export default reducers;

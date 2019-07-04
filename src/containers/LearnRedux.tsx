@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import actions from '../stores/action';
+import actions from '../stores/actions';
 import Button from '../components/Button/Button';
 
 interface ILearnReduxProps {
