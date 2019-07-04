@@ -17,14 +17,15 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
 
   render() {
     console.log(this.props);
+    const { count, increase, decrease } = this.props;
     return (
       <div className='learn_redux'>
         <h1>Learn Redux</h1>
-        <p>{this.props.count}</p>
-        <Button type='primary' onClick={() => this.props.increase()}>
+        <p>{count}</p>
+        <Button type='primary' onClick={() => increase()}>
           Increase
         </Button>
-        <Button type='danger' onClick={() => this.props.decrease()}>
+        <Button type='danger' onClick={() => decrease()}>
           Decrease
         </Button>
       </div>
@@ -32,11 +33,17 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
   }
 }
 
+function mapStateToProps(state: any) {
+  return {
+    count: state.count
+  };
+}
+
 // connect 接收四个参数，分别是
 // mapStateToProps | mapDispatchToProps | mergeProps | options
 // 第一个将 store 中的数据挂载到 props 上
 // 第二个是将 action 对象挂载到 props 上
 export default connect(
-  state => state,
+  mapStateToProps,
   actions,
 )(LearnRedux);

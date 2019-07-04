@@ -1,11 +1,12 @@
 // 数据初始化放在 reducer 里
 // reducer 必须是一个 pure function
 
-const initState = {
+const initialState = {
   count: 0,
 };
 
-const reducers = (state = initState, action) => {
+const reducers = (state = initialState, action) => {
+  console.log(state, action)
   switch (action.type) {
     case 'INCREASE':
       return { count: state.count + 1 };

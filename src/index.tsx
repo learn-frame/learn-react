@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
 import store from './stores/store';
 
+
 // Both of these will create a specialized history object for you.
 // 这两个路由组件都用于创建一个序列化的历史对象
 

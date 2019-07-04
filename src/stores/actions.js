@@ -7,10 +7,10 @@
 // 使用纯函数编写 reducer, 来描述如何修改 state
 
 const INCREASE = 'INCREASE';
-const DECREASE = 'INCREASE';
+const DECREASE = 'DECREASE';
 
 const actions = {
-  increase: () => ({ type: INCREASE, payload: { name: 'yancey', age: 18 } }),
+  increase: () => ({ type: INCREASE }),
   decrease: () => ({ type: DECREASE }),
 };
 
