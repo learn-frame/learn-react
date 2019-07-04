@@ -5,8 +5,9 @@ import './index.css';
 import Routers from './Routers';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import store from './stores/store';
+import configureStore from './stores/configureStore';
 
+const store = configureStore();
 
 // Both of these will create a specialized history object for you.
 // 这两个路由组件都用于创建一个序列化的历史对象
@@ -36,7 +37,7 @@ ReactDOM.render(
       // this.props.location.key 会给每个路由生成独一无二的 key (即使多次点击同一个路由，key 也会发生变化)
       // 默认是 6 位，如 tr0i54 这个属性可以让你修改 key 的长度
       // 随机算法的实现很有趣 Math.random().toString(36)
-      keyLength={12} 
+      keyLength={12}
     >
       <Routers />
     </BrowserRouter>

@@ -159,6 +159,7 @@
     "@types/react-router-dom": "^4.3.3",
     "@types/styled-components": "^4.1.16",
     "redux-devtools": "^3.5.0",
+    "redux-devtools-extension": "^2.13.8",
     "redux-logger": "^3.0.6"
   }
 }
