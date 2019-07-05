@@ -1,11 +1,8 @@
+import { combineReducers } from 'redux';
 import AddAndSubtract from './AddAndSubtract/reducers';
 import MultiplicationAndDivision from './MultiplicationAndDivision/reducers';
 
-import { combineReducers } from 'redux';
-
-const rootReducer = combineReducers({
+export default combineReducers({
   AddAndSubtract,
   MultiplicationAndDivision,
 });
-
-export default rootReducer;

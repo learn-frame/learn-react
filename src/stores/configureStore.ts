@@ -24,7 +24,7 @@ export default function configureStore(initialState?: {}) {
 
   sagaMiddleware.run(helloSaga);
 
-  if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
+  if (process.env.NODE_ENV !== 'production' && (module as any).hot)  {
     (module as any).hot.accept('./rootReducer', () =>
       store.replaceReducer(rootReducer),
     );

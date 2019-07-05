@@ -43,10 +43,10 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
         <h2>乘除</h2>
         <p>{count_multi}</p>
         <Button type='primary' onClick={() => multiplicate()}>
-          Increase
+          Multiplicate
         </Button>
         <Button type='danger' onClick={() => divide()}>
-          Decrease
+          Divide
         </Button>
       </div>
     );

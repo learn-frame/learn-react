@@ -5,7 +5,7 @@ const initialState = {
   count_multi: 1,
 };
 
-const MultiplicationAndDivision = (state = initialState, action: any) => {
+export default function MultiplicationAndDivision(state = initialState, action: any) {
   switch (action.type) {
     case 'MULTIPLICATION':
       return { count_multi: state.count_multi * 10 };
@@ -14,6 +14,5 @@ const MultiplicationAndDivision = (state = initialState, action: any) => {
     default:
       return state;
   }
-};
+}
 
-export default MultiplicationAndDivision;

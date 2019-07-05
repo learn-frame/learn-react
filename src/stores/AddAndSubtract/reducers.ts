@@ -5,7 +5,7 @@ const initialState = {
   count_add: 0,
 };
 
-const AddAndSubtract = (state = initialState, action: any) => {
+export default function AddAndSubtract(state = initialState, action: any) {
   switch (action.type) {
     case 'INCREASE':
       return { count_add: state.count_add + 1 };
@@ -14,6 +14,4 @@ const AddAndSubtract = (state = initialState, action: any) => {
     default:
       return state;
   }
-};
-
-export default AddAndSubtract;
+}
