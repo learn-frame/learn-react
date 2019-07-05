@@ -53,12 +53,23 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
   }
 }
 
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    increase: () => dispatch(AddAndSubtractAction.increase()),
+    decrease: () => dispatch(AddAndSubtractAction.decrease()),
+    multiplicate: () => dispatch(MultiplicationAndDivisionAction.multiplicate()),
+    divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
+  };
+};
+
 function mapStateToProps(state: any) {
   return {
-    count_add: state.count_add,
-    count_multi: state.count_multi,
+    count_add: state.AddAndSubtract.count_add,
+    count_multi: state.MultiplicationAndDivision.count_multi,
   };
 }
+
+
 
 // connect 接收四个参数，分别是
 // mapStateToProps | mapDispatchToProps | mergeProps | options
@@ -66,5 +77,5 @@ function mapStateToProps(state: any) {
 // 第二个是将 action 对象挂载到 props 上
 export default connect(
   mapStateToProps,
-  AddAndSubtractAction,
+  mapDispatchToProps,
 )(LearnRedux);

@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
-import { helloSaga } from './sagas';
+import rootSaga from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -22,7 +22,7 @@ export default function configureStore(initialState?: {}) {
 
   const store = createStore(rootReducer, initialState, composedEnhancers);
 
-  sagaMiddleware.run(helloSaga);
+  sagaMiddleware.run(rootSaga);
 
   if (process.env.NODE_ENV !== 'production' && (module as any).hot)  {
     (module as any).hot.accept('./rootReducer', () =>

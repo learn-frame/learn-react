@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 interface IRedux2Props {
-  count: number;
+  AddAndSubtract: any;
+  MultiplicationAndDivision: any;
 }
 
 class Redux2 extends React.Component<IRedux2Props, {}> {
@@ -12,10 +13,11 @@ class Redux2 extends React.Component<IRedux2Props, {}> {
   }
 
   public render() {
-    const { count } = this.props;
+    const { AddAndSubtract, MultiplicationAndDivision } = this.props;
     return (
       <div className='redux2'>
-        <p>{count}</p>
+        <p>{AddAndSubtract.count_add}</p>
+        <p>{MultiplicationAndDivision.count_multi}</p>
       </div>
     );
   }
