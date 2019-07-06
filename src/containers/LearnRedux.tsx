@@ -9,6 +9,7 @@ interface ILearnReduxProps {
   count_multi: number;
   increase: Function;
   decrease: Function;
+  increaseAsync: Function;
   multiplicate: Function;
   divide: Function;
 }
@@ -26,6 +27,7 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
       count_multi,
       increase,
       decrease,
+      increaseAsync,
       multiplicate,
       divide,
     } = this.props;
@@ -40,6 +42,9 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
         <Button type='danger' onClick={() => decrease()}>
           Decrease
         </Button>
+        <Button onClick={() => increaseAsync()}>
+          Increase Async
+        </Button>
         <h2>乘除</h2>
         <p>{count_multi}</p>
         <Button type='primary' onClick={() => multiplicate()}>
@@ -53,28 +58,26 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    increase: () => dispatch(AddAndSubtractAction.increase()),
-    decrease: () => dispatch(AddAndSubtractAction.decrease()),
-    multiplicate: () => dispatch(MultiplicationAndDivisionAction.multiplicate()),
-    divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
-  };
-};
-
-function mapStateToProps(state: any) {
+const mapStateToProps = (state: any) => {
   return {
     count_add: state.AddAndSubtract.count_add,
     count_multi: state.MultiplicationAndDivision.count_multi,
   };
-}
+};
 
-
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    increase: () => dispatch(AddAndSubtractAction.increase()),
+    decrease: () => dispatch(AddAndSubtractAction.decrease()),
+    increaseAsync: () => dispatch(AddAndSubtractAction.increaseAsync()),
+    multiplicate: () =>
+      dispatch(MultiplicationAndDivisionAction.multiplicate()),
+    divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
+  };
+};
 
 // connect 接收四个参数，分别是
 // mapStateToProps | mapDispatchToProps | mergeProps | options
-// 第一个将 store 中的数据挂载到 props 上
-// 第二个是将 action 对象挂载到 props 上
 export default connect(
   mapStateToProps,
   mapDispatchToProps,

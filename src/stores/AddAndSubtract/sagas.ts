@@ -1,13 +1,14 @@
-import { delay } from '../tools/tools';
-import { put, takeEvery } from 'redux-saga/effects';
+import { put, takeEvery, delay } from 'redux-saga/effects';
 
 export function* incrementAsync() {
-  yield delay(1000);
+  yield delay(2000);
+  // redux-saga 通过 dispatch 发起一个 INCREMENT 的 action
   yield put({ type: 'INCREMENT' });
 }
 
 export function* watchIncrementAsync() {
-  yield takeEvery('INCREMENT_ASYNC', incrementAsync)
+  // takeEvery 用于监听所有 INCREMENT_ASYNC 的 action
+  yield takeEvery('INCREMENT_ASYNC', incrementAsync);
 }
 
 // const bitcoinApi = 'https://api.coindesk.com/v1/bpi/currentprice.json';
