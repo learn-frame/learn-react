@@ -5,8 +5,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import { connect } from 'react-redux';
-import AddAndSubtractAction from '../stores/AddAndSubtract/actions';
-import MultiplicationAndDivisionAction from '../stores/MultiplicationAndDivision/actions';
+import AddAndSubtractReducersAction from '../stores/AddAndSubtract/actions';
+import MultiplicationAndDivisionReducersAction from '../stores/MultiplicationAndDivision/actions';
 import AsyncAction from '../stores/Async/actions';
 import Button from '../components/Button/Button';
 
@@ -101,20 +101,20 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
 
 const mapStateToProps = (state: any) => {
   return {
-    count_add: state.AddAndSubtract.count_add,
-    count_multi: state.MultiplicationAndDivision.count_multi,
+    count_add: state.AddAndSubtractReducers.count_add,
+    count_multi: state.MultiplicationAndDivisionReducers.count_multi,
     data: state.AsyncReducers.data,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    increase: () => dispatch(AddAndSubtractAction.increase()),
-    decrease: () => dispatch(AddAndSubtractAction.decrease()),
-    increaseAsync: () => dispatch(AddAndSubtractAction.increaseAsync()),
+    increase: () => dispatch(AddAndSubtractReducersAction.increase()),
+    decrease: () => dispatch(AddAndSubtractReducersAction.decrease()),
+    increaseAsync: () => dispatch(AddAndSubtractReducersAction.increaseAsync()),
     multiplicate: () =>
-      dispatch(MultiplicationAndDivisionAction.multiplicate()),
-    divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
+      dispatch(MultiplicationAndDivisionReducersAction.multiplicate()),
+    divide: () => dispatch(MultiplicationAndDivisionReducersAction.divide()),
     fetchBitCoin: () => dispatch(AsyncAction.fetchBitCoin()),
   };
 };

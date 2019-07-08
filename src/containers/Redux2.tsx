@@ -7,8 +7,8 @@ import TableRow from '@material-ui/core/TableRow';
 import { connect } from 'react-redux';
 
 interface IRedux2Props {
-  AddAndSubtract: any;
-  MultiplicationAndDivision: any;
+  AddAndSubtractReducers: any;
+  MultiplicationAndDivisionReducers: any;
   AsyncReducers: any;
 }
 
@@ -20,14 +20,14 @@ class Redux2 extends React.Component<IRedux2Props, {}> {
 
   public render() {
     const {
-      AddAndSubtract,
-      MultiplicationAndDivision,
+      AddAndSubtractReducers,
+      MultiplicationAndDivisionReducers,
       AsyncReducers,
     } = this.props;
     return (
       <div className='redux2'>
-        <p>{AddAndSubtract.count_add}</p>
-        <p>{MultiplicationAndDivision.count_multi}</p>
+        <p>{AddAndSubtractReducers.count_add}</p>
+        <p>{MultiplicationAndDivisionReducers.count_multi}</p>
         <Table>
           <TableHead>
             <TableRow>
