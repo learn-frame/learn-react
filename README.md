@@ -6,19 +6,31 @@
 
 ## Introduction
 
-这是个人日常练手和尝(cai)鲜(keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5。项目中会包含一些成品，也会包含一些学习 API 写下的 demo。下面把这些罗列出来，持续更新中，欢迎拿去玩～
+这是个人日常练手和尝 (cai) 鲜 (keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5 + Redux v4.0.1。项目中会包含一些组件成品，也会包含一些学习 API 的 demo。项目持续更新中。
 
-- Hooks 练手 —— 汇率计算器 **[@component/Exchange]**
+### Component
 
-- Toast 轻提示组件 **[@component/Toast]**
+- React Hooks 练手 —— 汇率计算器 **[@components/Exchange]**
 
-- 手写一个 Button 组件 **[@component/Button]**
+- Toast 轻提示组件 **[@components/Toast]**
 
-- 学习 Fragment **[@component/Fragment]**
+- 手写一个 Button 组件 **[@components/Button]**
+
+- 学习 Fragment **[@components/Fragment]**
+
+### DEMO
+
+- CSS in JS **[@containers/CSSInJS]**
+
+- 学习 Redux **[@containers/LearnRedux]**
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `yarn install`
+
+Installs dependencies.
 
 ### `yarn start`
 
