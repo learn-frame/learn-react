@@ -6,4 +6,3 @@ import { watchBitCoinAsync } from './Async/sagas';
 export default function* rootSaga() {
   yield all([watchIncrementAsync(), helloSaga(), watchBitCoinAsync()]);
 }
- 
