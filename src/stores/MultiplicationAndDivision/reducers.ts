@@ -1,5 +1,5 @@
 // 数据初始化放在 reducer 里
-// reducer 必须是一个 pure function
+// reducer 必须是一个纯函数
 
 const initialState = {
   count_multi: 1,
