@@ -20,6 +20,7 @@ interface ILearnReduxProps {
   multiplicate: Function;
   divide: Function;
   fetchBitCoin: Function;
+  loading: boolean;
 }
 
 class LearnRedux extends Component<ILearnReduxProps, {}> {
@@ -40,6 +41,7 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
       multiplicate,
       divide,
       fetchBitCoin,
+      loading,
     } = this.props;
     return (
       <div className='learn_redux'>
@@ -91,7 +93,7 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
             ))}
           </TableBody>
         </Table>
-        <Button type='primary' onClick={() => fetchBitCoin()}>
+        <Button type='primary' loading={loading} onClick={() => fetchBitCoin()}>
           Fetch
         </Button>
       </div>
@@ -104,6 +106,7 @@ const mapStateToProps = (state: any) => {
     count_add: state.AddAndSubtractReducers.count_add,
     count_multi: state.MultiplicationAndDivisionReducers.count_multi,
     data: state.AsyncReducers.data,
+    loading: state.AsyncReducers.loading,
   };
 };
 
