@@ -71,6 +71,11 @@ class DemoEntrance extends React.Component<{}, {}> {
             Redux2
           </Button>
         </Link>
+        <Link to='/hooks'>
+          <Button variant='outlined' color='secondary'>
+            Hooks
+          </Button>
+        </Link>
         <Link to='/not-found-path'>
           <Button variant='contained' color='secondary'>
             我是一个不存在的路由

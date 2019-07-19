@@ -13,7 +13,6 @@ function* fetchBitCoin() {
     const res = yield call(fetch, bitcoinApi);
     const json = yield res.json();
     const data = Object.values(json.bpi);
-    // 模拟接口延迟
     yield delay(2000);
     yield put({
       type: 'FETCH_SUCCESSED',
