@@ -9,10 +9,10 @@ axios.defaults.timeout = 30 * 1000;
 // axios.defaults.withCredentials = true;
 
 // config request header
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers['Content-Type'] = 'application/json';
 
 // config base url
-axios.defaults.baseURL = 'api.yanceyleo.com';
+axios.defaults.baseURL = 'https://api.github.com';
 
 const pending: any[] = [];
 const removePending = (config: any) => {
@@ -34,6 +34,8 @@ axios.interceptors.request.use(
         f: c,
       });
     });
+    // const token = window.localStorage.getItem('token');
+    // config.headers.Authorization = `Bearer ${token}`;
     return config;
   },
   err => Promise.reject(err),
@@ -49,7 +51,7 @@ axios.interceptors.response.use(
           break;
         case 401:
           error.message = '401 Unauthorized';
-          window.location.href = '/login';
+          // window.location.href = '/login';
           break;
         case 403:
           error.message = '403 Forbidden';
@@ -82,7 +84,6 @@ axios.interceptors.response.use(
 export function GET(
   url: string,
   params: object | null,
-  errMsg: string | null,
 ): Promise<AxiosResponse> {
   return new Promise((resolve, reject) => {
     axios
@@ -93,8 +94,6 @@ export function GET(
         resolve(res);
       })
       .catch(err => {
-        err = errMsg ? errMsg : err;
-        // 可以定义Toast组件输出err
         reject(err);
       });
   });
@@ -127,7 +126,6 @@ export function POST(
 export function PUT(
   url: string,
   params: object | null,
-  errMsg: string | null,
 ): Promise<AxiosResponse> {
   return new Promise((resolve, reject) => {
     axios
@@ -136,7 +134,6 @@ export function PUT(
         resolve(res);
       })
       .catch(err => {
-        err = errMsg ? errMsg : err;
         reject(err);
       });
   });
