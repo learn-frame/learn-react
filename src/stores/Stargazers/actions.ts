@@ -11,6 +11,6 @@ const actions = {
       params,
     },
   }),
-};
+}
 
-export default actions;
+export default actions

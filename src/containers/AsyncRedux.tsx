@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import RootAction from 'stores/rootAction';
+import { RootState } from 'stores/rootReducer';
 
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -119,7 +120,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,

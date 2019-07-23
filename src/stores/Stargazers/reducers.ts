@@ -1,7 +1,7 @@
 const initialState = {
   users: [],
   errMsg: '',
-};
+}
 
 // 常量一定要保证独立性！！！
 // 否则在 combineReducer 的时候会相互干扰
@@ -13,13 +13,13 @@ export default function StarReducers(state = initialState, action: any) {
       return {
         ...state,
         users: action.payload.users,
-      };
+      }
     case 'stars/FETCH_FAILED':
       return {
         ...state,
         errMsg: action.payload.errMsg,
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
