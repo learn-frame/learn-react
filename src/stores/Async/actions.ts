@@ -1,5 +1,5 @@
 const actions = {
-  fetchBitCoin: () => ({
+  fetchBitCoins: () => ({
     type: 'FETCH_BITCOIN',
   }),
 };

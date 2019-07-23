@@ -1,11 +1,10 @@
 import { put, call, takeLatest, delay } from 'redux-saga/effects';
+import { bitcoinApi } from 'constants/constants';
 
-const bitcoinApi = 'https://api.coindesk.com/v1/bpi/currentprice.json';
-
-function* fetchBitCoin() {
+function* fetchBitCoins() {
   try {
     yield put({
-      type: 'FETCH_REQUEST',
+      type: 'bitCoins/FETCH_REQUEST',
       payload: {
         loading: true,
       },
@@ -15,16 +14,19 @@ function* fetchBitCoin() {
     const data = Object.values(json.bpi);
     yield delay(2000);
     yield put({
-      type: 'FETCH_SUCCESSED',
+      type: 'bitCoins/FETCH_SUCCESSED',
       payload: {
-        data,
+        bitCoins: data,
       },
     });
   } catch (e) {
-    yield put({ type: 'FETCH_FAILED', payload: { err: e.message } });
+    yield put({
+      type: 'bitCoins/FETCH_FAILED',
+      payload: { errMsg: e.message },
+    });
   } finally {
     yield put({
-      type: 'FETCH_FINISHED',
+      type: 'bitCoins/FETCH_FINISHED',
       payload: {
         loading: false,
       },
@@ -32,6 +34,6 @@ function* fetchBitCoin() {
   }
 }
 
-export function* watchBitCoinAsync() {
-  yield takeLatest('FETCH_BITCOIN', fetchBitCoin);
+export default function* watchBitCoinAsync() {
+  yield takeLatest('FETCH_BITCOIN', fetchBitCoins);
 }

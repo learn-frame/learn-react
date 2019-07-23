@@ -1,19 +1,19 @@
 const initialState = {
-  data: [],
-  err: '',
+  users: [],
+  errMsg: '',
 };
 
 export default function StarReducers(state = initialState, action: any) {
   switch (action.type) {
-    case 'FETCH_SUCCESSED':
+    case 'stars/FETCH_SUCCESSED':
       return {
         ...state,
-        data: action.payload.data,
+        users: action.payload.users,
       };
-    case 'FETCH_FAILED':
+    case 'stars/FETCH_FAILED':
       return {
         ...state,
-        err: action.payload.err,
+        errMsg: action.payload.errMsg,
       };
     default:
       return state;

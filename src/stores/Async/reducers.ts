@@ -1,27 +1,27 @@
 const initialState = {
-  data: [],
+  bitCoins: [],
   loading: false,
-  err: '',
+  errMsg: '',
 };
 
 export default function AsyncReducers(state = initialState, action: any) {
   switch (action.type) {
-    case 'FETCH_REQUEST':
+    case 'bitCoins/FETCH_REQUEST':
       return {
         ...state,
         loading: action.payload.loading,
       };
-    case 'FETCH_SUCCESSED':
+    case 'bitCoins/FETCH_SUCCESSED':
       return {
         ...state,
-        data: action.payload.data,
+        bitCoins: action.payload.bitCoins,
       };
-    case 'FETCH_FAILED':
+    case 'bitCoins/FETCH_FAILED':
       return {
         ...state,
-        err: action.payload.err,
+        errMsg: action.payload.errMsg,
       };
-    case 'FETCH_FINISHED':
+    case 'bitCoins/FETCH_FINISHED':
       return {
         ...state,
         loading: action.payload.loading,

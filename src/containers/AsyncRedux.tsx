@@ -11,10 +11,10 @@ import Button from 'components/Button/Button';
 
 interface AsyncReduxProps {
   bitCoins: GitHub.BitCoin[];
-  fetchBitCoin: Function;
+  fetchBitCoins: Function;
   loading: boolean;
   fetchStargazers: Function;
-  stargazers: GitHub.User[];
+  users: GitHub.User[];
 }
 
 class AsyncRedux extends Component<AsyncReduxProps, {}> {
@@ -27,11 +27,11 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
     const {
       bitCoins,
       loading,
-      stargazers,
-      fetchBitCoin,
+      users,
+      fetchBitCoins,
       fetchStargazers,
     } = this.props;
-
+    console.log(this.props);
     return (
       <div className='learn_redux'>
         <h1>异步 Redux</h1>
@@ -64,7 +64,11 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
             ))}
           </TableBody>
         </Table>
-        <Button type='primary' loading={loading} onClick={() => fetchBitCoin()}>
+        <Button
+          type='primary'
+          loading={loading}
+          onClick={() => fetchBitCoins()}
+        >
           Fetch BitCoin
         </Button>
         <h2>GitHub 接口</h2>
@@ -80,7 +84,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
             </TableRow>
           </TableHead>
           <TableBody>
-            {stargazers.map((row: GitHub.User) => (
+            {users.map((row: GitHub.User) => (
               <TableRow key={row.id}>
                 <TableCell>{row.login}</TableCell>
                 <TableCell>{row.id}</TableCell>
@@ -117,15 +121,15 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
 
 const mapStateToProps = (state: any) => {
   return {
-    bitCoins: state.AsyncReducers.data,
+    bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,
-    stargazers: state.StargazersReducers.data,
+    users: state.StargazersReducers.users,
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    fetchBitCoin: () => dispatch(RootAction.asyncActions.fetchBitCoin()),
+    fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
     fetchStargazers: (
       userName: string,
       repoName: string,
