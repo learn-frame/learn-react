@@ -14,7 +14,7 @@ interface AsyncReduxProps {
   bitCoins: GitHub.BitCoin[]
   fetchBitCoins: Function
   loading: boolean
-  fetchStargazers: Function
+  requestStargazers: Function
   users: GitHub.User[]
 }
 
@@ -30,7 +30,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
       loading,
       users,
       fetchBitCoins,
-      fetchStargazers,
+      requestStargazers,
     } = this.props
     return (
       <div className='learn_redux'>
@@ -106,7 +106,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
         <Button
           type='primary'
           onClick={() =>
-            fetchStargazers('YanceyOfficial', 'javascript-apis', {
+            requestStargazers('YanceyOfficial', 'javascript-apis', {
               userId: '123456',
               userName: 'YanceyLeo',
             })
@@ -123,6 +123,7 @@ const mapStateToProps = (state: RootState) => {
   return {
     bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,
+    // 将成功获取的数据映射到 props 中
     users: state.StargazersReducers.users,
   }
 }
@@ -130,13 +131,14 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
-    fetchStargazers: (
+    // 将获取数据的方法映射到 props 中
+    requestStargazers: (
       userName: string,
       repoName: string,
       params: GitHub.Params,
     ) =>
       dispatch(
-        RootAction.starActions.fetchStargazers(userName, repoName, params),
+        RootAction.starActions.requestStargazers(userName, repoName, params),
       ),
   }
 }
