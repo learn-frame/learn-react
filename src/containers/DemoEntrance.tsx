@@ -62,13 +62,13 @@ class DemoEntrance extends React.Component<{}, {}> {
           </Button>
         </Link>
         <Link to='/learn-redux'>
-          <Button variant='outlined' color='secondary'>
+          <Button variant='contained' color='primary'>
             Redux
           </Button>
         </Link>
-        <Link to='/learn-redux-2'>
-          <Button variant='outlined' color='secondary'>
-            Redux2
+        <Link to='/async-redux'>
+          <Button variant='contained' color='primary'>
+            Async Redux
           </Button>
         </Link>
         <Link to='/hooks'>

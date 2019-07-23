@@ -20,7 +20,16 @@ declare namespace GitHub {
     site_admin: boolean;
   }
 
+  export interface BitCoin {
+    code: string;
+    symbol: string;
+    rate: string;
+    description: string;
+    rate_float: number;
+  }
+
   export interface Params {
     userId: string;
+    userName: string;
   }
 }

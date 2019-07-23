@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import AddAndSubtractAction from 'stores/AddAndSubtract/actions';
 import MultiplicationAndDivisionAction from 'stores/MultiplicationAndDivision/actions';
-import AsyncAction from 'stores/Async/actions';
-import StargazersAction from 'stores/Stargazers/actions';
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
 import Button from 'components/Button/Button';
 
 interface ILearnReduxProps {
@@ -34,20 +27,14 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
   }
 
   render() {
-    console.log(this.props);
     const {
       count_add,
       count_multi,
       increase,
       decrease,
-      bitCoins,
       increaseAsync,
       multiplicate,
       divide,
-      fetchBitCoin,
-      loading,
-      fetchStargazers,
-      stargazers,
     } = this.props;
 
     return (
@@ -70,75 +57,6 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
         <Button type='danger' onClick={() => divide()}>
           Divide
         </Button>
-        <h2>请求接口</h2>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>Code</TableCell>
-              <TableCell>Symbol</TableCell>
-              <TableCell>Rate</TableCell>
-              <TableCell>Description</TableCell>
-              <TableCell>Rate Float</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {bitCoins.map((row: any) => (
-              <TableRow key={row.code}>
-                <TableCell component='th' scope='row'>
-                  {row.code}
-                </TableCell>
-                <TableCell
-                  dangerouslySetInnerHTML={{
-                    __html: row.symbol,
-                  }}
-                />
-                <TableCell>{row.rate}</TableCell>
-                <TableCell>{row.description}</TableCell>
-                <TableCell>{row.rate_float}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <Button type='primary' loading={loading} onClick={() => fetchBitCoin()}>
-          Fetch BitCoin
-        </Button>
-        <Table>
-          <TableHead>
-            <TableRow>
-              <TableCell>login</TableCell>
-              <TableCell>id</TableCell>
-              <TableCell>node_id</TableCell>
-              <TableCell>avatar_url</TableCell>
-              <TableCell>type</TableCell>
-              <TableCell>site_admin</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {stargazers.map((row: GitHub.User) => (
-              <TableRow key={row.id}>
-                <TableCell>{row.login}</TableCell>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.node_id}</TableCell>
-                <TableCell>
-                  <img
-                    width='120'
-                    height='120'
-                    src={row.avatar_url}
-                    alt={row.login}
-                  />
-                </TableCell>
-                <TableCell>{row.type}</TableCell>
-                <TableCell>{row.site_admin}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-        <Button
-          type='primary'
-          onClick={() => fetchStargazers('YanceyOfficial', 'javascript-apis')}
-        >
-          Fetch GitHub
-        </Button>
       </div>
     );
   }
@@ -148,9 +66,6 @@ const mapStateToProps = (state: any) => {
   return {
     count_add: state.AddAndSubtractReducers.count_add,
     count_multi: state.MultiplicationAndDivisionReducers.count_multi,
-    bitCoins: state.AsyncReducers.data,
-    loading: state.AsyncReducers.loading,
-    stargazers: state.StargazersReducers.data,
   };
 };
 
@@ -162,9 +77,6 @@ const mapDispatchToProps = (dispatch: any) => {
     multiplicate: () =>
       dispatch(MultiplicationAndDivisionAction.multiplicate()),
     divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
-    fetchBitCoin: () => dispatch(AsyncAction.fetchBitCoin()),
-    fetchStargazers: (userName: string, repoName: string, params: any) =>
-      dispatch(StargazersAction.fetchStargazers(userName, repoName, params)),
   };
 };
 

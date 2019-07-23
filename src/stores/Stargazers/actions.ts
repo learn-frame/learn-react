@@ -1,5 +1,9 @@
 const actions = {
-  fetchStargazers: (userName: string, repoName: string, params: any) => ({
+  fetchStargazers: (
+    userName: string,
+    repoName: string,
+    params: GitHub.Params,
+  ) => ({
     type: 'FETCH_STARGAZERS',
     payload: {
       userName,

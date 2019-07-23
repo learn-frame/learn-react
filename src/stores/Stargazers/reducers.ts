@@ -1,16 +1,10 @@
 const initialState = {
   data: [],
-  loading: false,
   err: '',
 };
 
-export default function AsyncReducers(state = initialState, action: any) {
+export default function StarReducers(state = initialState, action: any) {
   switch (action.type) {
-    case 'FETCH_REQUEST':
-      return {
-        ...state,
-        loading: action.payload.loading,
-      };
     case 'FETCH_SUCCESSED':
       return {
         ...state,
@@ -20,11 +14,6 @@ export default function AsyncReducers(state = initialState, action: any) {
       return {
         ...state,
         err: action.payload.err,
-      };
-    case 'FETCH_FINISHED':
-      return {
-        ...state,
-        loading: action.payload.loading,
       };
     default:
       return state;

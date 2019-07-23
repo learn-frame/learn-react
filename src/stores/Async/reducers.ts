@@ -6,7 +6,7 @@ const initialState = {
 
 export default function AsyncReducers(state = initialState, action: any) {
   switch (action.type) {
-    case 'FETCH_STARTED':
+    case 'FETCH_REQUEST':
       return {
         ...state,
         loading: action.payload.loading,

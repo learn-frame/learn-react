@@ -1,21 +1,19 @@
-import { put, takeLatest, delay } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { getStars } from 'apis/github.service';
 
-function* fetchStargazers(action: any) {
-  try {
-    yield put({
-      type: 'FETCH_REQUEST',
-      payload: {
-        loading: true,
-      },
-    });
-    const res = yield getStars(
-      action.payload.userName,
-      action.payload.repoName,
-      action.payload.params,
-    );
+interface Action {
+  type: string;
+  payload: {
+    userName: string;
+    repoName: string;
+    params: GitHub.Params;
+  };
+}
 
-    yield delay(2000);
+function* fetchStargazers(action: Action) {
+  try {
+    const { userName, repoName, params } = action.payload;
+    const res = yield getStars(userName, repoName, params);
     yield put({
       type: 'FETCH_SUCCESSED',
       payload: {
@@ -24,13 +22,6 @@ function* fetchStargazers(action: any) {
     });
   } catch (e) {
     yield put({ type: 'FETCH_FAILED', payload: { err: e.message } });
-  } finally {
-    yield put({
-      type: 'FETCH_FINISHED',
-      payload: {
-        loading: false,
-      },
-    });
   }
 }
 

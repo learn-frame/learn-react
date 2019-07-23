@@ -5,7 +5,7 @@ const bitcoinApi = 'https://api.coindesk.com/v1/bpi/currentprice.json';
 function* fetchBitCoin() {
   try {
     yield put({
-      type: 'FETCH_STARTED',
+      type: 'FETCH_REQUEST',
       payload: {
         loading: true,
       },
