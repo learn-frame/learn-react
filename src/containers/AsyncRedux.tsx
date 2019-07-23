@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import RootAction from 'stores/rootAction';
-import { RootState } from 'stores/rootReducer';
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import RootAction from 'stores/rootAction'
+import { RootState } from 'stores/rootReducer'
 
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Button from 'components/Button/Button';
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
+import Button from 'components/Button/Button'
 
 interface AsyncReduxProps {
-  bitCoins: GitHub.BitCoin[];
-  fetchBitCoins: Function;
-  loading: boolean;
-  fetchStargazers: Function;
-  users: GitHub.User[];
+  bitCoins: GitHub.BitCoin[]
+  fetchBitCoins: Function
+  loading: boolean
+  fetchStargazers: Function
+  users: GitHub.User[]
 }
 
 class AsyncRedux extends Component<AsyncReduxProps, {}> {
   constructor(props: AsyncReduxProps) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
@@ -31,8 +31,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
       users,
       fetchBitCoins,
       fetchStargazers,
-    } = this.props;
-    console.log(this.props);
+    } = this.props
     return (
       <div className='learn_redux'>
         <h1>异步 Redux</h1>
@@ -116,7 +115,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
           Fetch GitHub
         </Button>
       </div>
-    );
+    )
   }
 }
 
@@ -125,8 +124,8 @@ const mapStateToProps = (state: RootState) => {
     bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,
     users: state.StargazersReducers.users,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
@@ -139,10 +138,10 @@ const mapDispatchToProps = (dispatch: any) => {
       dispatch(
         RootAction.starActions.fetchStargazers(userName, repoName, params),
       ),
-  };
-};
+  }
+}
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(AsyncRedux);
+)(AsyncRedux)
