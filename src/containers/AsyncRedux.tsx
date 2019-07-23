@@ -98,7 +98,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
                   />
                 </TableCell>
                 <TableCell>{row.type}</TableCell>
-                <TableCell>{row.site_admin}</TableCell>
+                <TableCell>{row.site_admin.toString()}</TableCell>
               </TableRow>
             ))}
           </TableBody>
