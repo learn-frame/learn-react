@@ -1,4 +1,4 @@
-import { put, call, takeLatest } from 'redux-saga/effects'
+import { put, call, takeLatest, select } from 'redux-saga/effects'
 import { getStars } from 'apis/github.service'
 import { constants } from './actions'
 

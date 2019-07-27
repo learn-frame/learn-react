@@ -1,10 +1,10 @@
-import * as constants from './constants';
+import * as constants from './constants'
 
 const initialState = {
   bitCoins: [],
   loading: false,
   errMsg: '',
-};
+}
 
 const AsyncReducers = (state = initialState, action: any) => {
   switch (action.type) {
@@ -12,25 +12,25 @@ const AsyncReducers = (state = initialState, action: any) => {
       return {
         ...state,
         loading: action.payload.loading,
-      };
+      }
     case constants.FETCH_SUCCESSED:
       return {
         ...state,
         bitCoins: action.payload.bitCoins,
-      };
+      }
     case constants.FETCH_FAILED:
       return {
         ...state,
         errMsg: action.payload.errMsg,
-      };
+      }
     case constants.FETCH_FINISHED:
       return {
         ...state,
         loading: action.payload.loading,
-      };
+      }
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default AsyncReducers;
+export default AsyncReducers
