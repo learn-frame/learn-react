@@ -17,7 +17,7 @@ const Hooks: React.FC<Props> = props => {
       const state = this.visibilityState
       state === 'hidden'
         ? (this.title = 'TAT... 页面被隐藏了')
-        : (this.title = '瞎折腾的 React')
+        : (this.title = '我又粗线了~')
     })
   })
 
