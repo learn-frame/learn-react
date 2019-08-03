@@ -29,7 +29,6 @@ declare namespace GitHub {
   }
 
   export interface Params {
-    userId: string;
-    userName: string;
+    page: number;
   }
 }

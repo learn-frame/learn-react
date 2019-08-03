@@ -106,9 +106,8 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
         <Button
           type='primary'
           onClick={() =>
-            requestStargazers('YanceyOfficial', 'javascript-apis', {
-              userId: '123456',
-              userName: 'YanceyLeo',
+            requestStargazers('Yancey-Blog', 'BLOG_FE', {
+              page: 1,
             })
           }
         >

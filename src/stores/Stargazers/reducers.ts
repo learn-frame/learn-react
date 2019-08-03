@@ -5,13 +5,13 @@ const initialState = {
   errMsg: '',
 }
 
-// 常量一定要保证独立性！！！
+// case 的常量一定要保证独立性！！！
 // 否则在 combineReducer 的时候会相互干扰
 // 草泥马 折腾老子几乎一天
 // 草
 export default function StarReducers(state = initialState, action: any) {
   // action 一开始本身是请求参数那一坨 (Req params)
-  // 经过 saga *%$不#可%描%述&@ 后，就变成了返回的数据了 (Res data)
+  // 经过 saga *%$不#可%描%述&@ 后，就变成了返回的数据(或错误)了 (Res data/err)
   switch (action.type) {
     case constants.FETCH_REQUEST:
       return {
