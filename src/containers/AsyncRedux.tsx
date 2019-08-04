@@ -14,7 +14,7 @@ interface AsyncReduxProps {
   bitCoins: GitHub.BitCoin[]
   fetchBitCoins: Function
   loading: boolean
-  requestStargazers: Function
+  requestStargazers: Function 
   users: GitHub.User[]
 }
 
@@ -122,7 +122,7 @@ const mapStateToProps = (state: RootState) => {
   return {
     bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,
-    // 将成功获取的数据映射到 props
+    // 将 state 映射到 props
     users: state.StargazersReducers.users,
   }
 }
@@ -130,7 +130,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
-    // 将获取数据的方法映射到 props
+    // 将 dispatch 映射到 props
     requestStargazers: (
       userName: string,
       repoName: string,
