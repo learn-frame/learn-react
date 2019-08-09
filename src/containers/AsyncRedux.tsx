@@ -14,7 +14,7 @@ interface AsyncReduxProps {
   bitCoins: GitHub.BitCoin[]
   fetchBitCoins: Function
   loading: boolean
-  requestStargazers: Function 
+  requestStargazers: Function
   users: GitHub.User[]
 }
 
@@ -33,7 +33,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
       requestStargazers,
     } = this.props
     return (
-      <div className='learn_redux'>
+      <div className='learnRedux'>
         <h1>异步 Redux</h1>
         <h2>比特币接口</h2>
         <Table>
