@@ -33,7 +33,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
       requestStargazers,
     } = this.props
     return (
-      <div className='learn_redux'>
+      <div className='learnRedux'>
         <h1>异步 Redux</h1>
         <h2>比特币接口</h2>
         <Table>
@@ -122,7 +122,7 @@ const mapStateToProps = (state: RootState) => {
   return {
     bitCoins: state.AsyncReducers.bitCoins,
     loading: state.AsyncReducers.loading,
-    // 将成功获取的数据映射到 props 中
+    // 将 state 映射到 props
     users: state.StargazersReducers.users,
   }
 }
@@ -130,7 +130,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: any) => {
   return {
     fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
-    // 将获取数据的方法映射到 props 中
+    // 将 dispatch 映射到 props
     requestStargazers: (
       userName: string,
       repoName: string,
