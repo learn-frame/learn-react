@@ -19,7 +19,6 @@ class DynimaicRoute extends React.Component<IDynimaicRouteProps, {}> {
     const { match, location, history } = this.props;
     console.log(location);
     console.log(history);
-    // this.props.history = createBrowserHistory()
     return <h2 className='dynimaic_route'>当前页面 id: {match.params.id}</h2>;
   }
 }
