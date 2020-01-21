@@ -8,6 +8,7 @@ class ButtonPage extends React.Component<{}, {}> {
   }
 
   public render() {
+    console.log(<Button type='default'>default</Button>)
     return (
       <div className='button_list'>
         {/* 类型为 default */}
