@@ -1,29 +1,31 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import AddAndSubtractAction from 'stores/AddAndSubtract/actions';
-import MultiplicationAndDivisionAction from 'stores/MultiplicationAndDivision/actions';
+import React, { Component } from 'react'
+import { Dispatch } from 'redux'
+import { connect } from 'react-redux'
+import { RootState } from 'stores/rootReducer'
+import AddAndSubtractAction from 'stores/AddAndSubtract/actions'
+import MultiplicationAndDivisionAction from 'stores/MultiplicationAndDivision/actions'
 
-import Button from 'components/Button/Button';
+import Button from 'components/Button/Button'
 
 interface ILearnReduxProps {
-  count_add: number;
-  count_multi: number;
-  bitCoins: any[];
-  increase: Function;
-  decrease: Function;
-  increaseAsync: Function;
-  multiplicate: Function;
-  divide: Function;
-  fetchBitCoin: Function;
-  loading: boolean;
-  fetchStargazers: Function;
-  stargazers: GitHub.User[];
+  count_add: number
+  count_multi: number
+  bitCoins: any[]
+  increase: Function
+  decrease: Function
+  increaseAsync: Function
+  multiplicate: Function
+  divide: Function
+  fetchBitCoin: Function
+  loading: boolean
+  fetchStargazers: Function
+  stargazers: GitHub.User[]
 }
 
 class LearnRedux extends Component<ILearnReduxProps, {}> {
   constructor(props: ILearnReduxProps) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   render() {
@@ -35,7 +37,7 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
       increaseAsync,
       multiplicate,
       divide,
-    } = this.props;
+    } = this.props
 
     return (
       <div className='learn_redux'>
@@ -58,18 +60,18 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
           Divide
         </Button>
       </div>
-    );
+    )
   }
 }
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (state: RootState) => {
   return {
     count_add: state.AddAndSubtractReducers.count_add,
     count_multi: state.MultiplicationAndDivisionReducers.count_multi,
-  };
-};
+  }
+}
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     increase: () => dispatch(AddAndSubtractAction.increase()),
     decrease: () => dispatch(AddAndSubtractAction.decrease()),
@@ -77,12 +79,9 @@ const mapDispatchToProps = (dispatch: any) => {
     multiplicate: () =>
       dispatch(MultiplicationAndDivisionAction.multiplicate()),
     divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
-  };
-};
+  }
+}
 
 // connect 接收四个参数，分别是
 // mapStateToProps | mapDispatchToProps | mergeProps | options
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(LearnRedux);
+export default connect(mapStateToProps, mapDispatchToProps)(LearnRedux)

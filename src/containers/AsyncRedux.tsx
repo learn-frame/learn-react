@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import RootAction from 'stores/rootAction'
 import { RootState } from 'stores/rootReducer'
 
@@ -127,7 +128,7 @@ const mapStateToProps = (state: RootState) => {
   }
 }
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
     // 将 dispatch 映射到 props
@@ -142,7 +143,4 @@ const mapDispatchToProps = (dispatch: any) => {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(AsyncRedux)
+export default connect(mapStateToProps, mapDispatchToProps)(AsyncRedux)
