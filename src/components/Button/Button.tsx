@@ -1,10 +1,9 @@
-import React from 'react';
-import './Button.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from "react";
+import "./Button.css";
 
 const needSpace = (child: any) =>
   /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(child) && child.length === 2
-    ? child.split('').join(' ')
+    ? child.split("").join(" ")
     : child;
 
 interface IButtonProps {
@@ -45,15 +44,15 @@ class Button extends React.Component<IButtonProps, any> {
 
   public render() {
     const loading = this.props.loading;
-    const icon = loading ? 'spinner' : this.props.icon;
-    const iconNode = icon ? <FontAwesomeIcon icon={icon} /> : null;
+    const icon = loading ? "spinner" : this.props.icon;
+    const iconNode = icon ? <span>icon</span> : null;
     const children = this.props.children;
     const type = this.props.type;
     const disabled = this.props.disabled;
     const kids = React.Children.map(children, child => needSpace(child));
     return (
       <button
-        className={`${loading || disabled ? 'disabled' : type} button`}
+        className={`${loading || disabled ? "disabled" : type} button`}
         disabled={loading || disabled}
         onClick={this.handleClick}
       >
@@ -65,10 +64,10 @@ class Button extends React.Component<IButtonProps, any> {
 }
 
 Button.defaultProps = {
-  type: 'default',
+  type: "default",
   disabled: false,
   loading: false,
-  icon: null,
+  icon: null
 };
 
 export default Button;

@@ -1,5 +1,5 @@
 import { put, call, takeLatest } from 'redux-saga/effects'
-import { getStars } from 'apis/github.service'
+import { getStars } from '../../apis/github.service'
 import { constants } from './actions'
 
 function* fetchStargazers(action: any) {

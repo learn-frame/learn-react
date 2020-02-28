@@ -56,11 +56,6 @@ class DemoEntrance extends React.Component<{}, {}> {
             动态路由 - 文章2
           </Button>
         </Link>
-        <Link to='/css-in-js'>
-          <Button variant='outlined' color='secondary'>
-            CSS IN JS
-          </Button>
-        </Link>
         <Link to='/learn-redux'>
           <Button variant='contained' color='primary'>
             Redux

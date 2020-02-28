@@ -1,5 +1,5 @@
 import { put, call, takeLatest, delay } from 'redux-saga/effects'
-import { bitcoinApi } from 'constants/constants'
+import { bitcoinApi } from '../../constants/constants'
 import * as constants from './constants'
 
 function* fetchBitCoins() {

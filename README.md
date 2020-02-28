@@ -20,8 +20,6 @@
 
 ### DEMO
 
-- CSS in JS **[@containers/CSSInJS]**
-
 - 学习 Redux **[@containers/LearnRedux]**
 
 ## Available Scripts

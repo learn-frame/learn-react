@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import RootAction from 'stores/rootAction'
-import { RootState } from 'stores/rootReducer'
+import RootAction from '../stores/rootAction'
+import { RootState } from '../stores/rootReducer'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Button from 'components/Button/Button'
+import Button from '../components/Button/Button'
 
 interface AsyncReduxProps {
   bitCoins: GitHub.BitCoin[]
