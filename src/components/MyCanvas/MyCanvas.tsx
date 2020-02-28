@@ -5,29 +5,15 @@ import correntIcon from './correct.png'
 const MyCanvas: FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
-  const getPixelRatio = (context: any) => {
-    const backingStore =
-      context.backingStorePixelRatio ||
-      context.webkitBackingStorePixelRatio ||
-      context.mozBackingStorePixelRatio ||
-      context.msBackingStorePixelRatio ||
-      context.oBackingStorePixelRatio ||
-      context.backingStorePixelRatio ||
-      1
-    return (window.devicePixelRatio || 1) / backingStore
-  }
-
   function drawImg(img: HTMLImageElement) {
     if (canvasRef && canvasRef.current) {
       const ctx = canvasRef.current.getContext('2d')
 
-      const ratio = getPixelRatio(ctx)
-
       canvasRef.current.style.width = window.innerWidth + 'px'
       canvasRef.current.style.height = window.innerHeight + 'px'
 
-      canvasRef.current.width = window.innerWidth * ratio
-      canvasRef.current.height = window.innerHeight * ratio
+      canvasRef.current.width = window.innerWidth * window.devicePixelRatio
+      canvasRef.current.height = window.innerHeight * window.devicePixelRatio
 
       if (ctx) {
         ctx.drawImage(
@@ -45,10 +31,14 @@ const MyCanvas: FC = () => {
     if (canvasRef && canvasRef.current) {
       const ctx = canvasRef.current.getContext('2d')
 
-      const ratio = getPixelRatio(ctx)
-
       if (ctx) {
-        ctx.drawImage(icon, 140 * ratio, 50 * ratio, 20 * ratio, 20 * ratio)
+        ctx.drawImage(
+          icon,
+          140 * window.devicePixelRatio,
+          50 * window.devicePixelRatio,
+          20 * window.devicePixelRatio,
+          20 * window.devicePixelRatio,
+        )
       }
     }
   }
