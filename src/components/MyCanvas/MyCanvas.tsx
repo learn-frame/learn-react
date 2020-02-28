@@ -50,6 +50,7 @@ const MyCanvas: FC = () => {
         renderImg(ctx)
       }
     }
+    // eslint-disable-next-line
   }, [])
 
   return (

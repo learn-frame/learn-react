@@ -16,8 +16,6 @@
 
 - 手写一个 Button 组件 **[@components/Button]**
 
-- 学习 Fragment **[@components/Fragment]**
-
 ### DEMO
 
 - 学习 Redux **[@containers/LearnRedux]**

@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Button from '@material-ui/core/Button'
 
-class DemoEntrance extends React.Component<{}, {}> {
+class SiteMap extends React.Component<{}, {}> {
   constructor(props: {}) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
@@ -28,32 +28,9 @@ class DemoEntrance extends React.Component<{}, {}> {
             汇率计算器页面
           </Button>
         </Link>
-        <Link to='/fragment'>
-          <Button variant='contained' color='primary'>
-            React.Fragment
-          </Button>
-        </Link>
         <Link to='/button-list'>
           <Button variant='contained' color='primary'>
             button list
-          </Button>
-        </Link>
-        {/* NavLink 是 Link 的一个特殊变种 */}
-        {/* 它会给激活的 a 标签添加如下属性和属性值 */}
-        {/* aria-current="page" class="active" */}
-        <NavLink to='/props-state'>
-          <Button variant='contained' color='primary'>
-            props state
-          </Button>
-        </NavLink>
-        <Link to='/p/5ca5c61ad397224556c4893f'>
-          <Button variant='outlined' color='secondary'>
-            动态路由 - 文章1
-          </Button>
-        </Link>
-        <Link to='/p/5ca4670bd397224556c4893d'>
-          <Button variant='outlined' color='secondary'>
-            动态路由 - 文章2
           </Button>
         </Link>
         <Link to='/learn-redux'>
@@ -77,8 +54,8 @@ class DemoEntrance extends React.Component<{}, {}> {
           </Button>
         </Link>
       </>
-    );
+    )
   }
 }
 
-export default DemoEntrance;
+export default SiteMap

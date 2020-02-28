@@ -19,7 +19,7 @@ class Notice extends React.Component<INoticeProps, {}> {
     const { type, content } = this.props;
     return (
       <div className={`toast-notice ${type}`}>
-        <span>{iconList[type]}</span>
+        {/* <span>{iconList[type]}</span> */}
         <span>{content}</span>
       </div>
     );
