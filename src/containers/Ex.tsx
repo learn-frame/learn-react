@@ -1,20 +1,20 @@
-import React from 'react';
-// import Exchange from '../components/Exchange/Exchange';
+import React from 'react'
+import MyCanvas from '../components/MyCanvas/MyCanvas'
 
 class Ex extends React.Component<{}, {}> {
   constructor(props: {}) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
     return (
       <>
         <h1>Exchange</h1>
-        {/* <Exchange /> */}
+        <MyCanvas />
       </>
-    );
+    )
   }
 }
 
-export default Ex;
+export default Ex
