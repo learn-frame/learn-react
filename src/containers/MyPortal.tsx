@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
-import Button from '../Button/Button';
-import Modal from './Modal';
+import Button from '../components/Button/Button';
+import Modal from '../components/Portal/Modal';
 
 export interface IPortalsState {
   showModal: boolean;

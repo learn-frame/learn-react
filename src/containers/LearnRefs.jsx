@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-// import Exchange from '../Exchange/Exchange';
-import Buttons from '../Button/Button'
 
 class LearnRef extends Component {
   constructor(props) {
@@ -83,9 +81,9 @@ class LearnRef extends Component {
           点我{showInput ? '隐藏' : '显示'}文本框
           {!showInput ? '并自动对焦' : ''}
         </Button>
-        <Buttons ref={this.classComponentRef} onClick={this.clickMyButton}>
+        <Button ref={this.classComponentRef} onClick={this.clickMyButton}>
           类组件的 ref 指向实例
-        </Buttons>
+        </Button>
 
         {/* 函数式组件不要用 ref */}
         {/* <Exchange ref={this.functionComponentRef} /> */}

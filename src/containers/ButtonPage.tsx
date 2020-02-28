@@ -1,14 +1,13 @@
-import React from 'react';
-import Button from '../components/Button/Button';
+import React from 'react'
+import Button from '../components/Button/Button'
 
 class ButtonPage extends React.Component<{}, {}> {
   constructor(props: {}) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
-    console.log(<Button type='default'>default</Button>)
     return (
       <div className='button_list'>
         {/* 类型为 default */}
@@ -44,8 +43,8 @@ class ButtonPage extends React.Component<{}, {}> {
           loading
         </Button>
       </div>
-    );
+    )
   }
 }
 
-export default ButtonPage;
+export default ButtonPage

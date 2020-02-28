@@ -25,3 +25,19 @@ a {
   color: #fafafa;
   text-decoration: none;
 }
+
+.App {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.aside {
+  margin-right: 24px;
+  width: 200px;
+  border-right: 1px solid #ddd;
+}
+
+.main {
+  margin-top: 12px;
+}

@@ -1,13 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
-import Routers from './Routers';
-import * as serviceWorker from './serviceWorker';
-import { Provider } from 'react-redux';
-import configureStore from './stores/configureStore';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
+import './index.css'
+import App from './App'
+import * as serviceWorker from './serviceWorker'
+import { Provider } from 'react-redux'
+import configureStore from './stores/configureStore'
 
-const store = configureStore();
+const store = configureStore()
 
 // Both of these will create a specialized history object for you.
 // 这两个路由组件都用于创建一个序列化的历史对象
@@ -20,11 +20,11 @@ const store = configureStore();
 // 因此该方式会导致地址栏的 URL 有一个丑丑的 #
 
 function getConfirmation(message: string, cb: Function) {
-  const allowTransition = window.confirm(message);
-  cb(allowTransition);
+  const allowTransition = window.confirm(message)
+  cb(allowTransition)
 }
 
-const supportsHistory = 'pushState' in window.history;
+const supportsHistory = 'pushState' in window.history
 
 const renderApp = () =>
   ReactDOM.render(
@@ -40,16 +40,16 @@ const renderApp = () =>
         // 随机算法的实现很有趣 Math.random().toString(36)
         keyLength={12}
       >
-        <Routers />
+        <App />
       </BrowserRouter>
     </Provider>,
     document.getElementById('root'),
-  );
+  )
 
 if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
-  (module as any).hot.accept('./Routers', renderApp);
+  ;(module as any).hot.accept('./App', renderApp)
 }
 
-renderApp();
+renderApp()
 
-serviceWorker.unregister();
+serviceWorker.unregister()
