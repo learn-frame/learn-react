@@ -11,12 +11,45 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '../components/Button/Button'
 
+interface Params {
+  page: number
+}
+
+interface User {
+  login: string
+  id: number
+  node_id: string
+  avatar_url: string
+  gravatar_id: string
+  url: string
+  html_url: string
+  followers_url: string
+  following_url: string
+  gists_url: string
+  starred_url: string
+  subscriptions_url: string
+  organizations_url: string
+  repos_url: string
+  events_url: string
+  received_events_url: string
+  type: string
+  site_admin: boolean
+}
+
+interface BitCoin {
+  code: string
+  symbol: string
+  rate: string
+  description: string
+  rate_float: number
+}
+
 interface AsyncReduxProps {
-  bitCoins: GitHub.BitCoin[]
+  bitCoins: BitCoin[]
   fetchBitCoins: Function
   loading: boolean
   requestStargazers: Function
-  users: GitHub.User[]
+  users: User[]
 }
 
 class AsyncRedux extends Component<AsyncReduxProps, {}> {
@@ -48,7 +81,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
             </TableRow>
           </TableHead>
           <TableBody>
-            {bitCoins.map((row: GitHub.BitCoin) => (
+            {bitCoins.map((row: BitCoin) => (
               <TableRow key={row.code}>
                 <TableCell component='th' scope='row'>
                   {row.code}
@@ -85,7 +118,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((row: GitHub.User) => (
+            {users.map((row: User) => (
               <TableRow key={row.id}>
                 <TableCell>{row.login}</TableCell>
                 <TableCell>{row.id}</TableCell>
@@ -132,11 +165,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
     // 将 dispatch 映射到 props
-    requestStargazers: (
-      userName: string,
-      repoName: string,
-      params: GitHub.Params,
-    ) =>
+    requestStargazers: (userName: string, repoName: string, params: Params) =>
       dispatch(
         RootAction.starActions.requestStargazers(userName, repoName, params),
       ),
