@@ -40,4 +40,18 @@ a {
 
 .main {
   margin-top: 12px;
+  flex: 1;
+}
+
+.active {
+  border: 1px solid #ccc;
+}
+
+.home {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 54px;
+  font-weight: bold;
 }

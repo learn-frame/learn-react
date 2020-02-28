@@ -12,7 +12,7 @@ const routers = [
   {
     path: '/exchange',
     name: '汇率计算器',
-    component: 'Ex',
+    component: 'Exchange',
   },
   {
     path: '/button-list',
@@ -33,6 +33,16 @@ const routers = [
     path: '/hooks',
     name: 'Hooks',
     component: 'Hooks',
+  },
+  {
+    path: '/bubble',
+    name: 'Bubble',
+    component: 'Bubble',
+  },
+  {
+    path: '/photo-canvas',
+    name: '拍照修改',
+    component: 'MyCanvas/MyCanvas',
   },
 ]
 

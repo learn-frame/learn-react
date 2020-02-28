@@ -1,5 +1,5 @@
 import React from 'react'
-import MyCanvas from '../components/MyCanvas/MyCanvas'
+import MyCanvas from './MyCanvas/MyCanvas'
 
 class Ex extends React.Component<{}, {}> {
   constructor(props: {}) {
