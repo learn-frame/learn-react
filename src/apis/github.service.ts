@@ -1,10 +1,11 @@
-import { GET } from './axios';
-import { AxiosResponse } from 'axios';
+import { GET } from './axios'
+import { AxiosResponse } from 'axios'
+import { User, Params } from 'src/containers/AsyncRedux'
 
 export function getStars(
   userName: string,
   projectName: string,
-  params: GitHub.Params,
-): Promise<AxiosResponse<GitHub.User>> {
-  return GET(`/repos/${userName}/${projectName}/stargazers`, params);
+  params: Params,
+): Promise<AxiosResponse<User>> {
+  return GET(`/repos/${userName}/${projectName}/stargazers`, params)
 }

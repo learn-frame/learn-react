@@ -1,3 +1,5 @@
+import { Params } from 'src/containers/AsyncRedux'
+
 export const constants = {
   FETCH_STARGAZERS: 'FETCH_STARGAZERS',
   FETCH_REQUEST: '@@stars/FETCH_REQUEST',
@@ -8,11 +10,7 @@ export const constants = {
 
 const actions = {
   // 定义行为: 请求点赞人列表
-  requestStargazers: (
-    userName: string,
-    repoName: string,
-    params: GitHub.Params,
-  ) => ({
+  requestStargazers: (userName: string, repoName: string, params: Params) => ({
     type: constants.FETCH_STARGAZERS,
     // 传参放到 payload 里
     payload: {

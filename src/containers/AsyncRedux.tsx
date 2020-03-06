@@ -11,11 +11,11 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Button from '../components/Button/Button'
 
-interface Params {
+export interface Params {
   page: number
 }
 
-interface User {
+export interface User {
   login: string
   id: number
   node_id: string
