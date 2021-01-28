@@ -6,7 +6,7 @@
 
 ## Introduction
 
-这是个人日常练手和尝 (cai) 鲜 (keng) 的 React 仓库。当前内核是 React v16.8.6 + TypeScript v3.4.5 + Redux v4.0.1。项目中会包含一些组件成品，也会包含一些学习 API 的 demo。项目持续更新中。
+这是个人日常练手和尝 (cai) 鲜 (keng) 的 React 仓库. 当前内核是 React v17.0.1 + TypeScript v4.1.3 + Redux v4.0.5. 项目中会包含一些组件成品, 也会包含一些学习 API 的 demo. 项目持续更新中.
 
 ### Component
 
