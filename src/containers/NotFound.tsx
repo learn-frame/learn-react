@@ -1,14 +1,14 @@
-import React from 'react';
+import { Component } from 'react'
 
-class NotFound extends React.Component<{}, {}> {
+class NotFound extends Component<{}, {}> {
   constructor(props: {}) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
-    return <h1 className='not-found'>404 Not Found</h1>;
+    return <h1 className='not-found'>404 Not Found</h1>
   }
 }
 
-export default NotFound;
+export default NotFound

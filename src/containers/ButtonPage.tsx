@@ -1,7 +1,7 @@
-import React from 'react'
+import { Component } from 'react'
 import Button from '../components/Button/Button'
 
-class ButtonPage extends React.Component<{}, {}> {
+class ButtonPage extends Component<{}, {}> {
   constructor(props: {}) {
     super(props)
     this.state = {}

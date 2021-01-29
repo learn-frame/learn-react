@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component, createRef } from 'react'
 
 class Circle {
   constructor(radius, color, clearOffset, width, height, ctx, randomColor) {
@@ -18,7 +18,7 @@ class Circle {
         that.color = color
       }
     }
-    this.draw = function() {
+    this.draw = function () {
       if (that.alpha <= 0) {
         init()
       }
@@ -50,7 +50,7 @@ class Bubble extends Component {
 
     this.animateHeader = true
 
-    this.canvasRef = React.createRef()
+    this.canvasRef = createRef()
     this.ctx = null
   }
 

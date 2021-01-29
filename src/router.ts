@@ -1,53 +1,51 @@
-import Home from 'src/containers/Home'
-import MyPortal from 'src/containers/MyPortal'
-import Exchange from 'src/containers/Exchange'
-import ButtonPage from 'src/containers/ButtonPage'
-import LearnRedux from 'src/containers/LearnRedux'
-import AsyncRedux from 'src/containers/AsyncRedux'
-import Hooks from 'src/containers/Hooks'
-import Bubble from 'src/containers/Bubble'
+import components from 'src/containers'
 
 const routers = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    component: components.Home,
     exact: true,
   },
   {
     path: '/portal',
     name: 'React.createPortal',
-    component: MyPortal,
+    component: components.MyPortal,
   },
   {
     path: '/exchange',
     name: '汇率计算器',
-    component: Exchange,
+    component: components.Exchange,
   },
   {
     path: '/button-list',
     name: 'button list',
-    component: ButtonPage,
+    component: components.ButtonPage,
   },
   {
     path: '/learn-redux',
     name: 'Sync Redux',
-    component: LearnRedux,
+    component: components.LearnRedux,
   },
   {
     path: '/async-redux',
     name: 'Async Redux',
-    component: AsyncRedux,
+    component: components.AsyncRedux,
   },
   {
     path: '/hooks',
     name: 'Hooks',
-    component: Hooks,
+    component: components.Hooks,
   },
   {
     path: '/bubble',
     name: 'Bubble',
-    component: Bubble,
+    component: components.Bubble,
+  },
+  {
+    path: '/learn-immer',
+    name: 'Learn Immer',
+    component: components.LearnImmer,
   },
 ]
 

@@ -47,7 +47,8 @@ a {
   border: 1px solid #ccc;
 }
 
-.home {
+.home,
+.not-found {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component, createRef } from 'react'
 import ReactDOM from 'react-dom'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 import Notice from './Notice'
@@ -16,10 +16,7 @@ interface INotificationStates {
   notices: INotice[]
 }
 
-class Notification extends React.Component<
-  INotificationProps,
-  INotificationStates
-> {
+class Notification extends Component<INotificationProps, INotificationStates> {
   transitionTime: number
 
   constructor(props: INotificationProps) {
@@ -37,7 +34,7 @@ class Notification extends React.Component<
   public addNotice(notice: any) {
     const { notices } = this.state
     notice.key = this.getNoticeKey()
-    if (notices.every(item => item.key !== notice.key)) {
+    if (notices.every((item) => item.key !== notice.key)) {
       if (notice.length > 0 && notices[notice.length - 1].type === 'loading') {
         notices.push(notice)
         setTimeout(() => {
@@ -61,7 +58,7 @@ class Notification extends React.Component<
   public removeNotice(key: any) {
     const { notices } = this.state
     this.setState({
-      notices: notices.filter(notice => {
+      notices: notices.filter((notice) => {
         if (notice.key === key) {
           if (notice.onClose) setTimeout(notice.onClose, this.transitionTime)
           return false
@@ -75,7 +72,7 @@ class Notification extends React.Component<
     const { notices } = this.state
     return (
       <TransitionGroup className='toast-notification'>
-        {notices.map(notice => (
+        {notices.map((notice) => (
           <CSSTransition
             key={notice.key}
             classNames='toast-notice-wrapper notice'
@@ -92,7 +89,7 @@ class Notification extends React.Component<
 const createNotification = () => {
   const div = document.createElement('div')
   document.body.appendChild(div)
-  const ref = React.createRef<any>()
+  const ref = createRef<any>()
   ReactDOM.render(<Notification ref={ref} />, div)
   return {
     addNotice(notice: any) {

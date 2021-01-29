@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
 import { RootState } from '../stores/rootReducer'

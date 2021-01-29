@@ -1,10 +1,13 @@
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import './index.css'
-import App from './App'
-import * as serviceWorker from './serviceWorker'
-import configureStore from './stores/configureStore'
+import { enableMapSet } from 'immer'
+import * as serviceWorker from 'src/serviceWorker'
+import configureStore from 'src/stores/configureStore'
+import App from 'src/App'
+import 'src/index.css'
+
+enableMapSet()
 
 const store = configureStore()
 

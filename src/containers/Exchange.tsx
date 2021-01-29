@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 
 const CURRENCIES_API =
   'https://openexchangerates.org/api/latest.json?app_id=644c28c2a5ce4a28986c075724069501'
@@ -29,7 +29,7 @@ const Selector = (props: any) => {
     <>
       <select
         value={currency.firstCurrency}
-        onChange={e =>
+        onChange={(e) =>
           setCurrency({
             firstCurrency: e.target.value,
             secondCurrency: currency.secondCurrency,
@@ -38,7 +38,7 @@ const Selector = (props: any) => {
           })
         }
       >
-        {Object.keys(currencies).map(key => (
+        {Object.keys(currencies).map((key) => (
           <option key={key} value={key}>
             {key}
           </option>
@@ -47,7 +47,7 @@ const Selector = (props: any) => {
 
       <select
         value={currency.secondCurrency}
-        onChange={e =>
+        onChange={(e) =>
           setCurrency({
             firstCurrency: currency.firstCurrency,
             secondCurrency: e.target.value,
@@ -56,7 +56,7 @@ const Selector = (props: any) => {
           })
         }
       >
-        {Object.keys(currencies).map(key => (
+        {Object.keys(currencies).map((key) => (
           <option key={key} value={key}>
             {key}
           </option>
@@ -77,13 +77,15 @@ const Inputer = (props: any) => {
         type='text'
         placeholder='left'
         value={value}
-        onChange={e => setValue(e.target.value)}
+        onChange={(e) => setValue(e.target.value)}
       />
       <input
         type='text'
         placeholder='right'
         value={value * currency.ratio}
-        onChange={e => setValue(parseInt(e.target.value, 10) / currency.ratio)}
+        onChange={(e) =>
+          setValue(parseInt(e.target.value, 10) / currency.ratio)
+        }
       />
     </>
   )
@@ -101,8 +103,8 @@ const Exchange = () => {
   const [currencies, setCurrencies] = useState({})
 
   useEffect(() => {
-    fetch(CURRENCIES_API).then(res => {
-      res.json().then(data => {
+    fetch(CURRENCIES_API).then((res) => {
+      res.json().then((data) => {
         const result = data.rates
         setCurrencies(result)
         setCurrency({

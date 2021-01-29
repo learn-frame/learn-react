@@ -1,42 +1,42 @@
-import React from 'react';
-import ReactDom from 'react-dom';
-import Button from '../components/Button/Button';
-import Modal from '../components/Portal/Modal';
+import { Component } from 'react'
+import ReactDom from 'react-dom'
+import Button from '../components/Button/Button'
+import Modal from '../components/Portal/Modal'
 
 export interface IPortalsState {
-  showModal: boolean;
+  showModal: boolean
 }
 
 export interface IPortalsProps {
-  location: any;
-  history: any;
+  location: any
+  history: any
 }
 
-class MyPortal extends React.Component<IPortalsProps, IPortalsState> {
+class MyPortal extends Component<IPortalsProps, IPortalsState> {
   constructor(props: IPortalsProps) {
-    super(props);
+    super(props)
     this.state = {
       showModal: false,
-    };
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    }
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   }
 
   public openModal = () => {
     this.setState({
       showModal: true,
-    });
-  };
+    })
+  }
 
   public closeModal = () => {
     this.setState({
       showModal: false,
-    });
-  };
+    })
+  }
 
   public render() {
-    const { showModal } = this.state;
-    const {  location, history } = this.props;
+    const { showModal } = this.state
+    const { location, history } = this.props
     console.log(location)
     console.log(history)
     return (
@@ -49,8 +49,8 @@ class MyPortal extends React.Component<IPortalsProps, IPortalsState> {
           document.getElementById('root')!,
         )}
       </div>
-    );
+    )
   }
 }
 
-export default MyPortal;
+export default MyPortal

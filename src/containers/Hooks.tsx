@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { ReactNode, FC, useState, useEffect } from 'react'
 import Button from '../components/Button/Button'
 
 interface Props {
-  children: React.ReactNode
+  children: ReactNode
 }
 
-const Hooks: React.FC<Props> = props => {
+const Hooks: FC<Props> = (props) => {
   const [count, setCount] = useState(0)
   // 当累加到 10 的时候清零
   const handleCountChange = (count: number) => {
@@ -13,7 +13,7 @@ const Hooks: React.FC<Props> = props => {
   }
 
   useEffect(() => {
-    document.addEventListener('visibilitychange', function() {
+    document.addEventListener('visibilitychange', function () {
       const state = this.visibilityState
       state === 'hidden'
         ? (this.title = 'TAT... 页面被隐藏了')

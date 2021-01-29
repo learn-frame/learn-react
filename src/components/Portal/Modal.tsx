@@ -1,21 +1,21 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import classnames from 'classnames';
-import styles from './Modal.module.scss';
+import { Component } from 'react'
+import Button from '@material-ui/core/Button'
+import classnames from 'classnames'
+import styles from './Modal.module.scss'
 
 interface IModalProps {
-  showModal: boolean;
-  closeModal: () => void;
+  showModal: boolean
+  closeModal: () => void
 }
 
-class Modal extends React.Component<IModalProps, {}> {
+class Modal extends Component<IModalProps, {}> {
   constructor(props: IModalProps) {
-    super(props);
-    this.state = {};
+    super(props)
+    this.state = {}
   }
 
   public render() {
-    const { showModal, closeModal } = this.props;
+    const { showModal, closeModal } = this.props
 
     // 简单写一个模态框组件，不太合理，凑合着看
     const modal = (
@@ -39,9 +39,9 @@ class Modal extends React.Component<IModalProps, {}> {
           </Button>
         </div>
       </div>
-    );
-    return <>{showModal ? modal : null}</>;
+    )
+    return <>{showModal ? modal : null}</>
   }
 }
 
-export default Modal;
+export default Modal
