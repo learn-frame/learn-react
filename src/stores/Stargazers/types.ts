@@ -28,6 +28,7 @@ export interface Params {
 }
 
 export enum StargazersActionTypes {
+  FETCH_STARGAZERS = '@@stargazers/FETCH_STARGAZERS',
   FETCH_REQUEST = '@@stargazers/FETCH_REQUEST',
   FETCH_SUCCESSED = '@@stargazers/FETCH_SUCCESSED',
   FETCH_FAILED = '@@stargazers/FETCH_FAILED',

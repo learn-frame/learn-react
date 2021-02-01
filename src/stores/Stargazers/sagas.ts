@@ -26,5 +26,5 @@ function* fetchStargazers(action: any) {
 }
 
 export default function* watchStargazersAsync() {
-  yield takeLatest(StargazersActionTypes.FETCH_REQUEST, fetchStargazers)
+  yield takeLatest(StargazersActionTypes.FETCH_STARGAZERS, fetchStargazers)
 }
