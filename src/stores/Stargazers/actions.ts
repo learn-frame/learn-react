@@ -1,10 +1,10 @@
-import { Params, StargazersActionTypes } from './types'
+import { action } from 'typesafe-actions'
+import { StargazersActionTypes, User } from './types'
 
-const actions = {
-  fetchStargazers: (params: Params) => ({
-    type: StargazersActionTypes.FETCH_STARGAZERS,
-    payload: params,
-  }),
-}
+export const fetchRequest = () => action(StargazersActionTypes.FETCH_REQUEST)
 
-export default actions
+export const fetchSuccess = (data: User[]) =>
+  action(StargazersActionTypes.FETCH_SUCCESSED, data)
+
+export const fetchError = (message: string) =>
+  action(StargazersActionTypes.FETCH_FAILED, message)

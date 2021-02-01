@@ -1,30 +1,36 @@
-import { put, call, takeLatest } from 'redux-saga/effects'
+import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 import { getStars } from 'src/apis/github.service'
+import { fetchSuccess, fetchError } from './actions'
 import { StargazersActionTypes } from './types'
 
-function* fetchStargazers(action: any) {
+function* handleFetch() {
   try {
-    yield put({
-      type: StargazersActionTypes.FETCH_REQUEST,
-      payload: {
-        loading: true,
-      },
+    const res = yield call(getStars, {
+      userName: 'Yancey-Blog',
+      repoName: 'BLOG_FE',
+      ext: { page: 1 },
     })
-    const { data } = yield call(getStars, action.payload)
-    yield put({
-      type: StargazersActionTypes.FETCH_SUCCESSED,
-      payload: {
-        users: data,
-      },
-    })
-  } catch (e) {
-    yield put({
-      type: StargazersActionTypes.FETCH_FAILED,
-      payload: { errMsg: e.message },
-    })
+
+    if (res.error) {
+      yield put(fetchError(res.error))
+    } else {
+      yield put(fetchSuccess(res.data))
+    }
+  } catch (err) {
+    if (err instanceof Error && err.stack) {
+      yield put(fetchError(err.stack))
+    } else {
+      yield put(fetchError('An unknown error occured.'))
+    }
   }
 }
 
-export default function* watchStargazersAsync() {
-  yield takeLatest(StargazersActionTypes.FETCH_STARGAZERS, fetchStargazers)
+function* watchFetchRequest() {
+  yield takeEvery(StargazersActionTypes.FETCH_REQUEST, handleFetch)
 }
+
+function* stargazersSaga() {
+  yield all([fork(watchFetchRequest)])
+}
+
+export default stargazersSaga

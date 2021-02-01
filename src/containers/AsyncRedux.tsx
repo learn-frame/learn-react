@@ -1,9 +1,9 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { bitCoinsActions, starActions } from 'src/stores/rootAction'
+import { bitCoinsActions, fetchStargazers } from 'src/stores/rootAction'
 import { RootState } from 'src/stores/rootReducer'
-import { User, Params } from 'src/stores/Stargazers/types'
+import { User } from 'src/stores/Stargazers/types'
 import { BitCoin } from 'src/stores/BitCoins/types'
 
 import Table from '@material-ui/core/Table'
@@ -13,7 +13,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Button from 'src/components/Button/Button'
 
-interface AsyncReduxProps {
+interface PropsFromState {
   bitCoins: BitCoin[]
   fetchBitCoins: Function
   bitCoinsLoading: boolean
@@ -22,8 +22,14 @@ interface AsyncReduxProps {
   users: User[]
 }
 
-class AsyncRedux extends Component<AsyncReduxProps, {}> {
-  constructor(props: AsyncReduxProps) {
+interface PropsFromDispatch {
+  fetchStargazers: typeof fetchStargazers
+}
+
+type Props = PropsFromState & PropsFromDispatch
+
+class AsyncRedux extends Component<Props, {}> {
+  constructor(props: Props) {
     super(props)
     this.state = {}
   }
@@ -117,13 +123,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
         <Button
           type='primary'
           loading={stargazersLoading}
-          onClick={() =>
-            fetchStargazers({
-              userName: 'Yancey-Blog',
-              repoName: 'BLOG_FE',
-              ext: { page: 1 },
-            })
-          }
+          onClick={fetchStargazers}
         >
           Fetch GitHub
         </Button>
@@ -132,20 +132,20 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
-  return {
-    bitCoins: state.BitCoinsReducers.bitCoins,
-    bitCoinsLoading: state.BitCoinsReducers.loading,
-    stargazersLoading: state.StargazersReducers.errMsg,
-    users: state.StargazersReducers.users,
-  }
-}
+const mapStateToProps = ({
+  BitCoinsReducers,
+  StargazersReducers,
+}: RootState) => ({
+  bitCoins: BitCoinsReducers.bitCoins,
+  bitCoinsLoading: BitCoinsReducers.loading,
+  stargazersLoading: StargazersReducers.loading,
+  users: StargazersReducers.users,
+})
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     fetchBitCoins: () => dispatch(bitCoinsActions.fetchBitCoins()),
-    fetchStargazers: (params: Params) =>
-      dispatch(starActions.fetchStargazers(params)),
+    fetchStargazers: () => dispatch(fetchStargazers()),
   }
 }
 

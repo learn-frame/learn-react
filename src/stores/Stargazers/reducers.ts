@@ -1,3 +1,4 @@
+import { Reducer } from 'redux'
 import { StargazersActionTypes, StargazersState } from './types'
 
 const initialState: StargazersState = {
@@ -6,7 +7,10 @@ const initialState: StargazersState = {
   errMsg: '',
 }
 
-export default function StarReducers(state = initialState, action: any) {
+const starReducers: Reducer<StargazersState> = (
+  state = initialState,
+  action,
+) => {
   switch (action.type) {
     case StargazersActionTypes.FETCH_REQUEST:
       return {
@@ -17,15 +21,17 @@ export default function StarReducers(state = initialState, action: any) {
       return {
         ...state,
         loading: false,
-        users: action.payload.users,
+        users: action.payload,
       }
     case StargazersActionTypes.FETCH_FAILED:
       return {
         ...state,
         loading: false,
-        errMsg: action.payload.errMsg,
+        errMsg: action.payload,
       }
     default:
       return state
   }
 }
+
+export default starReducers
