@@ -1,7 +1,8 @@
 import { action } from 'typesafe-actions'
-import { StargazersActionTypes, User } from './types'
+import { StargazersActionTypes, User, Params } from './types'
 
-export const fetchStargazers = () => action(StargazersActionTypes.FETCH_REQUEST)
+export const fetchStargazers = (params: Params) =>
+  action(StargazersActionTypes.FETCH_REQUEST, params)
 
 export const fetchSuccess = (data: User[]) =>
   action(StargazersActionTypes.FETCH_SUCCESSED, data)

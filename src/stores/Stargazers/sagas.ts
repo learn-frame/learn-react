@@ -1,15 +1,11 @@
-import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
+import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
 import { getStars } from 'src/apis/github.service'
 import { fetchSuccess, fetchError } from './actions'
 import { StargazersActionTypes, Response } from './types'
 
-function* handleFetch() {
+function* handleFetch(action: any) {
   try {
-    const res: Response = yield call(getStars, {
-      userName: 'Yancey-Blog',
-      repoName: 'BLOG_FE',
-      ext: { page: 1 },
-    })
+    const res: Response = yield call(getStars, action.payload)
     yield put(fetchSuccess(res.data))
   } catch (err) {
     yield put(fetchError(err.message))
@@ -17,7 +13,7 @@ function* handleFetch() {
 }
 
 function* watchFetchRequest() {
-  yield takeEvery(StargazersActionTypes.FETCH_REQUEST, handleFetch)
+  yield takeLatest(StargazersActionTypes.FETCH_REQUEST, handleFetch)
 }
 
 function* stargazersSaga() {

@@ -1,5 +1,5 @@
 import { Reducer } from 'redux'
-import produce from 'immer'
+import produce, { Draft } from 'immer'
 import { StargazersActionTypes, StargazersState } from './types'
 
 const initialState: StargazersState = {
@@ -8,18 +8,21 @@ const initialState: StargazersState = {
   errMsg: '',
 }
 
-const starReducers: Reducer<StargazersState> = produce((draft, action) => {
-  switch (action.type) {
-    case StargazersActionTypes.FETCH_REQUEST:
-      draft.loading = true
-      return
+const starReducers: Reducer<StargazersState> = produce(
+  (draft: Draft<StargazersState>, action) => {
+    switch (action.type) {
+      case StargazersActionTypes.FETCH_REQUEST:
+        draft.loading = true
+        return
 
-    case StargazersActionTypes.FETCH_SUCCESSED:
-    case StargazersActionTypes.FETCH_FAILED:
-      draft.loading = false
-      draft.users = action.payload
-      return
-  }
-}, initialState)
+      case StargazersActionTypes.FETCH_SUCCESSED:
+      case StargazersActionTypes.FETCH_FAILED:
+        draft.loading = false
+        draft.users = action.payload
+        return
+    }
+  },
+  initialState,
+)
 
 export default starReducers

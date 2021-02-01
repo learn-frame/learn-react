@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { bitCoinsActions, fetchStargazers } from 'src/stores/rootAction'
 import { RootState } from 'src/stores/rootReducer'
-import { User } from 'src/stores/stargazers/types'
+import { User, Params } from 'src/stores/stargazers/types'
 import { BitCoin } from 'src/stores/bitCoins/types'
 
 import Table from '@material-ui/core/Table'
@@ -123,7 +123,13 @@ class AsyncRedux extends Component<Props, {}> {
         <Button
           type='primary'
           loading={stargazersLoading}
-          onClick={fetchStargazers}
+          onClick={() =>
+            fetchStargazers({
+              userName: 'Yancey-Blog',
+              repoName: 'BLOG_FE',
+              ext: { page: 1 },
+            })
+          }
         >
           Fetch GitHub
         </Button>
@@ -145,7 +151,7 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
     fetchBitCoins: () => dispatch(bitCoinsActions.fetchBitCoins()),
-    fetchStargazers: () => dispatch(fetchStargazers()),
+    fetchStargazers: (params: Params) => dispatch(fetchStargazers(params)),
   }
 }
 
