@@ -1,5 +1,4 @@
 import { put, call, takeLatest, delay } from 'redux-saga/effects'
-import { bitcoinApi } from '../../constants/constants'
 import * as constants from './constants'
 
 function* fetchBitCoins() {
@@ -10,7 +9,7 @@ function* fetchBitCoins() {
         loading: true,
       },
     })
-    const res = yield call(fetch, bitcoinApi)
+    const res = yield call(fetch, 'https://api.coindesk.com/v1/bpi/currentprice.json')
     const json = yield res.json()
     const data = Object.values(json.bpi)
     yield delay(2000)

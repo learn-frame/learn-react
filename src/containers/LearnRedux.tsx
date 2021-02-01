@@ -1,16 +1,13 @@
 import { Component } from 'react'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { RootState } from '../stores/rootReducer'
-import AddAndSubtractAction from '../stores/AddAndSubtract/actions'
-import MultiplicationAndDivisionAction from '../stores/MultiplicationAndDivision/actions'
-import Button from '../components/Button/Button'
-import { User } from './AsyncRedux'
+import { RootState } from 'src/stores/rootReducer'
+import { addActions, multiActions } from 'src/stores/rootAction'
+import Button from 'src/components/Button/Button'
 
 interface ILearnReduxProps {
   count_add: number
   count_multi: number
-  bitCoins: any[]
   increase: Function
   decrease: Function
   increaseAsync: Function
@@ -18,8 +15,6 @@ interface ILearnReduxProps {
   divide: Function
   fetchBitCoin: Function
   loading: boolean
-  fetchStargazers: Function
-  stargazers: User[]
 }
 
 class LearnRedux extends Component<ILearnReduxProps, {}> {
@@ -73,12 +68,11 @@ const mapStateToProps = (state: RootState) => {
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    increase: () => dispatch(AddAndSubtractAction.increase()),
-    decrease: () => dispatch(AddAndSubtractAction.decrease()),
-    increaseAsync: () => dispatch(AddAndSubtractAction.increaseAsync()),
-    multiplicate: () =>
-      dispatch(MultiplicationAndDivisionAction.multiplicate()),
-    divide: () => dispatch(MultiplicationAndDivisionAction.divide()),
+    increase: () => dispatch(addActions.increase()),
+    decrease: () => dispatch(addActions.decrease()),
+    increaseAsync: () => dispatch(addActions.increaseAsync()),
+    multiplicate: () => dispatch(multiActions.multiplicate()),
+    divide: () => dispatch(multiActions.divide()),
   }
 }
 

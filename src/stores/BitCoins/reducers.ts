@@ -6,7 +6,7 @@ const initialState = {
   errMsg: '',
 }
 
-const AsyncReducers = (state = initialState, action: any) => {
+const BitCoinsReducers = (state = initialState, action: any) => {
   switch (action.type) {
     case constants.FETCH_REQUEST:
       return {
@@ -33,4 +33,4 @@ const AsyncReducers = (state = initialState, action: any) => {
   }
 }
 
-export default AsyncReducers
+export default BitCoinsReducers

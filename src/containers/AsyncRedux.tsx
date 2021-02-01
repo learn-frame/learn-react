@@ -1,54 +1,24 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import RootAction from '../stores/rootAction'
-import { RootState } from '../stores/rootReducer'
+import { bitCoinsActions, starActions } from 'src/stores/rootAction'
+import { RootState } from 'src/stores/rootReducer'
+import { User, Params } from 'src/stores/Stargazers/types'
+import { BitCoin } from 'src/stores/BitCoins/types'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
 import TableCell from '@material-ui/core/TableCell'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Button from '../components/Button/Button'
-
-export interface Params {
-  page: number
-}
-
-export interface User {
-  login: string
-  id: number
-  node_id: string
-  avatar_url: string
-  gravatar_id: string
-  url: string
-  html_url: string
-  followers_url: string
-  following_url: string
-  gists_url: string
-  starred_url: string
-  subscriptions_url: string
-  organizations_url: string
-  repos_url: string
-  events_url: string
-  received_events_url: string
-  type: string
-  site_admin: boolean
-}
-
-interface BitCoin {
-  code: string
-  symbol: string
-  rate: string
-  description: string
-  rate_float: number
-}
+import Button from 'src/components/Button/Button'
 
 interface AsyncReduxProps {
   bitCoins: BitCoin[]
   fetchBitCoins: Function
-  loading: boolean
-  requestStargazers: Function
+  bitCoinsLoading: boolean
+  stargazersLoading: boolean
+  fetchStargazers: Function
   users: User[]
 }
 
@@ -61,10 +31,11 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
   public render() {
     const {
       bitCoins,
-      loading,
+      bitCoinsLoading,
       users,
+      stargazersLoading,
       fetchBitCoins,
-      requestStargazers,
+      fetchStargazers,
     } = this.props
     return (
       <div className='learnRedux'>
@@ -100,7 +71,7 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
         </Table>
         <Button
           type='primary'
-          loading={loading}
+          loading={bitCoinsLoading}
           onClick={() => fetchBitCoins()}
         >
           Fetch BitCoin
@@ -139,9 +110,12 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
         </Table>
         <Button
           type='primary'
+          loading={stargazersLoading}
           onClick={() =>
-            requestStargazers('Yancey-Blog', 'BLOG_FE', {
-              page: 1,
+            fetchStargazers({
+              userName: 'Yancey-Blog',
+              repoName: 'BLOG_FE',
+              ext: { page: 1 },
             })
           }
         >
@@ -154,21 +128,18 @@ class AsyncRedux extends Component<AsyncReduxProps, {}> {
 
 const mapStateToProps = (state: RootState) => {
   return {
-    bitCoins: state.AsyncReducers.bitCoins,
-    loading: state.AsyncReducers.loading,
-    // 将 state 映射到 props
+    bitCoins: state.BitCoinsReducers.bitCoins,
+    bitCoinsLoading: state.BitCoinsReducers.loading,
+    stargazersLoading: state.StargazersReducers.errMsg,
     users: state.StargazersReducers.users,
   }
 }
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    fetchBitCoins: () => dispatch(RootAction.asyncActions.fetchBitCoins()),
-    // 将 dispatch 映射到 props
-    requestStargazers: (userName: string, repoName: string, params: Params) =>
-      dispatch(
-        RootAction.starActions.requestStargazers(userName, repoName, params),
-      ),
+    fetchBitCoins: () => dispatch(bitCoinsActions.fetchBitCoins()),
+    fetchStargazers: (params: Params) =>
+      dispatch(starActions.fetchStargazers(params)),
   }
 }
 
