@@ -3,17 +3,17 @@ import ReactDom from 'react-dom'
 import Button from '../components/Button/Button'
 import Modal from '../components/Portal/Modal'
 
-export interface IPortalsState {
+export interface PortalsState {
   showModal: boolean
 }
 
-export interface IPortalsProps {
+export interface PortalsProps {
   location: any
   history: any
 }
 
-class MyPortal extends Component<IPortalsProps, IPortalsState> {
-  constructor(props: IPortalsProps) {
+class MyPortal extends Component<PortalsProps, PortalsState> {
+  constructor(props: PortalsProps) {
     super(props)
     this.state = {
       showModal: false,
