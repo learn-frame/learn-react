@@ -6,9 +6,8 @@ import LearnRedux from 'src/containers/LearnRedux'
 import AsyncRedux from 'src/containers/AsyncRedux'
 import Hooks from 'src/containers/Hooks'
 import Bubble from 'src/containers/Bubble'
-import LearnImmer from 'src/containers/LearnImmer'
 
-export default {
+export {
   Home,
   MyPortal,
   Exchange,
@@ -17,5 +16,4 @@ export default {
   AsyncRedux,
   Hooks,
   Bubble,
-  LearnImmer,
 }
