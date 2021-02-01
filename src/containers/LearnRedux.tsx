@@ -59,10 +59,13 @@ class LearnRedux extends Component<ILearnReduxProps, {}> {
   }
 }
 
-const mapStateToProps = (state: RootState) => {
+const mapStateToProps = ({
+  addAndSubtractReducers: { count_add },
+  multiplicationAndDivisionReducers: { count_multi },
+}: RootState) => {
   return {
-    count_add: state.AddAndSubtractReducers.count_add,
-    count_multi: state.MultiplicationAndDivisionReducers.count_multi,
+    count_add,
+    count_multi,
   }
 }
 

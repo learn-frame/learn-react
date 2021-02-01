@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 import { bitCoinsActions, fetchStargazers } from 'src/stores/rootAction'
 import { RootState } from 'src/stores/rootReducer'
-import { User } from 'src/stores/Stargazers/types'
-import { BitCoin } from 'src/stores/BitCoins/types'
+import { User } from 'src/stores/stargazers/types'
+import { BitCoin } from 'src/stores/bitCoins/types'
 
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -133,13 +133,13 @@ class AsyncRedux extends Component<Props, {}> {
 }
 
 const mapStateToProps = ({
-  BitCoinsReducers,
-  StargazersReducers,
+  bitCoinsReducers: { bitCoins, loading: bitCoinsLoading },
+  stargazersReducers: { users, loading: stargazersLoading },
 }: RootState) => ({
-  bitCoins: BitCoinsReducers.bitCoins,
-  bitCoinsLoading: BitCoinsReducers.loading,
-  stargazersLoading: StargazersReducers.loading,
-  users: StargazersReducers.users,
+  bitCoins,
+  bitCoinsLoading,
+  stargazersLoading,
+  users,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {

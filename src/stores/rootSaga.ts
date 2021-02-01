@@ -1,14 +1,14 @@
 import { all, fork } from 'redux-saga/effects'
-import { watchIncrementAsync } from './AddAndSubtract/sagas'
-import { watchAndLog } from './MultiplicationAndDivision/sagas'
-import watchBitCoinAsync from './BitCoins/sagas'
-import stargazersSaga from './Stargazers/sagas'
+import incrementSaga from './addAndSubtract/sagas'
+import multiplicationAndDivisionSaga from './multiplicationAndDivision/sagas'
+import bitCoinSaga from './bitCoins/sagas'
+import stargazersSaga from './stargazers/sagas'
 
 export default function* rootSaga() {
   yield all([
-    watchIncrementAsync(),
-    watchAndLog(),
-    watchBitCoinAsync(),
+    incrementSaga(),
+    multiplicationAndDivisionSaga(),
+    bitCoinSaga(),
     fork(stargazersSaga),
   ])
 }

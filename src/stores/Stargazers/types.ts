@@ -39,3 +39,7 @@ export interface StargazersState {
   readonly users: User[]
   readonly errMsg?: string
 }
+
+export interface Response {
+  data: User[]
+}

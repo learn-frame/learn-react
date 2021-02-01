@@ -1,8 +1,7 @@
 import { select, takeEvery, take } from 'redux-saga/effects'
 
-// select 对标 getState()
-// 
-export function* watchAndLog1() {
+
+export function* watchMultiplicationAndDivisionAsyncByTakeEvery() {
   yield takeEvery('*', function* logger(action) {
     const state = yield select()
 
@@ -11,7 +10,7 @@ export function* watchAndLog1() {
   })
 }
 
-export function* watchAndLog() {
+export default function* watchMultiplicationAndDivisionAsync() {
   while (true) {
     const action = yield take('*')
     const state = yield select()

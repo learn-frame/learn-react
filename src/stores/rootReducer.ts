@@ -1,14 +1,14 @@
 import { combineReducers } from 'redux'
-import AddAndSubtractReducers from './AddAndSubtract/reducers'
-import MultiplicationAndDivisionReducers from './MultiplicationAndDivision/reducers'
-import BitCoinsReducers from './BitCoins/reducers'
-import StargazersReducers from './Stargazers/reducers'
+import addAndSubtractReducers from './addAndSubtract/reducers'
+import multiplicationAndDivisionReducers from './multiplicationAndDivision/reducers'
+import bitCoinsReducers from './bitCoins/reducers'
+import stargazersReducers from './stargazers/reducers'
 
 const rootReducer = combineReducers({
-  AddAndSubtractReducers,
-  MultiplicationAndDivisionReducers,
-  BitCoinsReducers,
-  StargazersReducers,
+  addAndSubtractReducers,
+  multiplicationAndDivisionReducers,
+  bitCoinsReducers,
+  stargazersReducers,
 })
 
 export default rootReducer

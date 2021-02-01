@@ -6,7 +6,7 @@ export function* incrementAsync() {
   yield put({ type: 'INCREASE' });
 }
 
-export function* watchIncrementAsync() {
+export default function* watchIncrementAsync() {
   // takeEvery 用于监听所有 INCREASE_ASYNC 的 action
   yield takeEvery('INCREASE_ASYNC', incrementAsync);
 }
