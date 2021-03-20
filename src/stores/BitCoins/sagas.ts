@@ -9,10 +9,13 @@ function* fetchBitCoins() {
         loading: true,
       },
     })
+    // @ts-ignore
     const res = yield call(
       fetch,
       'https://api.coindesk.com/v1/bpi/currentprice.json',
     )
+
+    // @ts-ignore
     const json = yield res.json()
     const data = Object.values(json.bpi)
     yield put({

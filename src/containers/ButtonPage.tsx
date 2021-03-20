@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import Button from '../components/Button/Button'
+import Button from 'src/components/Button/Button'
 
 const ButtonPage: FC = () => (
   <div className='button_list'>

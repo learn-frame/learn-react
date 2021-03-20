@@ -1,5 +1,5 @@
 import { all, call, fork, put, takeLatest } from 'redux-saga/effects'
-import { getStars } from 'src/apis/github.service'
+import { getStars } from 'src/services/github.service'
 import { fetchSuccess, fetchError } from './actions'
 import { StargazersActionTypes, Response } from './types'
 
