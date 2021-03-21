@@ -1,4 +1,13 @@
 import { FC, useState, useEffect } from 'react'
+interface CustomEvent extends Event {
+  data: string
+}
+
+interface Data {
+  payload: {
+    likeCount: number
+  }
+}
 
 const SSE: FC = () => {
   const [like, setLike] = useState(0)
@@ -12,11 +21,21 @@ const SSE: FC = () => {
       console.log('已开启')
     })
 
-    evtSource.addEventListener('message', (e) => {
-      setLike(JSON.parse(e.data).count)
-    })
+    evtSource.addEventListener('addLikeCount', ((e: CustomEvent) => {
+      const {
+        payload: { likeCount },
+      }: Data = JSON.parse(e.data)
 
-    evtSource.addEventListener('error', (err) => {
+      setLike(likeCount)
+
+      if (likeCount > 10) {
+        evtSource.close()
+      }
+    }) as EventListener)
+
+    evtSource.addEventListener('message', (e: MessageEvent) => {})
+
+    evtSource.addEventListener('error', (err: Event) => {
       console.log(err)
     })
   }
