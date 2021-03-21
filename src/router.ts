@@ -7,6 +7,7 @@ import {
   AsyncRedux,
   Hooks,
   Bubble,
+  SSE
 } from 'src/containers'
 
 const routers = [
@@ -50,6 +51,11 @@ const routers = [
     path: '/bubble',
     name: 'Bubble',
     component: Bubble,
+  },
+  {
+    path: '/sse',
+    name: 'Server Send Event',
+    component: SSE,
   },
 ]
 
