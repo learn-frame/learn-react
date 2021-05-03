@@ -8,6 +8,7 @@ import {
   Hooks,
   Bubble,
   ForwardRef,
+  LearnContext,
 } from 'src/containers'
 
 const routers = [
@@ -54,8 +55,13 @@ const routers = [
   },
   {
     path: '/forwardRef',
-    name: 'ForwardRef',
+    name: 'Learn ForwardRef',
     component: ForwardRef,
+  },
+  {
+    path: '/learn-context',
+    name: 'Learn Context',
+    component: LearnContext,
   },
 ]
 
