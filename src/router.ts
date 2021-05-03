@@ -9,6 +9,7 @@ import {
   Bubble,
   ForwardRef,
   LearnContext,
+  SSE,
 } from 'src/containers'
 
 const routers = [
@@ -62,6 +63,11 @@ const routers = [
     path: '/learn-context',
     name: 'Learn Context',
     component: LearnContext,
+  },
+  {
+    path: '/sse',
+    name: 'Server Send Event',
+    component: SSE,
   },
 ]
 

@@ -10,7 +10,17 @@ class App extends Component<{}, {}> {
     this.state = {}
   }
 
-  public componentDidMount() {}
+  private visibilityChange() {
+    document.title = document.visibilityState === 'visible' ? '我又粗线了...' : '好像消失了...'
+  }
+
+  public componentDidMount() {
+    window.addEventListener('visibilitychange', this.visibilityChange)
+  }
+
+  public componentWillUnmount() {
+    window.removeEventListener('visibilitychange', this.visibilityChange)
+  }
 
   public render() {
     return (

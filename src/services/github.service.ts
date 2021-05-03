@@ -1,4 +1,4 @@
-import { GET } from './axios'
+import { GET } from '../shared/axios'
 import { AxiosResponse } from 'axios'
 import { Params, Response } from 'src/stores/stargazers/types'
 
