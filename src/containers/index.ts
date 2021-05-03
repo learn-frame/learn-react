@@ -6,6 +6,7 @@ import LearnRedux from 'src/containers/LearnRedux'
 import AsyncRedux from 'src/containers/AsyncRedux'
 import Hooks from 'src/containers/Hooks'
 import Bubble from 'src/containers/Bubble'
+import ForwardRef from 'src/containers/ForwardRef/LearnForwardRef'
 
 export {
   Home,
@@ -16,4 +17,5 @@ export {
   AsyncRedux,
   Hooks,
   Bubble,
+  ForwardRef,
 }

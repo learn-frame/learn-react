@@ -7,6 +7,7 @@ import {
   AsyncRedux,
   Hooks,
   Bubble,
+  ForwardRef,
 } from 'src/containers'
 
 const routers = [
@@ -50,6 +51,11 @@ const routers = [
     path: '/bubble',
     name: 'Bubble',
     component: Bubble,
+  },
+  {
+    path: '/forwardRef',
+    name: 'ForwardRef',
+    component: ForwardRef,
   },
 ]
 
