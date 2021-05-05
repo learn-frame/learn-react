@@ -9,6 +9,7 @@ const LearnContext: FC = () => {
   const context = useContext(ThemeContext)
 
   console.log(ThemeContext)
+  
   return (
     <ThemeConsumer>
       {(value) => {
