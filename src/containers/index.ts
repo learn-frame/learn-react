@@ -9,6 +9,7 @@ import Bubble from 'src/containers/Bubble'
 import ForwardRef from 'src/containers/LearnForwardRef/LearnForwardRef'
 import LearnContext from 'src/containers/LearnContext'
 import SSE from 'src/containers/SSE'
+import LearnChildren from 'src/containers/LearnChildren'
 
 export {
   Home,
@@ -22,4 +23,5 @@ export {
   ForwardRef,
   LearnContext,
   SSE,
+  LearnChildren,
 }

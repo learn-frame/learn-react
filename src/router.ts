@@ -10,6 +10,7 @@ import {
   ForwardRef,
   LearnContext,
   SSE,
+  LearnChildren
 } from 'src/containers'
 
 const routers = [
@@ -63,6 +64,11 @@ const routers = [
     path: '/learn-context',
     name: 'Learn Context',
     component: LearnContext,
+  },
+  {
+    path: '/learn-children',
+    name: 'Learn Children',
+    component: LearnChildren,
   },
   {
     path: '/sse',
