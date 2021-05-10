@@ -55,6 +55,21 @@ sudo docker run -v /etc/nginx/.ht.passwd:/etc/nginx/.ht.passwd \
 
 
 
+    docker run \
+-d \
+-p 9090:9090 \
+--name prometheus \
+-v /opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml \
+-v /opt/prometheus/alert_rules.yml:/etc/prometheus/alert_rules.yml \
+prom/prometheus 
+
+
+docker run \
+    -d \
+    -p 9093:9093 \
+    --name alertmanager \
+    -v /opt/prometheus/alertmanager.yml:/etc/alertmanager/alertmanager.yml \
+    prom/alertmanager
       </pre>
     </SomeComponent>
   )
