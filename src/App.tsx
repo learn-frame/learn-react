@@ -11,11 +11,16 @@ class App extends Component<{}, {}> {
   }
 
   private visibilityChange() {
-    document.title = document.visibilityState === 'visible' ? '我又粗线了...' : '好像消失了...'
+    document.title =
+      document.visibilityState === 'visible' ? '我又粗线了...' : '好像消失了...'
   }
 
   public componentDidMount() {
     window.addEventListener('visibilitychange', this.visibilityChange)
+
+    if (process.env.NODE_ENV !== 'production') {
+      import('vconsole').then((m) => new m.default())
+    }
   }
 
   public componentWillUnmount() {
