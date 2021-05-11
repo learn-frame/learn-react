@@ -55,6 +55,9 @@ const renderApp = () =>
       </ThemeProvider>
     </StrictMode>,
     document.getElementById('root'),
+    () => {
+      console.log('首次渲染完成后执行的回调')
+    },
   )
 
 if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
