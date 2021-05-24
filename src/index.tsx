@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import { enableMapSet } from 'immer'
+import { RecoilRoot } from 'recoil'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import reportWebVitals from './reportWebVitals'
 import configureStore from 'src/stores/configureStore'
@@ -38,19 +39,21 @@ const renderApp = () =>
     <StrictMode>
       <ThemeProvider value='dark'>
         <ReduxProvider store={store}>
-          <BrowserRouter
-            basename='/'
-            // 跳转前的回调
-            getUserConfirmation={getConfirmation}
-            // 作为降级处理，当你的浏览器不支持 h5 的 history api 时可以使用 forceRefresh
-            forceRefresh={!supportsHistory}
-            // this.props.location.key 会给每个路由生成独一无二的 key (即使多次点击同一个路由，key 也会发生变化)
-            // 默认是 6 位，如 tr0i54 这个属性可以让你修改 key 的长度
-            // 随机算法的实现很有趣 Math.random().toString(36)
-            keyLength={12}
-          >
-            <App />
-          </BrowserRouter>
+          <RecoilRoot>
+            <BrowserRouter
+              basename='/'
+              // 跳转前的回调
+              getUserConfirmation={getConfirmation}
+              // 作为降级处理，当你的浏览器不支持 h5 的 history api 时可以使用 forceRefresh
+              forceRefresh={!supportsHistory}
+              // this.props.location.key 会给每个路由生成独一无二的 key (即使多次点击同一个路由，key 也会发生变化)
+              // 默认是 6 位，如 tr0i54 这个属性可以让你修改 key 的长度
+              // 随机算法的实现很有趣 Math.random().toString(36)
+              keyLength={12}
+            >
+              <App />
+            </BrowserRouter>
+          </RecoilRoot>
         </ReduxProvider>
       </ThemeProvider>
     </StrictMode>,

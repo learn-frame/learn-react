@@ -10,7 +10,8 @@ import {
   ForwardRef,
   LearnContext,
   SSE,
-  LearnChildren
+  LearnChildren,
+  LearnRecoil,
 } from 'src/containers'
 
 const routers = [
@@ -69,6 +70,11 @@ const routers = [
     path: '/learn-children',
     name: 'Learn Children',
     component: LearnChildren,
+  },
+  {
+    path: '/learn-recoil',
+    name: 'Learn Recoil',
+    component: LearnRecoil,
   },
   {
     path: '/sse',

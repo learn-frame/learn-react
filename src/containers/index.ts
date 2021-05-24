@@ -10,6 +10,7 @@ import ForwardRef from 'src/containers/LearnForwardRef/LearnForwardRef'
 import LearnContext from 'src/containers/LearnContext'
 import SSE from 'src/containers/SSE'
 import LearnChildren from 'src/containers/LearnChildren'
+import LearnRecoil from 'src/containers/LearnRecoil'
 
 export {
   Home,
@@ -24,4 +25,5 @@ export {
   LearnContext,
   SSE,
   LearnChildren,
+  LearnRecoil,
 }
