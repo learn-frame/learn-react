@@ -1,0 +1,21 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.left {
+  width: 500px;
+  height: 500px;
+  word-break: break-all;
+  border: 1px solid #ccc;
+  overflow-y: scroll;
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 500px;
+  border: 1px solid #ccc;
+}

@@ -11,6 +11,7 @@ import LearnContext from 'src/containers/LearnContext'
 import SSE from 'src/containers/SSE'
 import LearnChildren from 'src/containers/LearnChildren'
 import LearnRecoil from 'src/containers/LearnRecoil'
+import TimeSlice from 'src/containers/TimeSlice/TimeSlice'
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   SSE,
   LearnChildren,
   LearnRecoil,
+  TimeSlice,
 }

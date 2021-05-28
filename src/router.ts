@@ -12,6 +12,7 @@ import {
   SSE,
   LearnChildren,
   LearnRecoil,
+  TimeSlice,
 } from 'src/containers'
 
 const routers = [
@@ -70,6 +71,11 @@ const routers = [
     path: '/learn-children',
     name: 'Learn Children',
     component: LearnChildren,
+  },
+  {
+    path: '/time-slice',
+    name: 'Time Slice',
+    component: TimeSlice,
   },
   {
     path: '/learn-recoil',
