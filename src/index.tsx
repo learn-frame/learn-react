@@ -1,4 +1,4 @@
-import React, { StrictMode, createContext } from 'react'
+import { StrictMode, createContext } from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
@@ -59,12 +59,12 @@ const IndexComponent = () => (
 )
 
 const renderApp = () =>
-  // ReactDOM.render(<IndexComponent />, document.getElementById('root'), () => {
-  //   console.log('首次渲染完成后执行的回调')
-  // })
+  ReactDOM.render(<IndexComponent />, document.getElementById('root'), () => {
+    console.log('首次渲染完成后执行的回调')
+  })
 
 // @ts-ignore
-ReactDOM.createRoot(document.getElementById('root')).render(<IndexComponent />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<IndexComponent />)
 
 if (process.env.NODE_ENV !== 'production' && (module as any).hot) {
   ;(module as any).hot.accept('./App', renderApp)
