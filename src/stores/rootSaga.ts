@@ -8,7 +8,7 @@ export default function* rootSaga() {
   yield all([
     incrementSaga(),
     multiplicationAndDivisionSaga(),
-    bitCoinSaga(),
+    fork(bitCoinSaga),
     fork(stargazersSaga),
   ])
 }

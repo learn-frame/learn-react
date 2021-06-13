@@ -1,36 +1,28 @@
-import * as constants from './constants'
+import { Reducer } from 'redux'
+import produce, { Draft } from 'immer'
+import { BitCoinsActionTypes, BitCoinsState } from './types'
 
-const initialState = {
-  bitCoins: [],
+const initialState: BitCoinsState = {
   loading: false,
+  bitCoins: [],
   errMsg: '',
 }
 
-const BitCoinsReducers = (state = initialState, action: any) => {
-  switch (action.type) {
-    case constants.FETCH_REQUEST:
-      return {
-        ...state,
-        loading: action.payload.loading,
-      }
-    case constants.FETCH_SUCCESSED:
-      return {
-        ...state,
-        bitCoins: action.payload.bitCoins,
-      }
-    case constants.FETCH_FAILED:
-      return {
-        ...state,
-        errMsg: action.payload.errMsg,
-      }
-    case constants.FETCH_FINISHED:
-      return {
-        ...state,
-        loading: action.payload.loading,
-      }
-    default:
-      return state
-  }
-}
+const bitCoinsReducers: Reducer<BitCoinsState> = produce(
+  (draft: Draft<BitCoinsState>, action) => {
+    switch (action.type) {
+      case BitCoinsActionTypes.FETCH_REQUEST:
+        draft.loading = true
+        return
 
-export default BitCoinsReducers
+      case BitCoinsActionTypes.FETCH_SUCCESSED:
+      case BitCoinsActionTypes.FETCH_FAILED:
+        draft.loading = false
+        draft.bitCoins = Object.values(action.payload.bpi)
+        return
+    }
+  },
+  initialState,
+)
+
+export default bitCoinsReducers

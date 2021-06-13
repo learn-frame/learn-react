@@ -1,7 +1,7 @@
 import { Component } from 'react'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { bitCoinsActions, fetchStargazers } from 'src/stores/rootAction'
+import { fetchBitCoins, fetchStargazers } from 'src/stores/rootAction'
 import { RootState } from 'src/stores/rootReducer'
 import { User, Params } from 'src/stores/stargazers/types'
 import { BitCoin } from 'src/stores/bitCoins/types'
@@ -24,6 +24,7 @@ interface PropsFromState {
 
 interface PropsFromDispatch {
   fetchStargazers: typeof fetchStargazers
+  fetchBitCoins: typeof fetchBitCoins
 }
 
 type Props = PropsFromState & PropsFromDispatch
@@ -58,7 +59,7 @@ class AsyncRedux extends Component<Props, {}> {
             </TableRow>
           </TableHead>
           <TableBody>
-            {bitCoins.map((bitCoin: BitCoin) => {
+            {bitCoins.map((bitCoin: BitCoin,) => {
               const { code, symbol, rate, description, rate_float } = bitCoin
               return (
                 <TableRow key={code}>
@@ -142,15 +143,15 @@ const mapStateToProps = ({
   bitCoinsReducers: { bitCoins, loading: bitCoinsLoading },
   stargazersReducers: { users, loading: stargazersLoading },
 }: RootState) => ({
-  bitCoins,
   bitCoinsLoading,
   stargazersLoading,
+  bitCoins,
   users,
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
   return {
-    fetchBitCoins: () => dispatch(bitCoinsActions.fetchBitCoins()),
+    fetchBitCoins: () => dispatch(fetchBitCoins()),
     fetchStargazers: (params: Params) => dispatch(fetchStargazers(params)),
   }
 }

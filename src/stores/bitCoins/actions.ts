@@ -1,9 +1,10 @@
-import { FETCH_BITCOIN } from './constants'
+import { action } from 'typesafe-actions'
+import { BitCoinsActionTypes, BitCoin } from './types'
 
-const actions = {
-  fetchBitCoins: () => ({
-    type: FETCH_BITCOIN,
-  }),
-}
+export const fetchBitCoins = () => action(BitCoinsActionTypes.FETCH_REQUEST)
 
-export default actions
+export const fetchSuccess = (data: BitCoin[]) =>
+  action(BitCoinsActionTypes.FETCH_SUCCESSED, data)
+
+export const fetchError = (message: string) =>
+  action(BitCoinsActionTypes.FETCH_FAILED, message)
