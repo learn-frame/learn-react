@@ -7,6 +7,7 @@ import {
   AsyncRedux,
   Hooks,
   Bubble,
+  LearnRefs,
   ForwardRef,
   LearnContext,
   SSE,
@@ -56,6 +57,11 @@ const routers = [
     path: '/bubble',
     name: 'Bubble',
     component: Bubble,
+  },
+  {
+    path: '/ref',
+    name: 'Learn Refs',
+    component: LearnRefs,
   },
   {
     path: '/forwardRef',

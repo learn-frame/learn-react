@@ -46,7 +46,7 @@ class LearnRef extends Component<{}, State> {
   }
 
   public clickMyButton() {
-    console.log(this.classComponentRef.current)
+    console.log(this.classComponentRef)
   }
 
   public render() {
@@ -60,11 +60,14 @@ class LearnRef extends Component<{}, State> {
             ref={this.inputRef}
           />
         ) : null}
-        <Button onClick={this.clickButton}>
+        <Button onClick={() => this.clickButton()}>
           点我{showInput ? '隐藏' : '显示'}文本框
           {!showInput ? '并自动对焦' : ''}
         </Button>
-        <Button ref={this.classComponentRef} onClick={this.clickMyButton}>
+        <Button
+          ref={this.classComponentRef}
+          onClick={() => this.clickMyButton()}
+        >
           类组件的 ref 指向实例
         </Button>
 

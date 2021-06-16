@@ -7,6 +7,7 @@ import AsyncRedux from 'src/containers/AsyncRedux'
 import Hooks from 'src/containers/Hooks'
 import Bubble from 'src/containers/Bubble'
 import ForwardRef from 'src/containers/LearnForwardRef/LearnForwardRef'
+import LearnRefs from 'src/containers/LearnRefs'
 import LearnContext from 'src/containers/LearnContext'
 import SSE from 'src/containers/SSE'
 import LearnChildren from 'src/containers/LearnChildren'
@@ -23,6 +24,7 @@ export {
   Hooks,
   Bubble,
   ForwardRef,
+  LearnRefs,
   LearnContext,
   SSE,
   LearnChildren,
