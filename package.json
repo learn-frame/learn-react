@@ -19,7 +19,7 @@
     "classnames": "^2.3.1",
     "immer": "^9.0.2",
     "ramda": "^0.27.0",
-    "react": "^0.0.0-experimental-43f4cc160",
+    "react": "^0.14.0",
     "react-dom": "^0.0.0-experimental-43f4cc160",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.1.2",
