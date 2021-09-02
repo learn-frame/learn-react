@@ -17,7 +17,7 @@
     "@testing-library/user-event": "^13.1.8",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
-    "immer": "^9.0.2",
+    "immer": "^9.0.6",
     "ramda": "^0.27.0",
     "react": "^18.0.0-alpha-b54f36f2b-20210803",
     "react-dom": "^18.0.0-alpha-b54f36f2b-20210803",
