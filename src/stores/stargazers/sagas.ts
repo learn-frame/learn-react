@@ -7,7 +7,7 @@ function* handleFetch(action: any) {
   try {
     const res: Response = yield call(getStars, action.payload)
     yield put(fetchSuccess(res.data))
-  } catch (err) {
+  } catch (err: any) {
     yield put(fetchError(err.message))
   }
 }

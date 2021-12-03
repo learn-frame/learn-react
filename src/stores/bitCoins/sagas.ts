@@ -7,7 +7,7 @@ function* handleFetch() {
   try {
     const res: Response = yield call(getBitCoin)
     yield put(fetchSuccess(res.data))
-  } catch (err) {
+  } catch (err: any) {
     yield put(fetchError(err.message))
   }
 }
