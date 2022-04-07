@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import Button from '@material-ui/core/Button'
+import Button from '../Button/Button'
 import classnames from 'classnames'
 import styles from './Modal.module.scss'
 
@@ -27,11 +27,11 @@ class Modal extends Component<IModalProps, {}> {
             もう独りで歩けない 時代の風が強すぎて Ah 傷きつくことなんて
             慣れたはずだけど今は。
           </p>
-          <Button variant='contained' color='primary' className={styles.btn}>
+          <Button type='contained' className={styles.btn}>
             OK
           </Button>
           <Button
-            variant='contained'
+            type='contained'
             className={classnames(styles.btn, styles.cancel_btn)}
             onClick={closeModal}
           >

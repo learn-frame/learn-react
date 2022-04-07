@@ -6,7 +6,7 @@ import {
   useRecoilValue,
   selectorFamily,
 } from 'recoil'
-import { TextField } from '@material-ui/core'
+import TextField from '@mui/material/TextField'
 import { getStars } from 'src/services/github.service'
 
 const LearnRecoil: FC = () => {

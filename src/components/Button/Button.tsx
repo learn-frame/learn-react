@@ -1,4 +1,5 @@
 import { MouseEventHandler, Component, Children } from 'react'
+import classnames from 'classnames'
 import './Button.css'
 
 const needSpace = (child: any) =>
@@ -11,6 +12,7 @@ interface IButtonProps {
   disabled?: boolean
   loading?: boolean
   icon?: any
+  className?: string,
   onClick?: MouseEventHandler<any>
 }
 
@@ -20,6 +22,7 @@ class Button extends Component<IButtonProps, any> {
     disabled: boolean
     loading: boolean
     icon: null
+    className: undefined
   }
   constructor(props: IButtonProps) {
     super(props)
@@ -52,7 +55,7 @@ class Button extends Component<IButtonProps, any> {
     const kids = Children.map(children, (child) => needSpace(child))
     return (
       <button
-        className={`${loading || disabled ? 'disabled' : type} button`}
+        className={classnames(`${loading || disabled ? 'disabled' : type} button`, this.props.className)}
         disabled={loading || disabled}
         onClick={this.handleClick}
       >
@@ -68,6 +71,7 @@ Button.defaultProps = {
   disabled: false,
   loading: false,
   icon: null,
+  className: undefined
 }
 
 export default Button

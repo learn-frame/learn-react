@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
+import Button from 'src/components/Button/Button'
 import routers from 'src/router'
 
 const Aside: FC = () => {
@@ -9,7 +9,7 @@ const Aside: FC = () => {
       {routers.map((router) => (
         <div key={router.path}>
           <NavLink to={router.path} exact={router.exact}>
-            <Button color='primary' variant='text'>
+            <Button type='primary'>
               {router.name}
             </Button>
           </NavLink>
