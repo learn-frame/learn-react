@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react'
+import { Pool } from './objectPool'
 
 const imgs = [
   'https://edge.yancey.app/beg/4x05sia7-1655123413979.jpg',
@@ -69,7 +70,7 @@ const ImagePool: FC = () => {
   useEffect(() => {
     imgs.forEach(src => {
       const res = iframeFactory.create(src)
-      console.log(res)
+      // console.log(res)
     })
   }, [iframeFactory])
 
