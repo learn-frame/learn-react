@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import Header from 'src/components/Header'
 import Home from 'src/containers/Home'
+import VideoCapture from 'src/containers/VideoCapture'
 
 const Layouts: FC = () => {
   return (
@@ -8,7 +9,7 @@ const Layouts: FC = () => {
       <Header />
 
       <main style={{ margin: '88px 24px', width: '100%' }}>
-        <Home />
+        <VideoCapture />
       </main>
     </section >
   )

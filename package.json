@@ -11,9 +11,13 @@
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
+    "@ffmpeg/core": "^0.11.0",
+    "@ffmpeg/ffmpeg": "^0.11.5",
     "@mui/icons-material": "^5.10.2",
+    "@mui/lab": "5.0.0-alpha.99",
     "@mui/material": "^5.10.2",
     "classnames": "^2.3.1",
+    "comlink": "^4.3.1",
     "jotai": "^1.8.1",
     "ramda": "^0.28.0",
     "react": "^18.2.0",
