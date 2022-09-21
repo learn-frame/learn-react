@@ -1,22 +1,34 @@
-import { MouseEventHandler, Component, Children } from 'react'
+import { Component, Children, ReactNode, MouseEvent, ReactElement, ReactFragment, ReactPortal, JSXElementConstructor } from 'react'
 import classnames from 'classnames'
 import './Button.css'
 
-const needSpace = (child: any) =>
-  /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(child) && child.length === 2
-    ? child.split('').join(' ')
-    : child
+const needSpace = (children: string | number | boolean | ReactElement<unknown, string | JSXElementConstructor<unknown>> | ReactFragment | ReactPortal | null | undefined) => {
+  if (typeof children === 'string') {
+    return /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(children) && children.length === 2
+      ? children.split('').join(' ')
+      : children
+  }
+
+  return children
+}
+
 
 interface IButtonProps {
   type?: string
   disabled?: boolean
   loading?: boolean
-  icon?: any
-  className?: string,
-  onClick?: MouseEventHandler<any>
+  icon?: ReactNode
+  className?: string
+  children: ReactNode
+  onClick?: (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => void
 }
 
-class Button extends Component<IButtonProps, any> {
+interface IButtonState {
+  loading: boolean
+  disabled: boolean
+}
+
+class Button extends Component<IButtonProps, IButtonState> {
   static defaultProps: {
     type: string
     disabled: boolean
@@ -26,14 +38,13 @@ class Button extends Component<IButtonProps, any> {
   }
   constructor(props: IButtonProps) {
     super(props)
-    this.state = {}
+    this.state = {
+      loading: false,
+      disabled: false
+    }
   }
 
-  public componentDidMount() {
-    // todo
-  }
-
-  public handleClick = (e: any) => {
+  private handleClick = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
     const { loading, disabled } = this.state
     const { onClick } = this.props
     if (loading || disabled) {
@@ -52,12 +63,12 @@ class Button extends Component<IButtonProps, any> {
     const children = this.props.children
     const type = this.props.type
     const disabled = this.props.disabled
-    const kids = Children.map(children, (child) => needSpace(child))
+    const kids = Children.map(children, (_children) => needSpace(_children))
     return (
       <button
         className={classnames(`${loading || disabled ? 'disabled' : type} button`, this.props.className)}
         disabled={loading || disabled}
-        onClick={this.handleClick}
+        onClick={e => this.handleClick(e)}
       >
         {kids}
         {iconNode}
