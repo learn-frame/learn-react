@@ -8,7 +8,7 @@ const styles = {
   gridTemplateColumns: '1fr 1fr',
   gridColumnGap: '12px',
   gridRowGap: '12px',
-  width: '500px',
+  width: '500px'
 }
 
 const Monitor = (props: any) => {
@@ -34,7 +34,7 @@ const Selector = (props: any) => {
             firstCurrency: e.target.value,
             secondCurrency: currency.secondCurrency,
             ratio:
-              currencies[currency.secondCurrency] / currencies[e.target.value],
+              currencies[currency.secondCurrency] / currencies[e.target.value]
           })
         }
       >
@@ -52,7 +52,7 @@ const Selector = (props: any) => {
             firstCurrency: currency.firstCurrency,
             secondCurrency: e.target.value,
             ratio:
-              currencies[e.target.value] / currencies[currency.firstCurrency],
+              currencies[e.target.value] / currencies[currency.firstCurrency]
           })
         }
       >
@@ -74,14 +74,14 @@ const Inputer = (props: any) => {
   return (
     <>
       <input
-        type='text'
-        placeholder='left'
+        type="text"
+        placeholder="left"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
       <input
-        type='text'
-        placeholder='right'
+        type="text"
+        placeholder="right"
         value={value * currency.ratio}
         onChange={(e) =>
           setValue(parseInt(e.target.value, 10) / currency.ratio)
@@ -95,7 +95,7 @@ const Exchange = () => {
   const [currency, setCurrency] = useState({
     firstCurrency: 'USD',
     secondCurrency: 'EUR',
-    ratio: null,
+    ratio: null
   })
 
   const [value, setValue] = useState(0)
@@ -110,7 +110,7 @@ const Exchange = () => {
         setCurrency({
           firstCurrency: currency.firstCurrency,
           secondCurrency: currency.secondCurrency,
-          ratio: data.rates['EUR'],
+          ratio: data.rates['EUR']
         })
       })
     })

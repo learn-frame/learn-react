@@ -27,11 +27,11 @@ class Modal extends Component<IModalProps, {}> {
             もう独りで歩けない 時代の風が強すぎて Ah 傷きつくことなんて
             慣れたはずだけど今は。
           </p>
-          <Button type='contained' className={styles.btn}>
+          <Button type="contained" className={styles.btn}>
             OK
           </Button>
           <Button
-            type='contained'
+            type="contained"
             className={classnames(styles.btn, styles.cancel_btn)}
             onClick={closeModal}
           >

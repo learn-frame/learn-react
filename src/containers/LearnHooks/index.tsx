@@ -2,7 +2,7 @@ import { ReactNode, FC, useState, useEffect, useReducer } from 'react'
 import Button from '../../components/Button/Button'
 
 interface Props {
-  children: ReactNode
+  children?: ReactNode
 }
 
 interface State {
@@ -18,7 +18,7 @@ interface Action {
 
 enum ActionKind {
   Increase = 'INCREASE',
-  Decrease = 'DECREASE',
+  Decrease = 'DECREASE'
 }
 
 const Hooks: FC<Props> = (props) => {
@@ -48,12 +48,12 @@ const Hooks: FC<Props> = (props) => {
           return state
       }
     },
-    { total: 0 },
+    { total: 0 }
   )
 
   const { children } = props
   return (
-    <div className='hooks-container'>
+    <div className="hooks-container">
       {children}
       <Button onClick={() => handleCountChange(count)}>
         我为长者+{count}s
@@ -62,7 +62,7 @@ const Hooks: FC<Props> = (props) => {
       <hr />
 
       <Button
-        type='primary'
+        type="primary"
         onClick={() =>
           dispatch({ type: ActionKind.Decrease, payload: { num: 1 } })
         }
@@ -71,7 +71,7 @@ const Hooks: FC<Props> = (props) => {
       </Button>
       {state.total}
       <Button
-        type='primary'
+        type="primary"
         onClick={() => {
           dispatch({ type: ActionKind.Increase, payload: { num: 1 } })
           dispatch({ type: ActionKind.Increase, payload: { num: 2 } })

@@ -33,21 +33,23 @@ const imgs = [
   'https://edge.yancey.app/beg/annie-spratt-Ef1H5YTTmZ8-unsplash.jpg',
   'https://edge.yancey.app/beg/18084f37-67e0-400f-bfd8-55eea0e89508.jpg',
   'https://edge.yancey.app/beg/awar-meman-l-Qc9gcTTUI-unsplash.jpg',
-  'https://edge.yancey.app/beg/150be0_a045e63424e74c0cb0e578f5e7d8d1e1_mv2_d_2048_1365_s_2.jpg',
+  'https://edge.yancey.app/beg/150be0_a045e63424e74c0cb0e578f5e7d8d1e1_mv2_d_2048_1365_s_2.jpg'
 ]
 
 const ImagePool: FC = () => {
-
   const objectPoolFactory = <T, S>(createObjFn: (...args: S[]) => T) => {
     const objectPool: Array<T> = []
     return {
       create(...args: S[]) {
-        const obj = objectPool.length === 0 ? createObjFn.apply(this, args) : objectPool.shift()
+        const obj =
+          objectPool.length === 0
+            ? createObjFn.apply(this, args)
+            : objectPool.shift()
         return obj
       },
       recover(obj: T) {
         objectPool.push(obj)
-      },
+      }
     }
   }
 
@@ -68,12 +70,11 @@ const ImagePool: FC = () => {
   })
 
   useEffect(() => {
-    imgs.forEach(src => {
+    imgs.forEach((src) => {
       const res = iframeFactory.create(src)
       // console.log(res)
     })
   }, [iframeFactory])
-
 
   return <div>hello</div>
 }

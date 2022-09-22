@@ -17,7 +17,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import NotFound from 'src/containers/NotFound'
-import routes from 'src/router';
+import routes from 'src/router'
 
 const drawerWidth = 240
 
@@ -25,21 +25,21 @@ const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.enteringScreen,
+    duration: theme.transitions.duration.enteringScreen
   }),
-  overflowX: 'hidden',
+  overflowX: 'hidden'
 })
 
 const closedMixin = (theme: Theme): CSSObject => ({
   transition: theme.transitions.create('width', {
     easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
+    duration: theme.transitions.duration.leavingScreen
   }),
   overflowX: 'hidden',
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up('sm')]: {
-    width: `calc(${theme.spacing(8)} + 1px)`,
-  },
+    width: `calc(${theme.spacing(8)} + 1px)`
+  }
 })
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -47,7 +47,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  ...theme.mixins.toolbar,
+  ...theme.mixins.toolbar
 }))
 
 interface AppBarProps extends MuiAppBarProps {
@@ -55,46 +55,44 @@ interface AppBarProps extends MuiAppBarProps {
 }
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== 'open'
 })<AppBarProps>(({ theme, open }) => ({
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(['width', 'margin'], {
     easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
+    duration: theme.transitions.duration.leavingScreen
   }),
   ...(open && {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
+      duration: theme.transitions.duration.enteringScreen
+    })
+  })
 }))
 
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    boxSizing: 'border-box',
-    ...(open && {
-      ...openedMixin(theme),
-      '& .MuiDrawer-paper': openedMixin(theme),
-    }),
-    ...(!open && {
-      ...closedMixin(theme),
-      '& .MuiDrawer-paper': closedMixin(theme),
-    }),
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== 'open'
+})(({ theme, open }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: 'nowrap',
+  boxSizing: 'border-box',
+  ...(open && {
+    ...openedMixin(theme),
+    '& .MuiDrawer-paper': openedMixin(theme)
   }),
-)
+  ...(!open && {
+    ...closedMixin(theme),
+    '& .MuiDrawer-paper': closedMixin(theme)
+  })
+}))
 
 export default function MiniDrawer() {
   const theme = useTheme()
   const location = useLocation()
   const [open, setOpen] = useState(true)
-
-  console.log(location)
 
   const handleDrawerOpen = () => {
     setOpen(true)
@@ -106,7 +104,6 @@ export default function MiniDrawer() {
 
   return (
     <Box sx={{ display: 'flex' }}>
-
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -116,7 +113,7 @@ export default function MiniDrawer() {
             edge="start"
             sx={{
               marginRight: 5,
-              ...(open && { display: 'none' }),
+              ...(open && { display: 'none' })
             }}
           >
             <MenuIcon />
@@ -129,23 +126,23 @@ export default function MiniDrawer() {
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            {theme.direction === 'rtl' ? (
+              <ChevronRightIcon />
+            ) : (
+              <ChevronLeftIcon />
+            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <List>
           {routes.map((route) => (
-            <NavLink
-              end
-              to={route.path}
-              key={route.key}
-            >
+            <NavLink end to={route.path} key={route.key}>
               <ListItem disablePadding sx={{ display: 'block' }}>
                 <ListItemButton
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    px: 2.5
                   }}
                   selected={location.pathname === route.path}
                 >
@@ -154,18 +151,41 @@ export default function MiniDrawer() {
                       minWidth: 0,
                       mr: open ? 3 : 'auto',
                       justifyContent: 'center',
+                      color:
+                        location.pathname === route.path
+                          ? 'rgb(25, 103, 210)'
+                          : ''
                     }}
                   >
                     <route.icon />
                   </ListItemIcon>
-                  <ListItemText primary={route.label} sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText
+                    primary={route.label}
+                    sx={{
+                      opacity: open ? 1 : 0,
+                      color:
+                        location.pathname === route.path
+                          ? 'rgb(25, 103, 210)'
+                          : ''
+                    }}
+                  />
                 </ListItemButton>
               </ListItem>
             </NavLink>
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3, minHeight: '100vh', width: open ? `calc(100vw - ${drawerWidth}px)` : `calc(100vw - ${theme.spacing(8)} - 1px)` }}>
+      <Box
+        component="main"
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          minHeight: '100vh',
+          width: open
+            ? `calc(100vw - ${drawerWidth}px)`
+            : `calc(100vw - ${theme.spacing(8)} - 1px)`
+        }}
+      >
         <DrawerHeader />
 
         <Routes>
@@ -173,9 +193,7 @@ export default function MiniDrawer() {
             <Route
               key={route.path}
               path={route.path}
-              element={
-                <route.component />
-              }
+              element={<route.component />}
             />
           ))}
           <Route path="*" element={<NotFound />} />

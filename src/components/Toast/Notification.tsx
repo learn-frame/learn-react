@@ -64,18 +64,18 @@ class Notification extends Component<INotificationProps, INotificationStates> {
           return false
         }
         return true
-      }),
+      })
     })
   }
 
   public render() {
     const { notices } = this.state
     return (
-      <TransitionGroup className='toast-notification'>
+      <TransitionGroup className="toast-notification">
         {notices.map((notice) => (
           <CSSTransition
             key={notice.key}
-            classNames='toast-notice-wrapper notice'
+            classNames="toast-notice-wrapper notice"
             timeout={this.transitionTime}
           >
             <Notice {...notice} />
@@ -100,7 +100,7 @@ const createNotification = () => {
     destroy() {
       ReactDOM.unmountComponentAtNode(div)
       document.body.removeChild(div)
-    },
+    }
   }
 }
 

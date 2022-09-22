@@ -17,7 +17,7 @@ export default class SomeComponent extends Component {
   increaseCount = () => {
     const { count } = this.state
     this.setState({
-      count: count + 1,
+      count: count + 1
     })
   }
 

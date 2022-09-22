@@ -11,7 +11,7 @@ const iconList: { [key: string]: string } = {
   loading: 'spinner',
   warning: 'exclamation-circle',
   error: 'times-circle',
-  info: 'info-circle',
+  info: 'info-circle'
 }
 
 class Notice extends Component<INoticeProps, {}> {

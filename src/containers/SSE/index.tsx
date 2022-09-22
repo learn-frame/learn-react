@@ -14,7 +14,7 @@ const SSE: FC = () => {
 
   const initialSSE = () => {
     const evtSource = new EventSource('http://localhost:3002/sse', {
-      withCredentials: true,
+      withCredentials: true
     })
 
     evtSource.addEventListener('open', () => {
@@ -23,7 +23,7 @@ const SSE: FC = () => {
 
     evtSource.addEventListener('addLikeCount', ((e: CustomEvent) => {
       const {
-        payload: { likeCount },
+        payload: { likeCount }
       }: Data = JSON.parse(e.data)
 
       setLike(likeCount)

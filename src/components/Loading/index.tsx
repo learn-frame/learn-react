@@ -1,5 +1,5 @@
-import Backdrop from '@mui/material/Backdrop';
-import CircularProgress from '@mui/material/CircularProgress';
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 
 export default function Loading() {
   return (
@@ -11,5 +11,5 @@ export default function Loading() {
         <CircularProgress color="inherit" />
       </Backdrop>
     </div>
-  );
+  )
 }

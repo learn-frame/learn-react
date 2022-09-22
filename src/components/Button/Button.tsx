@@ -1,17 +1,36 @@
-import { Component, Children, ReactNode, MouseEvent, ReactElement, ReactFragment, ReactPortal, JSXElementConstructor } from 'react'
+import {
+  Component,
+  Children,
+  ReactNode,
+  MouseEvent,
+  ReactElement,
+  ReactFragment,
+  ReactPortal,
+  JSXElementConstructor
+} from 'react'
 import classnames from 'classnames'
 import './Button.css'
 
-const needSpace = (children: string | number | boolean | ReactElement<unknown, string | JSXElementConstructor<unknown>> | ReactFragment | ReactPortal | null | undefined) => {
+const needSpace = (
+  children:
+    | string
+    | number
+    | boolean
+    | ReactElement<unknown, string | JSXElementConstructor<unknown>>
+    | ReactFragment
+    | ReactPortal
+    | null
+    | undefined
+) => {
   if (typeof children === 'string') {
-    return /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(children) && children.length === 2
+    return /^[\u4E00-\u9FA5\uF900-\uFA2D]+$/.test(children) &&
+      children.length === 2
       ? children.split('').join(' ')
       : children
   }
 
   return children
 }
-
 
 interface IButtonProps {
   type?: string
@@ -44,7 +63,9 @@ class Button extends Component<IButtonProps, IButtonState> {
     }
   }
 
-  private handleClick = (e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>) => {
+  private handleClick = (
+    e: MouseEvent<HTMLButtonElement, globalThis.MouseEvent>
+  ) => {
     const { loading, disabled } = this.state
     const { onClick } = this.props
     if (loading || disabled) {
@@ -66,9 +87,12 @@ class Button extends Component<IButtonProps, IButtonState> {
     const kids = Children.map(children, (_children) => needSpace(_children))
     return (
       <button
-        className={classnames(`${loading || disabled ? 'disabled' : type} button`, this.props.className)}
+        className={classnames(
+          `${loading || disabled ? 'disabled' : type} button`,
+          this.props.className
+        )}
         disabled={loading || disabled}
-        onClick={e => this.handleClick(e)}
+        onClick={(e) => this.handleClick(e)}
       >
         {kids}
         {iconNode}
