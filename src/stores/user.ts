@@ -8,7 +8,7 @@ export const currentUserState = atom<UserInfo | null>({
 
 export const userQuery = selector({
   key: 'UserState',
-  get: async ({ get }) => {
+  get: async () => {
     const res = await fetch('http://localhost:3002/user')
     const data: UserInfo = await res.json();
     return data

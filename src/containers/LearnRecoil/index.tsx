@@ -2,10 +2,14 @@ import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 import TextField from '@mui/material/TextField'
 import Box from '@mui/material/Box'
-import { userQuery } from 'src/stores/user'
+import { currentUserState } from 'src/stores/user'
 
 const LearnRecoil: FC = () => {
-  const userInfo = useRecoilValue(userQuery)
+  const userInfo = useRecoilValue(currentUserState)
+
+  if (!userInfo) {
+    return null
+  }
 
   return (
     <Box

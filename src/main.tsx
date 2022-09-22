@@ -3,23 +3,17 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { RecoilRoot } from 'recoil'
 import { SWRConfig } from 'swr'
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline'
 import Loading from 'src/components/Loading'
-import Layouts from './layouts'
+import Layout from './layouts'
 import './index.css'
 
 if (process.env.NODE_ENV !== 'production') {
   import('vconsole').then((m) => new m.default())
 }
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'light',
-  },
-});
+const $rootEl = document.getElementById('root') as HTMLElement
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot($rootEl).render(
   <StrictMode>
     <Suspense fallback={<Loading />}>
       <RecoilRoot>
@@ -30,10 +24,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           }}
         >
           <BrowserRouter>
-            <ThemeProvider theme={darkTheme}>
-              <CssBaseline />
-              <Layouts />
-            </ThemeProvider>
+            <Layout />
           </BrowserRouter>
         </SWRConfig>
       </RecoilRoot>
