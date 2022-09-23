@@ -1,4 +1,5 @@
-import { atom, selector } from 'recoil'
+import { useCallback } from 'react'
+import { atom, selector, useSetRecoilState } from 'recoil'
 import { UserInfo } from 'src/types/user'
 
 export const currentUserState = atom<UserInfo | null>({
@@ -14,3 +15,15 @@ export const userQuery = selector({
     return data
   }
 })
+
+export const useUserInfo = () => {
+  const setState = useSetRecoilState(currentUserState)
+  const setUserInfo = useCallback(
+    (userInfo: UserInfo) => {
+      setState(userInfo)
+    },
+    [setState]
+  )
+
+  return { setUserInfo }
+}

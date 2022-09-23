@@ -7,8 +7,10 @@ const useThemeMode = () => {
   const toggleThemeMode = () => {
     if (themeMode === 'light') {
       setThemeMode('dark')
+      window.localStorage.setItem('global_theme_mode', 'dark')
     } else {
       setThemeMode('light')
+      window.localStorage.setItem('global_theme_mode', 'light')
     }
   }
 
