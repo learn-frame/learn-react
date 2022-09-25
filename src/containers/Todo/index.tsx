@@ -23,7 +23,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import DeleteIcon from '@mui/icons-material/Delete'
-import EditIcon from '@mui/icons-material/Edit'
+import CheckIcon from '@mui/icons-material/Check'
 import {
   todoListState,
   editTodoState,
@@ -169,7 +169,7 @@ const Todo: FC = () => {
                           : () => deleteItem(todo.id)
                       }
                     >
-                      {editTodo?.id === todo.id ? <EditIcon /> : <DeleteIcon />}
+                      {editTodo?.id === todo.id ? <CheckIcon /> : <DeleteIcon />}
                     </IconButton>
                     <Switch
                       checked={todo.status === TodoListStatus.Completed}

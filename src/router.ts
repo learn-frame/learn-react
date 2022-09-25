@@ -1,7 +1,6 @@
 import { lazy } from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import CurrencyExchangIcon from '@mui/icons-material/CurrencyExchange'
-import PollIcon from '@mui/icons-material/Poll'
 import WebhookIcon from '@mui/icons-material/Webhook'
 import SportsIcon from '@mui/icons-material/Sports'
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack'
@@ -11,7 +10,6 @@ import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 
 const Home = lazy(() => import('src/containers/Home'))
 const Exchange = lazy(() => import('src/containers/Exchange'))
-const ImagePool = lazy(() => import('src/containers/ImagePool'))
 const LearnHooks = lazy(() => import('src/containers/LearnHooks'))
 const LearnRecoil = lazy(() => import('src/containers/LearnRecoil'))
 const SSE = lazy(() => import('src/containers/SSE'))
@@ -33,13 +31,6 @@ const routes = [
     label: 'Exchange',
     path: '/exchange',
     component: Exchange
-  },
-  {
-    key: 'imagePool',
-    icon: PollIcon,
-    label: 'Image Pool',
-    path: '/image-pool',
-    component: ImagePool
   },
   {
     key: 'learnHooks',

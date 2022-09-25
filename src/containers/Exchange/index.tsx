@@ -1,33 +1,57 @@
 import { useState, useEffect } from 'react'
+import useSWR from 'swr'
+import Box from '@mui/material/Box'
+import TextField from '@mui/material/TextField'
+import MenuItem from '@mui/material/MenuItem'
+import Typography from '@mui/material/Typography'
+import Select from '@mui/material/Select'
+import Loading from 'src/components/Loading'
 
-const CURRENCIES_API =
-  'https://openexchangerates.org/api/latest.json?app_id=644c28c2a5ce4a28986c075724069501'
-
-const styles = {
-  display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
-  gridColumnGap: '12px',
-  gridRowGap: '12px',
-  width: '500px'
+interface MonotorProps {
+  currency: Currency
 }
 
-const Monitor = (props: any) => {
+interface Currency {
+  firstCurrency: string
+  secondCurrency: string
+  ratio: number
+}
+
+interface SelectorProps extends MonotorProps {
+  currencies: { [index: string]: number }
+  setCurrency: ({
+    firstCurrency,
+    secondCurrency,
+    ratio
+  }: {
+    firstCurrency: string
+    secondCurrency: string
+    ratio: number
+  }) => void
+}
+
+interface InputerProps extends MonotorProps {
+  value: number
+  setValue: (val: number) => void
+}
+
+const Monitor = (props: MonotorProps) => {
   const currency = props.currency
   return (
-    <p>
+    <Typography variant="h2" gutterBottom>
       1 {currency.firstCurrency} = {currency.ratio} {currency.secondCurrency}
-    </p>
+    </Typography>
   )
 }
 
-const Selector = (props: any) => {
+const Selector = (props: SelectorProps) => {
   const currencies = props.currencies
   const currency = props.currency
   const setCurrency = props.setCurrency
 
   return (
     <>
-      <select
+      <Select
         value={currency.firstCurrency}
         onChange={(e) =>
           setCurrency({
@@ -39,13 +63,13 @@ const Selector = (props: any) => {
         }
       >
         {Object.keys(currencies).map((key) => (
-          <option key={key} value={key}>
+          <MenuItem key={key} value={key}>
             {key}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
 
-      <select
+      <Select
         value={currency.secondCurrency}
         onChange={(e) =>
           setCurrency({
@@ -57,31 +81,27 @@ const Selector = (props: any) => {
         }
       >
         {Object.keys(currencies).map((key) => (
-          <option key={key} value={key}>
+          <MenuItem key={key} value={key}>
             {key}
-          </option>
+          </MenuItem>
         ))}
-      </select>
+      </Select>
     </>
   )
 }
 
-const Inputer = (props: any) => {
+const Inputer = (props: InputerProps) => {
   const value = props.value
   const setValue = props.setValue
   const currency = props.currency
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="left"
+      <TextField
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => setValue(parseInt(e.target.value))}
       />
-      <input
-        type="text"
-        placeholder="right"
+      <TextField
         value={value * currency.ratio}
         onChange={(e) =>
           setValue(parseInt(e.target.value, 10) / currency.ratio)
@@ -95,42 +115,57 @@ const Exchange = () => {
   const [currency, setCurrency] = useState({
     firstCurrency: 'USD',
     secondCurrency: 'EUR',
-    ratio: null
+    ratio: 0
   })
+  const [value, setValue] = useState(1)
 
-  const [value, setValue] = useState(0)
-
-  const [currencies, setCurrencies] = useState({})
+  const { data, error } = useSWR(
+    'https://openexchangerates.org/api/latest.json?app_id=10d8e82adc6d4407a4e6f80d7f6e672c'
+  )
 
   useEffect(() => {
-    fetch(CURRENCIES_API).then((res) => {
-      res.json().then((data) => {
-        const result = data.rates
-        setCurrencies(result)
-        setCurrency({
-          firstCurrency: currency.firstCurrency,
-          secondCurrency: currency.secondCurrency,
-          ratio: data.rates['EUR']
-        })
+    if (data?.rates) {
+      setCurrency({
+        firstCurrency: currency.firstCurrency,
+        secondCurrency: currency.secondCurrency,
+        ratio: data.rates['EUR']
       })
-    })
-    // eslint-disable-next-line
-  }, [])
+    }
+  }, [data, currency.firstCurrency, currency.secondCurrency])
+
+  if (!data || error) {
+    return <Loading />
+  }
 
   return (
-    <>
+    <Box
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 1, width: '25ch' }
+      }}
+      noValidate
+      autoComplete="off"
+    >
       <Monitor currency={currency} />
 
-      <div style={styles}>
+      <Box
+        sx={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gridColumnGap: '12px',
+          gridRowGap: '12px',
+          width: '500px'
+        }}
+      >
         <Selector
-          currencies={currencies}
+          currencies={data.rates}
           currency={currency}
           setCurrency={setCurrency}
         />
 
         <Inputer currency={currency} value={value} setValue={setValue} />
-      </div>
-    </>
+      </Box>
+    </Box>
   )
 }
 

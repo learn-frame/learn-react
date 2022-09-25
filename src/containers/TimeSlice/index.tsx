@@ -1,5 +1,5 @@
 import { FC, useState, useEffect, useRef } from 'react'
-import styles from './TimeSlice.module.scss'
+import Box from '@mui/material/Box'
 
 function generateNums(num: number) {
   const nums = []
@@ -54,12 +54,40 @@ const TimeSlice: FC = () => {
   }, [num])
 
   return (
-    <section className={styles.wrapper}>
-      <div className={styles.left}>{nums.map((val) => val)}</div>
-      <div className={styles.right}>
-        <div className={styles.box} ref={boxRef} />
-      </div>
-    </section>
+    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Box
+        sx={{
+          width: 500,
+          height: 500,
+          wordBreak: 'break-all',
+          border: '1px solid #ccc',
+          overflowY: 'scroll'
+        }}
+      >
+        {nums.map((val) => val)}
+      </Box>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: 500,
+          height: 500,
+          border: '1px solid #ccc'
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            width: 50,
+            height: 50,
+            background: '#a4beb2',
+            cursor: 'pointer'
+          }}
+          ref={boxRef}
+        />
+      </Box>
+    </Box>
   )
 }
 

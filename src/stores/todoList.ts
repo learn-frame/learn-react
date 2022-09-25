@@ -28,7 +28,7 @@ export const todoListFilterState = atom<TodoListFilter>({
 });
 
 export const editTodoState = atom<TodoList | null>({
-  key: 'editIdState',
+  key: 'editTodoState',
   default: null
 });
 

@@ -1,8 +1,8 @@
 import { FC } from 'react'
-import ImagePool from 'src/containers/ImagePool'
+import Box from '@mui/material/Box'
 
 const Home: FC = () => {
-  return <ImagePool />
+  return <Box />
 }
 
 export default Home

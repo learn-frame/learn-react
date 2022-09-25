@@ -50,3 +50,54 @@ const SSE: FC = () => {
 }
 
 export default SSE
+
+// 后端部分
+
+// sse.module.ts
+// import { Module } from "@nestjs/common";
+// import { SSEController } from "./sse.controller";
+// import { SSEService } from "./sse.service";
+
+// @Module({
+//   controllers: [SSEController],
+//   providers: [SSEService],
+// })
+// export class SSEModule {}
+
+// sse.controller.ts
+// import { Controller, MessageEvent, Sse } from "@nestjs/common";
+// import { Observable } from "rxjs";
+// import { SSEService } from "./sse.service";
+
+// @Controller()
+// export class SSEController {
+//   constructor(private readonly sseService: SSEService) {
+//     this.sseService = sseService;
+//   }
+
+//   @Sse("sse")
+//   public sse(): Observable<MessageEvent> {
+//     return this.sseService.sse();
+//   }
+// }
+
+// sse.service.ts
+// import { Injectable } from "@nestjs/common";
+// import { interval } from "rxjs";
+// import { map } from "rxjs/operators";
+// import { randomSeries } from "yancey-js-util";
+
+// @Injectable()
+// export class SSEService {
+//   public sse() {
+//     let count = 1;
+//     return interval(2000).pipe(
+//       map((_) => ({
+//         id: randomSeries(6),
+//         type: "addLikeCount",
+//         data: { payload: { tweetId: randomSeries(6), likeCount: count++ } },
+//         retry: 10000,
+//       }))
+//     );
+//   }
+// }
