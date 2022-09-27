@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react'
 import useSWR from 'swr'
 import Box from '@mui/material/Box'
 import TextField from '@mui/material/TextField'
+import IconButton from '@mui/material/IconButton'
 import MenuItem from '@mui/material/MenuItem'
 import Typography from '@mui/material/Typography'
 import Select from '@mui/material/Select'
+import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange'
 import Loading from 'src/components/Loading'
 
 interface MonotorProps {
@@ -38,7 +40,7 @@ interface InputerProps extends MonotorProps {
 const Monitor = (props: MonotorProps) => {
   const currency = props.currency
   return (
-    <Typography variant="h2" gutterBottom>
+    <Typography variant="h3" gutterBottom>
       1 {currency.firstCurrency} = {currency.ratio} {currency.secondCurrency}
     </Typography>
   )
@@ -114,8 +116,8 @@ const Inputer = (props: InputerProps) => {
 const Exchange = () => {
   const [currency, setCurrency] = useState({
     firstCurrency: 'USD',
-    secondCurrency: 'EUR',
-    ratio: 0
+    secondCurrency: 'CNY',
+    ratio: 1
   })
   const [value, setValue] = useState(1)
 
@@ -123,12 +125,23 @@ const Exchange = () => {
     'https://openexchangerates.org/api/latest.json?app_id=10d8e82adc6d4407a4e6f80d7f6e672c'
   )
 
+  const handleExchange = () => {
+    const { firstCurrency, secondCurrency, ratio } = currency
+    setCurrency({
+      firstCurrency: secondCurrency,
+      secondCurrency: firstCurrency,
+      ratio: 1 / ratio
+    })
+  }
+
   useEffect(() => {
     if (data?.rates) {
       setCurrency({
         firstCurrency: currency.firstCurrency,
         secondCurrency: currency.secondCurrency,
-        ratio: data.rates['EUR']
+        ratio:
+          data.rates[currency.secondCurrency] /
+          data.rates[currency.firstCurrency]
       })
     }
   }, [data, currency.firstCurrency, currency.secondCurrency])
@@ -138,32 +151,37 @@ const Exchange = () => {
   }
 
   return (
-    <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' }
-      }}
-      noValidate
-      autoComplete="off"
-    >
+    <Box component="form" noValidate autoComplete="off">
       <Monitor currency={currency} />
-
       <Box
         sx={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gridColumnGap: '12px',
-          gridRowGap: '12px',
-          width: '500px'
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center'
         }}
       >
-        <Selector
-          currencies={data.rates}
-          currency={currency}
-          setCurrency={setCurrency}
-        />
+        <Box
+          sx={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gridColumnGap: 12,
+            gridRowGap: 12,
+            width: 500,
+            marginRight: 4
+          }}
+        >
+          <Selector
+            currencies={data.rates}
+            currency={currency}
+            setCurrency={setCurrency}
+          />
 
-        <Inputer currency={currency} value={value} setValue={setValue} />
+          <Inputer currency={currency} value={value} setValue={setValue} />
+        </Box>
+
+        <IconButton onClick={handleExchange}>
+          <CurrencyExchangeIcon />
+        </IconButton>
       </Box>
     </Box>
   )
