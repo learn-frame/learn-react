@@ -7,6 +7,7 @@ import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack'
 import AvTimerIcon from '@mui/icons-material/AvTimer'
 import ApartmentIcon from '@mui/icons-material/Apartment'
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
+import SettingsInputSvideoIcon from '@mui/icons-material/SettingsInputSvideo';
 
 const Home = lazy(() => import('src/containers/Home'))
 const Exchange = lazy(() => import('src/containers/Exchange'))
@@ -16,6 +17,7 @@ const SSE = lazy(() => import('src/containers/SSE'))
 const TimeSlice = lazy(() => import('src/containers/TimeSlice'))
 const VideoCapture = lazy(() => import('src/containers/VideoCapture'))
 const Todo = lazy(() => import('src/containers/Todo'))
+const LearnSWR = lazy(() => import('src/containers/LearnSWR'))
 
 const routes = [
   {
@@ -73,6 +75,13 @@ const routes = [
     label: 'Todo',
     path: '/todo',
     component: Todo
+  },
+  {
+    key: ' learnSWR',
+    icon: SettingsInputSvideoIcon,
+    label: 'Learn SWR',
+    path: '/learn-swr',
+    component: LearnSWR
   },
 ]
 

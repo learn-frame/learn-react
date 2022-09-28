@@ -1,7 +1,8 @@
 import useSWR from 'swr'
+import { UserInfo } from 'src/types/user'
 
-const useUser = () => {
-  const { data, error } = useSWR('http://localhost:3002/user')
+export const useUser = () => {
+  const { data, error } = useSWR<UserInfo>('http://localhost:3002/user')
 
   return {
     user: data,
@@ -10,4 +11,12 @@ const useUser = () => {
   }
 }
 
-export default useUser
+export const useUsers = () => {
+  const { data, error } = useSWR<UserInfo[]>('http://localhost:3002/users')
+
+  return {
+    users: data,
+    isLoading: !error && !data,
+    isError: error,
+  }
+}
