@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import { UserInfo } from 'src/types/user'
+import { UserInfo, UserParams } from 'src/types/user'
 
 export const useUser = () => {
   const { data, error } = useSWR<UserInfo>('http://localhost:3002/user')
@@ -11,8 +11,9 @@ export const useUser = () => {
   }
 }
 
-export const useUsers = () => {
-  const { data, error } = useSWR<UserInfo[]>('http://localhost:3002/users')
+export const useUsers = (params: SelectorMapper<UserParams>) => {
+  const { data, error } = useSWR<UserInfo[]>('http://localhost:3002/users?' +
+    new URLSearchParams(params))
 
   return {
     users: data,

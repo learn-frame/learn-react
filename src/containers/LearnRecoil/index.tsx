@@ -323,7 +323,8 @@ const LearnRecoil: FC = () => {
             secondary={
               <span>
                 如果 value 是一个 atom 或者 selector 则返回 true, 反之, 返回
-                false.
+                false. 下面是几个例子:
+                <br />
                 <br />
                 isRecoilValue(fetchUser) ==={' '}
                 {isRecoilValue(fetchUser).toString()}

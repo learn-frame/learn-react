@@ -35,20 +35,6 @@ const routes = [
     component: Exchange
   },
   {
-    key: 'learnHooks',
-    icon: WebhookIcon,
-    label: 'Learn Hooks',
-    path: '/learn-hooks',
-    component: LearnHooks
-  },
-  {
-    key: 'learnRecoil',
-    icon: ApartmentIcon,
-    label: 'Learn Recoil',
-    path: '/learn-recoil',
-    component: LearnRecoil
-  },
-  {
     key: 'sse',
     icon: SportsIcon,
     label: 'SSE',
@@ -75,6 +61,20 @@ const routes = [
     label: 'Todo',
     path: '/todo',
     component: Todo
+  },
+  {
+    key: 'learnHooks',
+    icon: WebhookIcon,
+    label: 'Learn Hooks',
+    path: '/learn-hooks',
+    component: LearnHooks
+  },
+  {
+    key: 'learnRecoil',
+    icon: ApartmentIcon,
+    label: 'Learn Recoil',
+    path: '/learn-recoil',
+    component: LearnRecoil
   },
   {
     key: ' learnSWR',

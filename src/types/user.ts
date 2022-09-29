@@ -8,3 +8,8 @@ export interface UserInfo {
   follower_count?: number
   follow_count?: number
 }
+
+export interface UserParams {
+  user_id: string
+  username: string
+}
