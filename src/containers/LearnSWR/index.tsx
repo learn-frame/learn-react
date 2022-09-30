@@ -75,6 +75,12 @@ function UserAvatar() {
 // 虽然在 Content 和 UserAvatar 中都使用了 useUsers
 // 但由于 url 和 query string 是一样的, SWR 只会请求一次, 非常好.
 const LearnSWR: FC = () => {
+  const { mutate } = useSWRConfig()
+
+  const requestViaClicking = ()=> {
+    mutate('http://localhost:3002/users')
+  }
+
   return (
     <Box>
       <Navbar />
