@@ -27,7 +27,6 @@ axios.interceptors.response.use(
 
 // GET
 function GET<T, S>(url: string, params: T): Promise<S> {
-  // throw new Error('caonima')
   return new Promise((resolve, reject) => {
     axios
       .get(url, { params })
@@ -41,10 +40,13 @@ function GET<T, S>(url: string, params: T): Promise<S> {
 }
 
 // POST
-function POST<T, S>(url: string, params: T, config: AxiosRequestConfig): Promise<S> {
+function POST<T, S>(
+  url: string,
+  params: { arg: T },
+): Promise<S> {
   return new Promise((resolve, reject) => {
     axios
-      .post(url, params, config)
+      .post(url, params.arg)
       .then(
         (res: AxiosResponse<S>) => {
           resolve(res.data)
@@ -87,9 +89,4 @@ function DELETE<T, S>(url: string, params: T): Promise<S> {
   })
 }
 
-export {
-  GET,
-  POST,
-  PUT,
-  DELETE
-}
+export { GET, POST, PUT, DELETE }

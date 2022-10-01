@@ -1,5 +1,6 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
+// import useSWRMutation from 'swr/mutation'
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import List from '@mui/material/List'
@@ -8,10 +9,13 @@ import ListItemText from '@mui/material/ListItemText'
 import Divider from '@mui/material/Divider'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 import PrismCode from 'src/components/PrismCode'
 import { useUsers } from 'src/services/useUser'
 import { UserInfo } from 'src/types/user'
-import { GET } from 'src/shared/request'
+import { Like } from 'src/types/like'
+import { GET, POST } from 'src/shared/request'
 
 function Navbar() {
   return (
@@ -29,9 +33,9 @@ function Content() {
   })
 
   // 使用 axios 做 fetcher
-  const { data } = useSWR<UserInfo[]>(
+  const { data: users2 } = useSWR<UserInfo[]>(
     [
-      'http://localhost:3002/users',
+      '/users',
       {
         user_id: '2',
         username: 'Sayaka'
@@ -45,6 +49,11 @@ function Content() {
   return (
     <List>
       {users.map((user) => (
+        <ListItem key={user.user_id}>
+          <ListItemText primary={user.full_name} secondary={user.biography} />
+        </ListItem>
+      ))}
+      {users2?.map((user) => (
         <ListItem key={user.user_id}>
           <ListItemText primary={user.full_name} secondary={user.biography} />
         </ListItem>
@@ -72,17 +81,59 @@ function UserAvatar() {
   )
 }
 
-// 虽然在 Content 和 UserAvatar 中都使用了 useUsers
-// 但由于 url 和 query string 是一样的, SWR 只会请求一次, 非常好.
 const LearnSWR: FC = () => {
-  const { mutate } = useSWRConfig()
+  const [loding, setLoading] = useState(false)
 
-  const requestViaClicking = ()=> {
-    mutate('http://localhost:3002/users')
+  // const { trigger } = useSWRMutation('/user', POST)
+
+  // 手动发起请求
+  // const postRequest = (id: string) => {
+  //   trigger({
+  //     user_id: id,
+  //     username: 'Sayaka'
+  //   })
+  // }
+
+  const { mutate } = useSWRConfig()
+  const { data: like, mutate: updateRequest } = useSWR<Like>('/like', GET)
+
+  const refreshUsersRequest = () => {
+    mutate('http://localhost:3002/users?user_id=1&username=Yancey')
+  }
+
+  const optimisticUI = async () => {
+    if (!like) {
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      await updateRequest(
+        POST('/like', {
+          arg: { like_count: like.like_count, has_liked: like.has_liked }
+        }),
+        {
+          optimisticData: {
+            like_count: like.has_liked
+              ? like.like_count - 1
+              : like.like_count + 1,
+            has_liked: !like.has_liked
+          },
+          rollbackOnError: true,
+          populateCache: true,
+          revalidate: false
+        }
+      )
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <Box>
+      {/* 虽然在 Content 和 UserAvatar 中都使用了 useUsers, */}
+      {/* 但由于 url 和 query string 是一样的, SWR 只会请求一次. */}
       <Navbar />
       <Content />
 
@@ -432,7 +483,83 @@ const LearnSWR: FC = () => {
             />
           </ListItem>
         </List>
+
+        <Typography variant="h4">禁用自动重新请求</Typography>
+        <Typography variant="body1" sx={{ margin: '12px 0' }}>
+          如果资源是不可变的, 即使我们再怎么重新请求也永远不会发生任何改变,
+          那么我们可以禁用它的所有的自动重新请求. 一旦数据被缓存,
+          他们将永远不会再次请求它.
+        </Typography>
+        <PrismCode
+          language="javascript"
+          code={`import useSWRImmutable from 'swr/immutable'
+
+useSWR(key, fetcher, {
+  revalidateIfStale: false,
+  revalidateOnFocus: false,
+  revalidateOnReconnect: false
+})
+            
+// 相当于
+useSWRImmutable(key, fetcher)`}
+        />
+
+        <Typography variant="h4">按需请求 & 依赖请求</Typography>
+        <PrismCode
+          language="javascript"
+          code={`// 有条件的请求
+const { data } = useSWR(shouldFetch ? '/api/data' : null, fetcher)
+
+// 串行请求, 当 user 有了结果才去请求 projects
+const { data: user } = useSWR('/api/user')
+const { data: projects } = useSWR(() => '/api/projects?uid=' + user.id)
+`}
+        />
+
+        <Typography variant="body1" sx={{ margin: '12px 0' }}>
+          比起 useSWR 是在组件 mounted 的时候就请求, useSWRMutation
+          需要你手动触发, 比如点击某个按钮才发起请求. 目前该 Hook 仍在 beta
+          版本.
+        </Typography>
+        {/* <Button variant="contained" onClick={() => postRequest('clicked_id')}>
+          Request When Clicking
+        </Button> */}
       </Box>
+
+      <Typography
+        variant="h4"
+        sx={{
+          marginTop: 4
+        }}
+      >
+        重新验证
+      </Typography>
+      <Typography variant="body1" sx={{ margin: '12px 0' }}>
+        通知整个 APP, 请求了某个 Key 的请求, 都重新刷新
+      </Typography>
+      <Button variant="contained" onClick={refreshUsersRequest}>
+        Refresh Users Request
+      </Button>
+
+      <Typography
+        variant="h4"
+        sx={{
+          marginTop: 4
+        }}
+      >
+        乐观 UI
+      </Typography>
+      <Typography variant="body1" sx={{ margin: '12px 0' }}>
+        乐观
+      </Typography>
+      <Button
+        variant="contained"
+        startIcon={like?.has_liked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+        onClick={optimisticUI}
+        disabled={loding}
+      >
+        {like?.like_count || 0}
+      </Button>
     </Box>
   )
 }
