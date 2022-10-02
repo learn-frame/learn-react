@@ -550,7 +550,7 @@ const { data: projects } = useSWR(() => '/api/projects?uid=' + user.id)
         乐观 UI
       </Typography>
       <Typography variant="body1" sx={{ margin: '12px 0' }}>
-        乐观
+        很常见的功能, 比如点赞后直接 +1, 等请求数据回来再校准.
       </Typography>
       <Button
         variant="contained"
@@ -560,6 +560,38 @@ const { data: projects } = useSWR(() => '/api/projects?uid=' + user.id)
       >
         {like?.like_count || 0}
       </Button>
+
+      <Typography
+        variant="h4"
+        sx={{
+          marginTop: 4
+        }}
+      >
+        根据当前数据更改
+      </Typography>
+      <Typography variant="body1" sx={{ margin: '12px 0' }}>
+        很经典的功能, 在现实中也遇见过, 在 A 页面有个列表, 点进某个 item,
+        进入这个 item 的详情页, 用户如果在详情页点了赞, 回到列表页,
+        就可以通过这种方式来更新这条 item 的数据, 而非刷新整个列表.
+      </Typography>
+      <PrismCode
+        language="javascript"
+        code={`const updateTodo = () => fetch('/api/todos/1', {
+  method: 'PATCH',
+  body: JSON.stringify({ completed: true })
+})
+
+mutate('/api/todos', updateTodo, {
+  populateCache: (updatedTodo, todos) => {
+    // 筛选列表，返回更新后的 item
+    const filteredTodos = todos.filter(todo => todo.id !== '1')
+    return [...filteredTodos, updatedTodo]
+  },
+  // API 已经给我们提供了更新的信息，
+  // 所以我们不需要在这里重新请求。
+  revalidate: false
+})`}
+      />
     </Box>
   )
 }
