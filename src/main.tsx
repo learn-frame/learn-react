@@ -6,6 +6,7 @@ import { SWRConfig } from 'swr'
 import { SnackbarProvider } from 'notistack'
 import Loading from 'src/components/Loading'
 import SnackbarUtils, { SnackbarUtilsConfigurator } from 'src/components/Toast'
+import { GET } from 'src/shared/request'
 import Layout from './layouts'
 import './index.css'
 
@@ -22,8 +23,10 @@ ReactDOM.createRoot($rootEl).render(
         <SnackbarProvider maxSnack={3}>
           <SWRConfig
             value={{
-              fetcher: (resource, init) =>
-                fetch(resource, init).then((res) => res.json()),
+              revalidateOnFocus: false,
+              fetcher: function <T>(url: string, params?: T) {
+                return GET(url, params)
+              },
               onError(err) {
                 SnackbarUtils.error(err.message)
               }
