@@ -1,10 +1,11 @@
 import { FC, useState, useEffect, useRef } from 'react'
 import Box from '@mui/material/Box'
+import Input from '@mui/material/Input'
 
 function generateNums(num: number) {
   const nums = []
 
-  for (let i = 0; i < 1400; i++) {
+  for (let i = 0; i < 10000; i++) {
     nums.push(num)
   }
 
@@ -54,38 +55,41 @@ const TimeSlice: FC = () => {
   }, [num])
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'row' }}>
-      <Box
-        sx={{
-          width: 500,
-          height: 500,
-          wordBreak: 'break-all',
-          border: '1px solid #ccc',
-          overflowY: 'scroll'
-        }}
-      >
-        {nums.map((val) => val)}
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: 500,
-          height: 500,
-          border: '1px solid #ccc'
-        }}
-      >
+    <Box>
+      <Input sx={{ marginBottom: 2, width: 400 }} />
+      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
         <Box
           sx={{
-            position: 'absolute',
-            width: 50,
-            height: 50,
-            background: '#a4beb2',
-            cursor: 'pointer'
+            width: 500,
+            height: 500,
+            wordBreak: 'break-all',
+            border: '1px solid #ccc',
+            overflowY: 'scroll'
           }}
-          ref={boxRef}
-        />
+        >
+          {nums.map((val) => val)}
+        </Box>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: 500,
+            height: 500,
+            border: '1px solid #ccc'
+          }}
+        >
+          <Box
+            sx={{
+              position: 'absolute',
+              width: 50,
+              height: 50,
+              background: '#a4beb2',
+              cursor: 'pointer'
+            }}
+            ref={boxRef}
+          />
+        </Box>
       </Box>
     </Box>
   )

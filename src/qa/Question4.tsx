@@ -7,7 +7,7 @@ function Hooks() {
     return () => {
       console.log(val)
     }
-  }, [])
+  }, [val])
 
   return (
     <>
