@@ -14,7 +14,7 @@ const Exchange = lazy(() => import('src/containers/Exchange'))
 const LearnHooks = lazy(() => import('src/containers/LearnHooks'))
 const LearnRecoil = lazy(() => import('src/containers/LearnRecoil'))
 const SSE = lazy(() => import('src/containers/SSE'))
-const TimeSlice = lazy(() => import('src/containers/TimeSlice'))
+const ConcurrentFeature = lazy(() => import('src/containers/ConcurrentFeature'))
 const VideoCapture = lazy(() => import('src/containers/VideoCapture'))
 const Todo = lazy(() => import('src/containers/Todo'))
 const LearnSWR = lazy(() => import('src/containers/LearnSWR'))
@@ -42,11 +42,11 @@ const routes = [
     component: SSE
   },
   {
-    key: 'timeSlice',
+    key: 'concurrentFeature',
     icon: AvTimerIcon,
-    label: 'Time Slice',
-    path: '/time-slice',
-    component: TimeSlice
+    label: 'Concurrent Feature',
+    path: '/Concurrent-feature',
+    component: ConcurrentFeature
   },
   {
     key: 'videoCapture',
