@@ -45,7 +45,7 @@ const routes = [
     key: 'concurrentFeature',
     icon: AvTimerIcon,
     label: 'Concurrent Feature',
-    path: '/Concurrent-feature',
+    path: '/concurrent-feature',
     component: ConcurrentFeature
   },
   {

@@ -1,4 +1,4 @@
-import { FC, useState, useTransition, ChangeEvent } from 'react'
+import { FC, useState, useTransition, ChangeEvent, useCallback } from 'react'
 import Box from '@mui/material/Box'
 import Input from '@mui/material/Input'
 import List from '@mui/material/List'
@@ -12,14 +12,17 @@ const ConcurrentFeature: FC = () => {
   const [data, setData] = useState(DATA)
   const [isPending, startTransition] = useTransition()
 
-  const handleFilter = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    startTransition(() => {
-      const filteredData = DATA.filter((val) => val[0].includes(e.target.value))
-      setData(filteredData)
-    })
-  }
+  const handleFilter = useCallback(
+    (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      startTransition(() => {
+        const filteredData = DATA.filter((val) =>
+          val[0].includes(e.target.value)
+        )
+        setData(filteredData)
+      })
+    },
+    []
+  )
 
   return (
     <Box>
