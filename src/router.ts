@@ -8,6 +8,7 @@ import AvTimerIcon from '@mui/icons-material/AvTimer'
 import ApartmentIcon from '@mui/icons-material/Apartment'
 import FormatListNumberedIcon from '@mui/icons-material/FormatListNumbered';
 import SettingsInputSvideoIcon from '@mui/icons-material/SettingsInputSvideo';
+import ChatIcon from '@mui/icons-material/Chat';
 
 const Home = lazy(() => import('src/containers/Home'))
 const Exchange = lazy(() => import('src/containers/Exchange'))
@@ -18,6 +19,7 @@ const ConcurrentFeature = lazy(() => import('src/containers/ConcurrentFeature'))
 const VideoCapture = lazy(() => import('src/containers/VideoCapture'))
 const Todo = lazy(() => import('src/containers/Todo'))
 const LearnSWR = lazy(() => import('src/containers/LearnSWR'))
+const ChatGPT = lazy(() => import('src/containers/ChatGPT'))
 
 const routes = [
   {
@@ -82,6 +84,13 @@ const routes = [
     label: 'Learn SWR',
     path: '/learn-swr',
     component: LearnSWR
+  },
+  {
+    key: ' chatGPT',
+    icon: ChatIcon,
+    label: 'ChatGPT',
+    path: '/chat-gpt',
+    component: ChatGPT
   },
 ]
 

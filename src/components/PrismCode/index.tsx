@@ -2,6 +2,7 @@ import { FC, useEffect } from 'react'
 import { styled } from '@mui/material/styles'
 import Prism from 'prismjs'
 import 'prismjs/themes/prism-tomorrow.min.css'
+import 'prismjs/components/prism-rust'
 
 interface Props {
   language: string
