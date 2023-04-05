@@ -16,6 +16,7 @@ import { useUsers } from 'src/services/useUser'
 import { UserInfo } from 'src/types/user'
 import { Like } from 'src/types/like'
 import { GET, POST } from 'src/shared/request'
+import { BASE_URL } from 'src/shared/constants'
 
 function Navbar() {
   return (
@@ -98,7 +99,7 @@ const LearnSWR: FC = () => {
   const { data: like, mutate: updateRequest } = useSWR<Like>('/like', GET)
 
   const refreshUsersRequest = () => {
-    mutate('http://localhost:3002/users?user_id=1&username=Yancey')
+    mutate(BASE_URL + '/users?user_id=1&username=Yancey')
   }
 
   const optimisticUI = async () => {

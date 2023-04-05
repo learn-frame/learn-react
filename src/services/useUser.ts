@@ -1,8 +1,9 @@
 import useSWR from 'swr'
 import { UserInfo, UserParams } from 'src/types/user'
+import { BASE_URL } from 'src/shared/constants'
 
 export const useUser = () => {
-  const { data, error } = useSWR<UserInfo>('http://localhost:3002/user')
+  const { data, error } = useSWR<UserInfo>(BASE_URL + '/user')
 
   return {
     user: data,
@@ -12,7 +13,7 @@ export const useUser = () => {
 }
 
 export const useUsers = (params: SelectorMapper<UserParams>) => {
-  const { data, error } = useSWR<UserInfo[]>('http://localhost:3002/users?' +
+  const { data, error } = useSWR<UserInfo[]>(BASE_URL + '/users?' +
     new URLSearchParams(params))
 
   return {

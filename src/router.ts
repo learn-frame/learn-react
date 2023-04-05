@@ -2,7 +2,6 @@ import { lazy } from 'react'
 import HomeIcon from '@mui/icons-material/Home'
 import CurrencyExchangIcon from '@mui/icons-material/CurrencyExchange'
 import WebhookIcon from '@mui/icons-material/Webhook'
-import SportsIcon from '@mui/icons-material/Sports'
 import VideoCameraBackIcon from '@mui/icons-material/VideoCameraBack'
 import AvTimerIcon from '@mui/icons-material/AvTimer'
 import ApartmentIcon from '@mui/icons-material/Apartment'
@@ -14,7 +13,6 @@ const Home = lazy(() => import('src/containers/Home'))
 const Exchange = lazy(() => import('src/containers/Exchange'))
 const LearnHooks = lazy(() => import('src/containers/LearnHooks'))
 const LearnRecoil = lazy(() => import('src/containers/LearnRecoil'))
-const SSE = lazy(() => import('src/containers/SSE'))
 const ConcurrentFeature = lazy(() => import('src/containers/ConcurrentFeature'))
 const VideoCapture = lazy(() => import('src/containers/VideoCapture'))
 const Todo = lazy(() => import('src/containers/Todo'))
@@ -37,13 +35,6 @@ const routes = [
     component: Exchange
   },
   {
-    key: 'sse',
-    icon: SportsIcon,
-    label: 'SSE',
-    path: '/sse',
-    component: SSE
-  },
-  {
     key: 'concurrentFeature',
     icon: AvTimerIcon,
     label: 'Concurrent Feature',
@@ -60,7 +51,7 @@ const routes = [
   {
     key: 'Todo',
     icon: FormatListNumberedIcon,
-    label: 'Todo',
+    label: 'Todo List',
     path: '/todo',
     component: Todo
   },

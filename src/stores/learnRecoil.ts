@@ -13,6 +13,7 @@ import {
   errorSelector
 } from 'recoil'
 import { UserInfo } from 'src/types/user'
+import { BASE_URL } from 'src/shared/constants'
 
 export const currentUserState = atom<UserInfo | null>({
   key: '@user/currentUserState',
@@ -66,7 +67,7 @@ export const userQuery = selectorFamily<
 export const fetchUser = selectorFamily<UserInfo, string>({
   key: '@user/fetchUser',
   get: (id) => async () => {
-    const res = await fetch(`http://localhost:3002/user?user_id=${id}`)
+    const res = await fetch(BASE_URL + `/user?user_id=${id}`)
     const data: UserInfo = await res.json()
     return data
   }

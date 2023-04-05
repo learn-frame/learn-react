@@ -1,4 +1,5 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
+import { BASE_URL } from 'src/shared/constants'
 
 // config timeout
 axios.defaults.timeout = 5 * 10000
@@ -11,7 +12,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json'
 axios.defaults.headers.put['Content-Type'] = 'application/json'
 
 // config base url
-axios.defaults.baseURL = 'http://localhost:3002'
+axios.defaults.baseURL = BASE_URL
 
 // config request interceptors
 axios.interceptors.request.use(

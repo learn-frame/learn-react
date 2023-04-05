@@ -1,4 +1,6 @@
 import { FC, useState, useEffect } from 'react'
+import { BASE_URL } from 'src/shared/constants'
+
 interface CustomEvent extends Event {
   data: string
 }
@@ -13,7 +15,7 @@ const SSE: FC = () => {
   const [like, setLike] = useState(0)
 
   const initialSSE = () => {
-    const evtSource = new EventSource('http://localhost:3002/sse', {
+    const evtSource = new EventSource(BASE_URL + '/sse', {
       withCredentials: true
     })
 

@@ -26,7 +26,7 @@ const ConcurrentFeature: FC = () => {
 
   return (
     <Box>
-      {/* {isPending && <CircularProgress />} */}
+      {isPending && <CircularProgress />}
 
       <Input
         sx={{ marginBottom: 2, width: 400 }}
