@@ -16,12 +16,12 @@ import { BASE_URL } from 'src/shared/constants'
 
 interface MessageData {
   id: string
-  q: string
-  a: string
+  question: string
+  answer: string
 }
 
-interface Message extends Omit<MessageData, 'a'> {
-  a: string[]
+interface Message extends Omit<MessageData, 'answer'> {
+  answers: string[]
 }
 
 interface MessageMapper {
@@ -36,7 +36,7 @@ const ChatGPT: FC = () => {
 
   const onSearch = () => {
     const evtSource = new EventSource(
-      BASE_URL + '/create_chat' + `?q=${val}&user_id=${user_id}`,
+      BASE_URL + '/create_chat' + `?question=${val}&user_id=${user_id}`,
       {
         withCredentials: true
       }
@@ -55,7 +55,7 @@ const ChatGPT: FC = () => {
     evtSource.addEventListener(
       'chat/completions',
       (e: MessageEvent<string>) => {
-        const { id, q, a } = JSON.parse(e.data) as MessageData
+        const { id, question, answer } = JSON.parse(e.data) as MessageData
 
         setMessages((prevState) => {
           if (prevState) {
@@ -63,12 +63,12 @@ const ChatGPT: FC = () => {
             const currMsg = clonedMsg[id]
 
             if (currMsg) {
-              currMsg.a = [...currMsg.a, a]
+              currMsg.answers = [...currMsg.answers, answer]
             } else {
               clonedMsg[id] = {
                 id,
-                q,
-                a: [a]
+                question,
+                answers: [answer]
               }
             }
 
@@ -77,8 +77,8 @@ const ChatGPT: FC = () => {
             return {
               [id]: {
                 id,
-                q,
-                a: [a]
+                question,
+                answers: [answer]
               }
             }
           }
@@ -122,7 +122,7 @@ const ChatGPT: FC = () => {
                 gutterBottom
                 sx={{ marginTop: 2, maxWidth: 800 }}
               >
-                Q: {msg.q}
+                Q: {msg.question}
               </Typography>
 
               <Card sx={{ maxWidth: 800, marginTop: 2, marginBottom: 2 }}>
@@ -219,7 +219,7 @@ const ChatGPT: FC = () => {
                       }
                     }}
                   >
-                    {msg.a.join('')}
+                    {msg.answers.join('')}
                   </ReactMarkdown>
                 </CardContent>
               </Card>
